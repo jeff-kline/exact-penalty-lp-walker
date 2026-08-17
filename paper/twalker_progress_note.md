@@ -114,7 +114,7 @@ endpoint selection or terminal face repair. We count these calls toward walker
 time, and every result must pass the original-data certificate. The benchmark
 therefore does not yet isolate wholly native path algebra.
 
-![Synthetic timing panel](../agent_reports/figures/solver_timings_postinit_20260816/synthetic_aspect_timings.png)
+![Synthetic timing panel](figs/synthetic_aspect_timings_public.png)
 
 **Figure 1.** Complete time above and post-initialization kernel time below.
 The black line shows the fastest certified default-seed walker,
@@ -139,7 +139,7 @@ HiGHS simplex postprocessor and then apply the same original-data certificate.
 We do not pass t-walker's retained basis. This procedure gives us a portable
 common crossover, not the proposed native basis route.
 
-![Common accuracy panel](../agent_reports/figures/common_accuracy_20260817/common_accuracy.png)
+![Common accuracy panel](figs/common_accuracy_public.png)
 
 **Figure 2.** Each dot represents one problem under the same original-data
 certificate; diamonds mark medians, and the labels at right show coverage.
@@ -186,16 +186,17 @@ and factor updates. We therefore do not claim a new path or homotopy principle.
 
 ![Provisional Pinar Netlib panel](figs/netlib27_pinar_provisional.png)
 
-**Figure 3.** Complete Netlib-27 solve time. Stars mark the four certified
+**Figure 3.** Complete Netlib-27 solve time. Stars mark the five certified
 Pinar results; faint crosses mark measured exits, not solves. Pinar is shown
 for comparison but is excluded from the black Mangasarian frontier.
 
 We built a correctness-first reconstruction of Pinar's algorithm and ran it on
 the same canonical Netlib panel with one thread and a 10-second cap. It called
-neither t-walker nor an LP solver. It certified `afiro`, `sc50a`, `sc50b`, and
-`sc105`; 19 models stopped at a numerical gate, three reached the time limit,
-and `grow7` was not measured because its canonical fixture was missing. The
-four complete Python/SciPy times ranged from 19.9 to 117.9 ms.
+neither t-walker nor an LP solver. It certified `afiro`, `sc50b`, `sc50a`,
+`sc105`, and `stocfor1`; 18 models stopped at a numerical gate, three reached
+the time limit, and `grow7` was not measured because its canonical fixture was
+missing. The five complete Python/SciPy times ranged from 15.7 to 306.9 ms.
+Two identical repetitions returned the same status on every model.
 
 These timings are directional, not a reproduction of Pinar's Fortran costs.
 For smaller models, our code rebuilds a cold rank-revealing SVD at every Newton
