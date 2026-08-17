@@ -216,6 +216,13 @@ def load_synthetic(summary_path: Path):
             for arm, init_arm in (walker_pairs
                                   + [("simplex", "simplex_init"),
                                      ("ipm", "ipm_init")]):
+                # An arm may refuse a cell outright -- the triangular seed
+                # fails closed where the face lacks full column rank -- and
+                # then carries no timing at all.  Skip it rather than
+                # differencing two absent values.
+                if (row["arms"][arm].get("milliseconds") is None
+                        or row["arms"][init_arm].get("milliseconds") is None):
+                    continue
                 paired = _paired_samples(
                     row["arms"][arm], row["arms"][init_arm],
                     lambda full, init: 1000 * (

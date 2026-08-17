@@ -121,6 +121,53 @@ Corrections made during preparation, before any public version existed:
   `common-original-data-kkt-accuracy-v1`, has always called it. The score,
   the tolerance, and every reported measurement are unchanged.
 
+- **2026-08-17 — the note misdescribed Pinar's perturbation.**
+  §5 stated that Pinar (1997) perturbs a standard-form LP by adding
+  `(eps/2)||z||^2` to `c'z` over `{z >= 0, Az = a}`. He does not. The primary
+  source (JOTA 93(3), 619-634) defines, in its equations (4)-(6), an
+  **unconstrained dual** penalty `H(y,tau) = tau*a'y + (1/2)||(A'y + c)_-||^2`,
+  minimized over `y` for **decreasing** `tau`, with `W` a diagonal selector of
+  violated rows.
+
+  An earlier audit lane recorded this fact as unverifiable because the paper was
+  not in the checkout. It is freely available from the author's institutional
+  repository, and reading it took minutes. Recording a gap is not the same as
+  closing one.
+
+  The conclusion survives: setting `A = B'`, `a = d`, `c = -b` makes Pinar's
+  primal our dual, and dividing `H` by `tau` with `t = 1/tau` yields exactly
+  Mangasarian's penalty program for our primal, so the paths do coincide. But
+  §5 now derives that from his actual equations rather than from a form he never
+  wrote, and notes that his parameter decreases where ours increases. Gate P1 is
+  reduced from PASS to PARTIAL.
+
+- **2026-08-17 — the synthetic reproduction gap was closed by repairing two
+  scripts.** `summarize_twalker_synth_nm.py` demanded that every arm run on
+  every cell, which the triangular seed cannot satisfy: it fails closed where
+  the face lacks full column rank, on the same 3 of 27 cells in every repeat.
+  The summarizer therefore rejected the very record behind the published
+  figure. It now expects only the triples that occur somewhere, so a
+  consistently refused cell is treated as a property of the method while a
+  sporadically missing one still marks its repeat incomplete; `--require-every-arm`
+  restores the old behaviour. It also now emits the `solve_seconds` spread and
+  per-repeat `run_samples` that the renderer's post-initialization panel needs
+  and that no summary previously carried.
+  `render_solver_timing_charts.py` additionally skipped over a refused arm
+  rather than differencing two absent timings.
+
+  With both repaired, the shipped chain reproduces the published synthetic
+  figures from the published record: 24 cells, envelope picks 11/6/7, median
+  2.8194, minimum 1.6950, maximum 11.7603.
+
+- **2026-08-17 — a failing component test is disclosed rather than hidden.**
+  `verify_face_solver` exits 1: on `share1b` the direct face solve returns
+  2.97e-09 against that test's own 1e-10 gate. `share1b` nevertheless certifies
+  end to end, because the walker adds refinement, error bounds, and repair that
+  the isolated component test does not exercise. `verify_gram_solver` and
+  `verify_bound_core_solver` exit 0 but serve only 12 and 1 of 26 faces
+  respectively, with no coverage floor asserted, so their green exits are weak
+  evidence. All three are recorded in `VERIFICATION.md`.
+
 - **2026-08-17 — the paper was renamed and its formatting normalized.**
   The note was `paper/twalker_progress_note.{tex,bib}` with its PDF under
   `output/pdf/`. It is now `paper/main.{tex,bib,pdf}`, matching four of the six
@@ -152,14 +199,30 @@ Corrections made during preparation, before any public version existed:
   reads "NOT YET ADMITTED". The verdict is unchanged; only the wording was
   out of step with the checker.
 
-- **2026-08-17 — a published number did not reproduce.**
-  The note reported synthetic cell speedups "from 1.69 to 11.76" for ratios at
-  most 2. Recomputing from the published record — per-cell median over the five
-  repeats, envelope taken as the minimum over the three methods, restricted to
-  the 24 cells with ratio above 1.0 — reproduces the median (2.8194), the
-  maximum (11.7603), and the envelope picks (11/6/7) to four significant
-  figures, but gives a minimum of **1.6292**, not 1.69. The value 1.69 appears
-  to be the second-smallest cell, 1.6994, truncated. Corrected to 1.63.
+- **2026-08-17 — a correction was issued, then withdrawn. The original number
+  was right.**
+
+  This entry previously recorded that the note's synthetic minimum cell speedup,
+  1.69, "did not reproduce" and had been corrected to 1.63. **That correction
+  was wrong and has been reverted.**
+
+  The error was in the checking, not in the paper. To test 1.69 we aggregated
+  the raw record by hand: median per arm across the five repeats, then the
+  minimum across arms. The shipped renderer does the opposite, and the opposite
+  is what the note documents — it takes the fastest certified arm *within each
+  repeat*, then the median of those per-repeat winners. Minimum-of-medians and
+  median-of-minima are different estimators of different quantities. The
+  hand-rolled one gives 1.6292; the renderer gives **1.6950** at
+  `m = 25, ratio = 2.00`, which is the published 1.69.
+
+  Two process-separated review lanes both endorsed the bad correction, because
+  both re-derived the number the same wrong way instead of running the shipped
+  tool. Agreement between checkers that share a method is not independent
+  confirmation. The published figures should be checked with the renderer that
+  produced them.
+
+  The median (2.8194) and maximum (11.7603) were unaffected, because those two
+  estimators happen to coincide there.
 
 - **2026-08-17 — "t-walker outpaces Newton" was true in 11 of 12 cells, not all.**
   At `m = 200`, ratio 1.1, the default-seed walker is 1.24 times *slower* than

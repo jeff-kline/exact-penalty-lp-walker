@@ -45,8 +45,33 @@ Permanent version archive: not yet assigned; this draft has no DOI.
 \end{center}
 
 \begin{abstract}
-\textbf{[ABSTRACT PLACEHOLDER --- to be written. This paragraph is a
-placeholder and states no result.]}
+In 2002, Mangasarian first built a Newton LP method from a quadratic penalty
+that becomes exact at a finite parameter. In our tests it works well above
+roughly 5 constraints per variable but slows sharply below roughly 3, which
+includes much of Netlib-27. Stopping tolerances can reduce accuracy, so we
+offer the \method{t-walker}.
+
+At penalty parameter $t$, projecting $tb$ onto the dual feasible set $D$ gives
+the multiplier $y(t)=P_D(tb)$. We claim no new path or homotopy: in 1997, Pinar
+implemented a predictor-corrector solver for an equivalent penalty program on
+this path. However, on the models certified by our provisional reconstruction,
+both Newton and t-walker run faster. The \method{t-walker} follows $y(t)$ face by
+face, finding breakpoints by a minimum-ratio test. Our t-walker contributes a
+sparse breakpoint implementation that carries face coefficients, support
+statuses, and a rank-revealing core across pivots; repairs rank-deficient faces;
+and accepts only primal-dual pairs passing a KKT certificate on the original
+unscaled data. We report measured KKT errors. Informally, low-ratio problems
+may provide too little useful curvature for Newton-like second-order methods to
+gain speed.
+
+The walker beats staged Newton in eleven of twelve certified low-ratio
+cells. The fastest certified of two walkers and Newton is a median 2.82 times
+faster than Newton at ratios up to 2 and cuts Netlib-27 time from 11.60 to 9.60
+seconds. For both, simplex crossover cuts median Netlib error by about three
+orders.
+
+This prototype aims to improve the existing Newton solver, mitigate its
+low-ratio weakness, and guide further work on exact-penalty methods.
 
 \medskip
 \noindent\textbf{Status.} Public prototype, not a peer-reviewed paper. The
@@ -63,7 +88,7 @@ We built a complementary method, the \method{t-walker}, for this regime. The wal
 
 We test both raw methods against the same original-data accuracy standard, and both pass on the problems they solve. A common simplex crossover cuts their median Netlib error by about three orders of magnitude. After crossover, their median errors have the same order as HiGHS IPM with crossover, although the synthetic tails remain mixed and t-walker still has three Netlib DNFs.
 
-On the current 24-cell synthetic panel (25, 50, and 200 variables; ratios 1.1 through 32; five interleaved runs), the fastest certified result among the three methods runs a median \textbf{2.82 times faster than Newton alone for ratios at most 2}, with cell speedups from 1.63 to 11.76. Across all 24 cells, the measured lower envelope chooses the default-seed walker 11 times, the triangular-seeded walker 6 times, and Newton 7 times. This measured frontier uses hindsight; it does not yet provide an automatic dispatcher.
+On the current 24-cell synthetic panel (25, 50, and 200 variables; ratios 1.1 through 32; five interleaved runs), the fastest certified result among the three methods runs a median \textbf{2.82 times faster than Newton alone for ratios at most 2}, with cell speedups from 1.69 to 11.76. Across all 24 cells, the measured lower envelope chooses the default-seed walker 11 times, the triangular-seeded walker 6 times, and Newton 7 times. This measured frontier uses hindsight; it does not yet provide an automatic dispatcher.
 
 The standard Netlib-27 panel gives a harder test. The current frontier takes \textbf{9.60 s}, versus \textbf{11.60 s} for shipped Newton and \textbf{0.370 s} for the faster HiGHS engine on each model. Its geometric-mean ratio to HiGHS is \textbf{16.6 times}, down from Newton's 26.5 but still far from production parity. That is progress, not victory. HiGHS draws on roughly eighty years of simplex and interior-point ideas and implementation practice \citep{huangfu-hall-2018}; we assembled the walker prototype in a handful of AI-assisted engineering sessions.
 
@@ -151,17 +176,23 @@ Three problems remain. First, turn the hindsight frontier into a dispatcher that
 
 The projection path itself is classical. Mangasarian and Meyer established finite exactness for nonlinear LP perturbations in 1979, and Mangasarian later characterized least-norm LP solutions by projection \citep{mangasarian-meyer-1979,mangasarian-1984}. Madsen, Nielsen, and Pinar developed finite continuation methods on piecewise-linear paths \citep{madsen-nielsen-pinar-1996,pinar-1996}. Most directly, Pinar's 1997 algorithm follows a quadratic-penalty path with predictor steps, modified-Newton correction, retained factor updates, and iterative refinement \citep{pinar-1997}. This work predates Mangasarian's 2002 Newton report, published in 2004 \citep{mangasarian-2004,kline-fung-2023}.
 
-After dualization and the change of parameter $t=1/\epsilon$, Pinar's perturbed optimizer is exactly $P_D(tb)$, the path used here. The distinction is algorithmic. Pinar evaluates selected penalty values with predictor and corrector steps; t-walker attempts to visit the next certified breakpoint. General parametric-QP active-set methods already supply the larger setting for piecewise-affine optimizer maps, ratio events, dependent-constraint exchanges, and factor updates \citep{best-1996,bock-kirches-potschka-schloeder-2010,ferreau-etal-2014}. Bartels also used reduced-gradient basis exchanges in a penalty LP method \citep{bartels-1980}. We therefore do not claim a new path or homotopy principle.
+After dualization and the change of parameter $t=1/\tau$, Pinar's penalty optimizer is exactly $P_D(tb)$, the path used here. The distinction is algorithmic. Pinar evaluates selected penalty values with predictor and corrector steps; t-walker attempts to visit the next certified breakpoint. General parametric-QP active-set methods already supply the larger setting for piecewise-affine optimizer maps, ratio events, dependent-constraint exchanges, and factor updates \citep{best-1996,bock-kirches-potschka-schloeder-2010,ferreau-etal-2014}. Bartels also used reduced-gradient basis exchanges in a penalty LP method \citep{bartels-1980}. We therefore do not claim a new path or homotopy principle.
 
-The exact algebra is short. Pinar perturbs a standard-form LP by
+The exact algebra is short, and we give it against Pinar's own equations rather than a paraphrase. He states the standard-form pair
 \[
- \min_{z\ge0,\,Az=a}\; c^\mathsf{T}z+\frac{\epsilon}{2}\lVert z\rVert^2.
+ (\mathrm{P})\ \min_z c^\mathsf{T}z\ \text{s.t.}\ Az=a,\ z\ge0,
+ \qquad
+ (\mathrm{D})\ \max_y -a^\mathsf{T}y\ \text{s.t.}\ A^\mathsf{T}y+c\ge0,
 \]
-Setting $z=y$, $A=B^\mathsf{T}$, $a=d$, and $c=-b$ gives
+and penalizes the constraints of $(\mathrm{D})$, studying the \emph{unconstrained} problem
 \[
- \arg\min_{y\in D}\left(-b^\mathsf{T}y+\frac{\epsilon}{2}\lVert y\rVert^2\right)
- =P_D(b/\epsilon)=y(t), \qquad t=1/\epsilon.
+ \min_y\ H(y,\tau)=\tau\,a^\mathsf{T}y+\tfrac12\lVert(A^\mathsf{T}y+c)_-\rVert^2
 \]
+for decreasing $\tau>0$; this is his equations (4)--(6), with $W$ the diagonal selector of violated rows. Put $A=B^\mathsf{T}$, $a=d$, $c=-b$. Then his $(\mathrm{P})$ is our dual, his $(\mathrm{D})$ is our primal, and dividing $H$ by $\tau$ and writing $t=1/\tau$ gives
+\[
+ \min_y\ d^\mathsf{T}y+\frac{t}{2}\lVert(b-By)_+\rVert^2,
+\]
+which is Mangasarian's penalty program for our primal. His perturbation result identifies the dual optimizer of that program, for $\tau$ small, with the least-2-norm solution of his $(\mathrm{P})$ --- our dual --- and that point is $P_D(tb)$. His parameter decreases where ours increases.
 Recent work sharpens finite-exactness thresholds and shows that regularization paths need not obey simple support-monotonicity rules \citep{gonzalez-sanz-nutz-2025,gonzalez-sanz-nutz-riveros-2025}. The supportable contribution here is narrower: a sparse direct breakpoint implementation of this classical path, original-data certification and rank-deficient-face repairs, and an empirical demonstration that face following complements a Mangasarian-style Newton solver in the measured low-ratio regime.
 
 \begin{figure}[H]
@@ -177,12 +208,15 @@ These timings are directional, not a reproduction of Pinar's Fortran costs. For 
 
 \section{Sources and protocol}
 
-The TeX source and BibTeX file are the canonical and only inputs to this PDF. Current reproductions are:
+The TeX source and BibTeX file are the canonical and only inputs to this PDF. Current reproductions are, with the first four under \code{experiments/}:
 \begin{itemize}
-  \item timings: \code{experiments/render\_solver\_timing\_charts.py};
-  \item accuracy: \code{experiments/bench\_common\_accuracy.py} and \code{experiments/render\_common\_accuracy.py};
-  \item provisional Pinar panel: \code{experiments/pinar1997/run\_netlib\_panel.py} and \code{render\_provisional\_netlib.py}; and
-  \item this PDF: \code{paper/build\_twalker\_progress\_note.sh}.
+  \item timings: \code{render\_solver\_timing\_charts.py};
+  \item accuracy: \code{bench\_common\_accuracy.py} and
+        \code{render\_common\_accuracy.py};
+  \item provisional Pinar panel: \code{pinar1997/run\_netlib\_panel.py}\\
+        and \code{pinar1997/render\_provisional\_netlib.py};
+  \item Netlib walker panel: \code{bench\_twalker\_netlib\_panel.py}; and
+  \item this PDF: \code{paper/build\_paper.sh}.
 \end{itemize}
 One thread; HiGHS presolve off; IPM uses both crossover settings. We report five interleaved runs for raw synthetic values and one deterministic warm-point run per problem for crossover accuracy. The Netlib panel combines frozen records, so read its times at order-of-magnitude precision.
 

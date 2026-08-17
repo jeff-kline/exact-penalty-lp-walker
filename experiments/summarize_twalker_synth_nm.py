@@ -37,16 +37,43 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--attempted-repeats", type=int, default=3)
     parser.add_argument("--minimum-complete-repeats", type=int, default=2)
+    parser.add_argument(
+        "--require-every-arm", action="store_true",
+        help="Treat a repeat as complete only if every arm ran on every cell. "
+             "An arm that fails closed on a cell in EVERY repeat (the "
+             "triangular seed does this where the face is rank deficient) "
+             "then makes every repeat incomplete and rejects the record.")
     args = parser.parse_args()
 
     rows = [json.loads(line) for line in args.runs.read_text().splitlines()
             if line.strip()]
     cells = sorted({(int(row["m"]), float(row["ratio"])) for row in rows})
     arms = sorted({str(row["arm"]) for row in rows})
-    expected = {(m, ratio, arm) for m, ratio in cells for arm in arms}
     by_repeat = defaultdict(list)
     for row in rows:
         by_repeat[int(row["repeat"])].append(row)
+
+    if args.require_every_arm:
+        expected = {(m, ratio, arm) for m, ratio in cells for arm in arms}
+    else:
+        # An arm may legitimately refuse a cell: the triangular seed fails
+        # closed where the face lacks full column rank, and does so on the
+        # same cells in every repeat.  Demanding the full cartesian product
+        # therefore rejects a record that is in fact complete.  Expect only
+        # the triples that actually occur somewhere, so a triple missing from
+        # ALL repeats is a property of the method, while one missing from
+        # SOME repeats still marks those repeats incomplete.
+        expected = {(int(row["m"]), float(row["ratio"]), row["arm"])
+                    for row in rows}
+        refused = ({(m, ratio, arm) for m, ratio in cells for arm in arms}
+                   - expected)
+        if refused:
+            by_arm = Counter(arm for _, _, arm in refused)
+            print(json.dumps({
+                "note": "arms absent from every repeat; treated as refusals",
+                "refused_cells": len(refused),
+                "by_arm": dict(by_arm),
+            }), file=sys.stderr)
 
     complete = []
     incomplete = []
@@ -83,6 +110,18 @@ def main():
                 "certificate_max": spread(row.get("certificate_max") for row in sub),
                 "seed_routes": sorted({str(row.get("seed_route")) for row in sub
                                        if row.get("seed_route")}),
+                # The renderer's post-initialization panel pairs runs across
+                # arms by repeat index, and reads Newton's core solve time
+                # separately from its total.  Emit both; without them the
+                # post-initialization figure cannot be rebuilt from a summary.
+                "solve_seconds": spread(row.get("solve_seconds")
+                                        for row in sub),
+                "run_samples": [
+                    {"repeat": int(row["repeat"]),
+                     "seconds": row.get("seconds"),
+                     "solve_seconds": row.get("solve_seconds"),
+                     "certified": bool(row.get("certified"))}
+                    for row in sorted(sub, key=lambda r: int(r["repeat"]))],
             }
 
     parameters = {

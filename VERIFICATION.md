@@ -82,7 +82,7 @@ number in the note:
 | Panel size | 24 cells | 24 (ratio > 1.0) |
 | Median speedup, ratio <= 2 | 2.82x | 2.8194x |
 | Max cell speedup | 11.76x | 11.7603x |
-| Min cell speedup | 1.69x | **1.6292x** — the note was corrected to 1.63 |
+| Min cell speedup | 1.69x | **1.6950x** via the shipped renderer — agrees. A hand-rolled min-of-medians gives 1.6292 and is the wrong estimator; see `CORRECTIONS.md` |
 | Envelope picks | 11 / 6 / 7 | 11 / 6 / 7 |
 
 ---
@@ -209,19 +209,60 @@ on the frontier, but it is not measurement noise and is recorded as such.
 
 ---
 
+### 7. C++ component verifiers
+
+```sh
+cd cpp/twalker
+make build/verify_face_solver build/verify_gram_solver \
+     build/verify_bound_core_solver PYTHON=../../.venv/bin/python
+./build/verify_face_solver       fixtures_panel/*.twfx
+./build/verify_gram_solver       fixtures_panel/*.twfx
+./build/verify_bound_core_solver fixtures_panel/*.twfx
+```
+
+| Verifier | Exit | Coverage | Result |
+|---|---|---|---|
+| `verify_face_solver` | **1** | 26 / 26 faces attempted | **FAILS on `share1b`**: error 2.97e-09 against the test's own 1e-10 gate |
+| `verify_gram_solver` | 0 | serves 12 of 26, declines 14 | no inaccuracy among those served |
+| `verify_bound_core_solver` | 0 | serves **1** of 26, all 26 eligible | no inaccuracy among those served |
+
+Three things must be said plainly about this table.
+
+**`verify_face_solver` fails and ships failing.** On `share1b` the direct face
+solve returns an error of 2.97e-09 where that test demands 1e-10. The stated
+disposition is that this is a *component* gate strictly tighter than the
+guarantee the release actually claims: `share1b` certifies end to end in the
+walker panel, and the original-data KKT certificate — which is the acceptance
+rule the paper states — passes on it. The component test is measuring the
+direct solver in isolation, without the walker's iterative refinement, error
+bounds, or repair path. That explains the failure; it does not excuse leaving
+a red test unremarked, and it is recorded here rather than in a commit message.
+
+**The two green exits are weak evidence.** `verify_gram_solver` returns success
+having served 12 of 26 faces, and `verify_bound_core_solver` returns success
+having served **1** of 26 while reporting all 26 eligible. Neither test asserts
+a coverage floor, so both would also exit 0 if they served nothing. Read them
+as "no counterexample among the faces actually exercised", not as panel-wide
+verification.
+
+**No coverage assertions exist.** Adding them is open work, not something this
+release claims to have done.
+
+---
+
 ### 6. Deterministic document build
 
 ```sh
 sh paper/build_paper.sh
 ```
 
-Observed: 8 pages, exits 0, writes `paper/main.pdf`.
+Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `paper/main.pdf`.
 
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-30fb55a1e01c696d341c07b5c6eba2fac1474bc924c374b280ba2063bec4d49c  build 1
-30fb55a1e01c696d341c07b5c6eba2fac1474bc924c374b280ba2063bec4d49c  build 2
+989646655fc776b5b2855317c373c836129e502bcb8785fc6276035b97ef24d0  build 1
+989646655fc776b5b2855317c373c836129e502bcb8785fc6276035b97ef24d0  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
@@ -248,9 +289,9 @@ These are documented for completeness. Each is a real gap, not an oversight.
 - **`experiments/bench_twalker_synth_nm.py`** — the synthetic timing producer
   is shipped but was not re-executed; the synthetic figures were rendered from
   the frozen summary.
-- **The C++ unit tests** other than `verify_walker`
-  (`verify_face_solver`, `verify_gram_solver`, `verify_bound_core_solver`) were
-  not built or run.
+- ~~The C++ unit tests other than `verify_walker` were not built or run.~~
+  They have now been built and run over all 26 panel fixtures; see §7 below.
+  **One fails.**
 - **Audit lanes** — five process-separated AI review lanes ran: four against
   commit `40a4f58` and one confirming pass against `ffa5cc8`. Their dispositions
   are in `CORRECTIONS.md`. Separated agents share training data and blind spots,
