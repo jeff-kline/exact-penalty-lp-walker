@@ -171,9 +171,19 @@ Then, from the repository root:
              stocfor1 \
     --timeout 10 --output records/pinar1997/netlib_panel.json
 
+# Netlib walker panel, from scratch (needs the built verify_walker)
+.venv/bin/python experiments/bench_twalker_netlib_panel.py \
+    --output records/twalker_cpp/netlib27_rerun.json
+
 # The PDF (deterministic; two clean builds are byte-identical)
 sh paper/build_twalker_progress_note.sh
 ```
+
+Re-running the walker panel and recomputing the frontier lands within about
+1% of the published 9.60 s. The walker's path is deterministic on a fixed
+build, but the current build does not reproduce the frozen record's internal
+counters on every model, and `beaconfd` has regressed. See
+[`VERIFICATION.md`](VERIFICATION.md) §6 for the measurements.
 
 Regenerating the accuracy table from scratch, rather than rendering the frozen
 one, also runs the solvers and requires the built `verify_walker`:
