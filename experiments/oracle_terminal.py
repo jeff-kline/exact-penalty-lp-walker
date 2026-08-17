@@ -4,7 +4,8 @@ of the Mangasarian dual path, with the ordinary walker as the fallback.
 WHY THIS CAN BE UNTRUSTED
 -------------------------
 exp23's certificate gates (``certificate_pair`` / ``_certificate_detail``) are
-componentwise backward-error tests on the ORIGINAL raw ``B, b, d``.  They are
+original-data KKT tests, componentwise-scaled on the primal and dual
+residuals, on the ORIGINAL raw ``B, b, d``.  They are
 frozen here: this module imports and calls them unchanged and never edits any
 existing file.  A wrong oracle hint therefore costs one fallback to the
 ordinary walk, never a wrong certificate.  Every threshold, tolerance and

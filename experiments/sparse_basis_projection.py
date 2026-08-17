@@ -343,7 +343,7 @@ def projection_kkt_certificate(B, b, d, y, t=1.0, tol=1e-7):
     c = t * b
     equality, nonnegative = _original_errors(B, d, y)
     # v = y-c+B*u is the bound multiplier.  Require v>=0 and y*v=0,
-    # both with componentwise backward-error scaling.
+    # both with componentwise residual scaling.
     vscale = 1.0 + np.abs(y) + np.abs(c)
     yp = np.maximum(y, 0.0)
     comp_scale = 1.0 + yp * vscale

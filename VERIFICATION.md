@@ -58,7 +58,32 @@ Aggregates computed from that output, against the technical note:
 | Faster HiGHS engine per model, total | 0.370 s | 0.370 s |
 | Geometric-mean frontier/HiGHS ratio | 16.6× | 16.60× over 27 models |
 
-**Agrees.**
+**The Netlib aggregates agree.** The *synthetic* figure does not come from this
+command. Run as documented, the renderer reads its default record
+(`ratio_1_to_512_20260816/summary.json`: 50/100/200 variables, 2 repeats, 33
+cells) and produces a figure that differs materially from
+`paper/figs/synthetic_aspect_timings_public.png`, which was rendered from
+`postinit_m25_50_200_r32_20260816/runs.jsonl` (25/50/200 variables, 5 repeats,
+24 cells, with a post-initialization row and a triangular-seeded series).
+
+No shipped command bridges the two: `summarize_twalker_synth_nm.py` requires
+every arm on every cell in a repeat, and the triangular-seeded arm fails closed
+on 3 of the 27 cells, so it rejects the published record outright with "fewer
+than required complete repeats". An earlier version of this section reported
+this check simply as "Agrees", having verified only the Netlib aggregates. That
+was wrong, and the omission is recorded as a named residual risk in
+`ADMISSION.md`.
+
+Aggregating the raw published record directly does reproduce every synthetic
+number in the note:
+
+| Quantity | Note | Recomputed |
+|---|---|---|
+| Panel size | 24 cells | 24 (ratio > 1.0) |
+| Median speedup, ratio <= 2 | 2.82x | 2.8194x |
+| Max cell speedup | 11.76x | 11.7603x |
+| Min cell speedup | 1.69x | **1.6292x** — the note was corrected to 1.63 |
+| Envelope picks | 11 / 6 / 7 | 11 / 6 / 7 |
 
 ---
 
@@ -102,7 +127,7 @@ Observed, and **run twice with identical statuses on every model**:
 | CERTIFIED | 5 | `afiro` 15.7 ms, `sc50b` 43.5 ms, `sc50a` 61.7 ms, `sc105` 131.5 ms, `stocfor1` 306.9 ms |
 | NUMERICAL_FAILURE | 18 | |
 | TIME_LIMIT | 3 | `degen2`, `sctap1`, `ship04s` |
-| NOT_MEASURED | 1 | `grow7` — no canonical fixture present |
+| NOT_MEASURED | 1 | `grow7` — no compact panel fixture; export failed with `initialization did not produce an accepted face`. The canonical MPS is shipped. |
 
 This **disagreed** with the technical note as originally written, which
 reported 4 certified and 19 numerical failures over 19.9–117.9 ms. The note was
@@ -126,7 +151,7 @@ no errors.
 
 | Result | Count |
 |---|---|
-| Fixtures present | 26 (`grow7` absent, consistent with §5) |
+| Fixtures present | 26. `grow7` has no compact panel fixture: the shipped `cpp/twalker/fixtures_panel/manifest.json` records its export failing with `initialization did not produce an accepted face`. The canonical `netlib/grow7.mps` *is* present |
 | CERTIFIED | 24 |
 | Rejected — "settle support cycle" | 2 (`brandy`, `lotfi`) |
 | Worst certificate residual among certified | 6.99e-09 |
@@ -135,11 +160,11 @@ no errors.
 Two qualifications on this run. First, it uses the walker's **default**
 budgets; the note records that `fit1d` and `lotfi` needed authorized extended
 budgets, so `lotfi` failing here is consistent with the note rather than
-contrary to it. Second, the internal record behind the note reports `capri` as
-a cycling model, whereas `capri` certified in this run and `lotfi` did not.
-The identity of the cycling models is therefore **not** stable across
-configurations, even though the count (24 certified) is. Claims about *which*
-models fail should be read with that caveat.
+contrary to it. Second, the frozen record reports `capri` as a cycling model,
+whereas `capri` certifies on the current build and `lotfi` does not. This is
+**not** run-to-run instability — §5 below shows the walker is deterministic
+across independent runs — but a difference against the older code state that
+produced the record. Claims about *which* models fail are specific to a build.
 
 The certified count of 24 out of 27 models matches the note. The worst
 certificate residual, 6.99e-09, is inside the stated 1e-7 acceptance
@@ -147,7 +172,7 @@ tolerance.
 
 ---
 
-### 6. Netlib walker panel, and how far it reproduces
+### 5. Netlib walker panel, and how far it reproduces
 
 ```sh
 .venv/bin/python experiments/bench_twalker_netlib_panel.py \
@@ -184,19 +209,19 @@ on the frontier, but it is not measurement noise and is recorded as such.
 
 ---
 
-### 5. Deterministic document build
+### 6. Deterministic document build
 
 ```sh
 sh paper/build_twalker_progress_note.sh
 ```
 
-Observed: 6 pages, exits 0, writes `output/pdf/twalker_progress_note.pdf`.
+Observed: 7 pages, exits 0, writes `output/pdf/twalker_progress_note.pdf`.
 
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-19fa696ba28e08ecce68d50f61df50fcc4e4fdedb5819c5b15810ca95ad7659c  build 1
-19fa696ba28e08ecce68d50f61df50fcc4e4fdedb5819c5b15810ca95ad7659c  build 2
+d8df575dad90f4850e47ca2362bcb6368444a1b17ae497e99c9db3aa74db6376  build 1
+d8df575dad90f4850e47ca2362bcb6368444a1b17ae497e99c9db3aa74db6376  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
@@ -214,7 +239,7 @@ These are documented for completeness. Each is a real gap, not an oversight.
   by re-running every solver and crossover. Not executed here; the accuracy
   figure was rendered from the frozen table instead.
 - **`experiments/bench_twalker_netlib_panel.py`** now exists and was run; see
-  §6 below. An earlier version of this file said no script in the repository
+  §5 below. An earlier version of this file said no script in the repository
   produced the Netlib walker record and that the timings were "not a
   measurement this repository can reproduce." That was too strong: the
   measuring apparatus (`verify_walker`) was always present, and only the loop
@@ -226,7 +251,11 @@ These are documented for completeness. Each is a real gap, not an oversight.
 - **The C++ unit tests** other than `verify_walker`
   (`verify_face_solver`, `verify_gram_solver`, `verify_bound_core_solver`) were
   not built or run.
-- **Audit lanes** — no independent audit has been run against this tree.
+- **Audit lanes** — five process-separated AI review lanes ran: four against
+  commit `40a4f58` and one confirming pass against `ffa5cc8`. Their dispositions
+  are in `CORRECTIONS.md`. Separated agents share training data and blind spots,
+  so this is process evidence, not independent expert review. No expert review
+  has been obtained.
 
 ## Changes made to the migrated code
 

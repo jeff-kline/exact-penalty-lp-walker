@@ -121,6 +121,46 @@ Corrections made during preparation, before any public version existed:
   `common-original-data-kkt-accuracy-v1`, has always called it. The score,
   the tolerance, and every reported measurement are unchanged.
 
+- **2026-08-17 — a published number did not reproduce.**
+  The note reported synthetic cell speedups "from 1.69 to 11.76" for ratios at
+  most 2. Recomputing from the published record — per-cell median over the five
+  repeats, envelope taken as the minimum over the three methods, restricted to
+  the 24 cells with ratio above 1.0 — reproduces the median (2.8194), the
+  maximum (11.7603), and the envelope picks (11/6/7) to four significant
+  figures, but gives a minimum of **1.6292**, not 1.69. The value 1.69 appears
+  to be the second-smallest cell, 1.6994, truncated. Corrected to 1.63.
+
+- **2026-08-17 — "t-walker outpaces Newton" was true in 11 of 12 cells, not all.**
+  At `m = 200`, ratio 1.1, the default-seed walker is 1.24 times *slower* than
+  staged Newton. The triangular seed recovers that cell, so the envelope claim
+  is unaffected, but the blanket phrasing overstated the raw comparison. Both
+  the note and the README now give the count.
+
+- **2026-08-17 — `grow7`'s exclusion was misdescribed.**
+  The note said `grow7` "was not measured because its canonical fixture was
+  missing." The canonical `netlib/grow7.mps` is shipped. What is missing is the
+  compact panel re-encoding, and `cpp/twalker/fixtures_panel/manifest.json`
+  records why: the export failed with `initialization did not produce an
+  accepted face`. The original wording turned a substantive toolchain failure
+  into a filing accident.
+
+- **2026-08-17 — a second reproduction gap was disclosed.**
+  `VERIFICATION.md` reported the timing-figure check as "Agrees" on the strength
+  of the Netlib aggregates alone. The *synthetic* figure is not produced by that
+  command: the renderer's default record is a different experiment (50/100/200
+  variables, 2 repeats, 33 cells) than the one behind the published figure
+  (25/50/200, 5 repeats, 24 cells). The intended bridge,
+  `summarize_twalker_synth_nm.py`, cannot process the published record, because
+  it demands every arm on every cell and the triangular-seeded arm fails closed
+  on 3 of 27 cells. The numbers all reproduce by direct aggregation; the shipped
+  command to do it does not exist. Recorded as a named residual risk.
+
+- **2026-08-17 — the accuracy-score rename was incomplete.**
+  The first correction updated the paper, the README, and one module docstring,
+  but left the retired term in `ADMISSION.md`'s claim boundary and in the
+  docstring of `certificate_pair` itself — the function the note cites as the
+  authority. Both are now corrected, along with two further code comments.
+
 - **2026-08-17 — the duplicate Markdown note was removed.**
   `paper/twalker_progress_note.md` was an abridged second copy of the technical
   note, kept as a working source for a planned HTML companion that does not

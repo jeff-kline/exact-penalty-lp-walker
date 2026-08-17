@@ -24,16 +24,16 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 | Gate | Status | Evidence and disposition |
 |---|---|---|
 | P1 — prior work and credit | **PASS, bounded** | The note credits Mangasarian–Meyer (1979), Mangasarian (1984, 2004), Madsen–Nielsen–Pinar (1996), Pinar (1996, 1997), Best (1996), Bock et al. (2010), Ferreau et al. (2014), and Bartels (1980), and states explicitly that no new path or homotopy principle is claimed. A citation lane verified that all 14 citation keys resolve, no entry is orphaned or duplicated, and all 14 bibliography entries match authoritative records. A separate lane re-derived the change of variables showing Pinar's perturbed optimizer *is* the path used here, and confirmed the algebra is exact — so the novelty concession rests on a correct derivation. A bounded prior-art search over the four claimed contributions found no mechanism-level collision. **That is a source-negative result over a non-exhaustive search and is not a claim of global novelty.** One caveat could not be closed here: whether Pinar (1997) perturbs by exactly `(ε/2)‖z‖²` is a bibliographic fact requiring the original paper, which is not in this checkout. |
-| A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, eleven material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte from independent checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
+| A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, the following material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
+| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
 ## Claim boundary
 
 - **Measured here:** on a 24-cell synthetic panel and the 27-model Netlib
   panel, the fastest certified result of the default-seed t-walker, the
   triangular-seeded t-walker, and the staged Newton method is faster than the
-  staged Newton method alone, under one original-data backward-error
-  certificate at tolerance 1e-7.
+  staged Newton method alone, under one original-data KKT certificate, with
+  componentwise scaling on the primal and dual residuals, at tolerance 1e-7.
 - **Not claimed:** a new projection path, a new homotopy principle, a
   competitive LP solver, parity with HiGHS, an automatic dispatcher, or
   complete Netlib coverage.
@@ -68,6 +68,29 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   existing instruction to read Netlib times at order-of-magnitude precision is
   the right one. What is now also true is that a reader can rebuild the walker
   and land within about 1% of the published total.
+- **The synthetic figure is frozen evidence that no documented command
+  regenerates.** Figure 1 and the headline synthetic numbers (24 cells, median
+  2.82x, envelope picks 11/6/7) come from
+  `records/twalker_synth_nm/postinit_m25_50_200_r32_20260816/runs.jsonl`. The
+  documented timing command reads a *different* default record
+  (`ratio_1_to_512_20260816/summary.json`: 50/100/200 variables, 2 repeats,
+  33 cells) and therefore produces a different figure — different panels, no
+  post-initialization row, and no triangular-seeded series.
+
+  The two-step path that would close this is blocked by a real tooling defect:
+  `experiments/summarize_twalker_synth_nm.py` requires every arm present on
+  every cell in a repeat, but the triangular-seeded arm fails closed on 3 of
+  the 27 cells — behaviour the note itself documents. No repeat therefore
+  counts as complete and the summarizer exits with "fewer than required
+  complete repeats" on the very record the published figure came from.
+
+  The underlying numbers do reproduce. Aggregating the raw record directly
+  (per-cell median over 5 repeats, envelope = min over the three arms,
+  restricted to the 24 cells with ratio > 1.0) gives median 2.8194x, max
+  11.7603x, and envelope picks 11/6/7 — matching every published figure to four
+  significant digits. What is missing is a shipped command that performs that
+  aggregation. Until the summarizer accepts a fail-closed arm, R1's
+  reproduction row stays PARTIAL on the synthetic panel.
 - The synthetic generator varies aspect ratio and planted support geometry
   together, so the panel establishes a regime rather than isolating a cause.
 - The prototype is hybrid: an in-process Newton method builds the default

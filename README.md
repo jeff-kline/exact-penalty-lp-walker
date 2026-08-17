@@ -33,7 +33,7 @@ public collection of benchmark linear programs.
 The technical note is [`output/pdf/twalker_progress_note.pdf`](output/pdf/twalker_progress_note.pdf);
 its source is [`paper/twalker_progress_note.tex`](paper/twalker_progress_note.tex).
 
-## The two methods
+## The methods
 
 Write the primal and dual linear programs as
 
@@ -59,6 +59,12 @@ two methods differ in how they travel it:
   face and computes the next breakpoint by a minimum-ratio test. It pays for
   every breakpoint, so long paths are expensive, but near the square end the
   progress is cheap and explicit.
+- **The triangular-seeded t-walker** runs that same walk, but starts from a
+  QR/triangular fixed-`t = 0` projection seed instead of the default Newton
+  seed. It presently requires full column rank and fails closed on some
+  problems — on 3 of the 27 synthetic cells, for instance.
+
+Those three are the methods the measured frontier selects among.
 
 Write `φ(t) = max { t·bᵀy − ½‖y‖² : y ∈ D }`. Within a face `φ″(t) = gᵀg`, so
 `gᵀg ≤ tol` detects a stationary face. That is **necessary but not sufficient**

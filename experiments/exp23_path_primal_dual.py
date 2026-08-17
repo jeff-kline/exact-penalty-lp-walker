@@ -393,7 +393,7 @@ def critical_vertex_escape(B, b, d, y, t, trace=None, rounds=50,
 
 
 def certificate_pair(B, b, d, x, y):
-    """Backward-error KKT certificate for an explicit primal-dual pair.
+    """Original-data KKT certificate for an explicit primal-dual pair.
 
     Every residual is scaled componentwise by the data and candidate magnitudes;
     this avoids allowing one large row or column to loosen every other test.
