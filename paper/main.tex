@@ -12,6 +12,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{array,booktabs,tabularx}
+% Ragged-right variant of X.  Justifying a narrow column stretches
+% word spaces into rivers and makes multi-line rows hard to tell apart.
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{natbib}
@@ -60,9 +63,9 @@ face, finding breakpoints by a minimum-ratio test. Our t-walker contributes a
 sparse breakpoint implementation that carries face coefficients, support
 statuses, and a rank-revealing core across pivots; repairs rank-deficient faces;
 and accepts only primal-dual pairs passing a KKT certificate on the original
-unscaled data. We report measured KKT errors. Informally, low-ratio problems
-may provide too little useful curvature for Newton-like second-order methods to
-gain speed.
+unscaled data. We report measured KKT errors. Informally, low-ratio LPs may be
+governed more by discrete support changes than by the within-face curvature
+that second-order methods can exploit.
 
 The walker beats staged Newton in eleven of twelve certified low-ratio
 cells. The fastest certified of two walkers and Newton is a median 2.82 times
@@ -70,15 +73,13 @@ faster than Newton at ratios up to 2 and cuts Netlib-27 time from 11.60 to 9.60
 seconds. For both, simplex crossover cuts median Netlib error by about three
 orders.
 
-This prototype aims to improve the existing Newton solver, mitigate its
-low-ratio weakness, and guide further work on exact-penalty methods.
+\end{abstract}
 
 \medskip
 \noindent\textbf{Status.} Public prototype, not a peer-reviewed paper. The
 accompanying repository holds the code, fixtures, and frozen records behind
 every measurement reported here. This release is in draft state: no stable tag,
 no permanent archive, and no DOI.
-\end{abstract}
 
 \section{The gap}
 
@@ -110,16 +111,19 @@ The optimizer path is continuous and piecewise affine. Write
 \]
 the value of the projection program up to the constant $\tfrac12 t^2\lVert b\rVert^2$. Then $\phi$ is piecewise quadratic with $\phi'(t)=b^\mathsf{T}y(t)$ piecewise affine, and the path direction determines its curvature. The walker therefore follows an affine state on each face even though $\phi$ is quadratic there. Mangasarian's penalty program has value $\phi(t)/t$, which is not itself piecewise quadratic.
 
-\begin{table}[H]
+\begin{table}[t]
 \centering
 \small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash\bfseries}p{0.15\linewidth} X X X}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash\bfseries}p{0.155\linewidth} Y Y Y}
 \toprule
 Method & What it maintains & Why it wins & Where it pays \\
 \midrule
 Staged Newton & A fixed-$t$ semismooth solve, with staged increases in $t$ and terminal polishing. & Crosses many support changes in a few iterations; excellent on tall synthetic systems. & Expensive identification and factor work near the low-ratio regime. \\
+\addlinespace
 t-walker & One affine face segment $y(t)=tg+h$ and the next ratio-test event. & Cheap, explicit progress near the square end; checks every accepted endpoint. & Pays for every breakpoint; long paths dominate tall and difficult models. \\
+\addlinespace
 Triangular-seeded t-walker & The same walk, but a QR/triangular fixed-$t=0$ projection seed. & Can make initialization and the first face cheaper. & Presently requires full column rank and fails closed on some cells. \\
+\addlinespace
 HiGHS simplex/IPM & Mature production bases, pricing, presolve, scaling, and crossover. & Robust reference performance and coverage. & A different engineering scale; used as the benchmark, not as our contribution. \\
 \bottomrule
 \end{tabularx}
