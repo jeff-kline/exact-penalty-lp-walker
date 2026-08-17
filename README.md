@@ -18,9 +18,17 @@ to check what it does.
 
 > **What is claimed.** On the low-ratio problems measured here, following the
 > dual projection path from face to face is faster than re-solving the penalty
-> problem at a sequence of penalty values. Taking the faster certified result
-> of the two improves on either alone. The pair still trails a mature
-> production solver by more than an order of magnitude.
+> problem at a sequence of penalty values. Taking the fastest certified result
+> of three methods — the default-seed walker, the triangular-seeded walker,
+> and staged Newton — beats staged Newton alone on both panels measured here.
+> The envelope still trails a mature production solver by more than an order
+> of magnitude.
+
+A *face* of the dual feasible set is the subset where a given set of the
+constraints `y ≥ 0` holds with equality; the path moves from one to the next.
+*Certified* means the returned pair passed the accuracy check described under
+[Evidence and its limits](#evidence-and-its-limits). *Netlib* is a long-standing
+public collection of benchmark linear programs.
 
 The technical note is [`output/pdf/twalker_progress_note.pdf`](output/pdf/twalker_progress_note.pdf);
 its source is [`paper/twalker_progress_note.tex`](paper/twalker_progress_note.tex).
@@ -52,9 +60,12 @@ two methods differ in how they travel it:
   every breakpoint, so long paths are expensive, but near the square end the
   progress is cheap and explicit.
 
-Within a face the penalty value has curvature `φ″(t) = gᵀg`, so the terminal
-test `gᵀg ≤ tol` is simultaneously a geometric stopping rule and a
-zero-curvature test.
+Write `φ(t) = max { t·bᵀy − ½‖y‖² : y ∈ D }`. Within a face `φ″(t) = gᵀg`, so
+`gᵀg ≤ tol` detects a stationary face. That is **necessary but not sufficient**
+for termination — `g` vanishes identically on any face whose active rows are
+independent, including every vertex the path passes through — so the walker
+accepts an endpoint only when the ratio scan also shows no forward event and
+the certificate passes.
 
 ## What is new — and what is not
 
@@ -63,8 +74,9 @@ zero-curvature test.
 piecewise-linear paths; and Pinar's 1997 algorithm already follows a
 quadratic-penalty path with predictor steps, modified-Newton correction,
 retained factor updates, and iterative refinement. After dualization and the
-change of parameter `T = 1/ε`, Pinar's perturbed optimizer *is* `P_D(Tb)` —
-the same path used here. General parametric-QP active-set methods supply the
+change of parameter `t = 1/ε`, Pinar's perturbed optimizer *is* `P_D(tb)` —
+the same path used here. That equivalence is an exact derivation carried out
+in this work, not a quotation from the cited paper. General parametric-QP active-set methods supply the
 larger setting for piecewise-affine optimizer maps, ratio events, dependent
 constraint exchanges, and factor updates. **No new path or homotopy principle
 is claimed.**
@@ -75,9 +87,10 @@ The narrower contributions are:
    the walker state maintained like a numerical simplex state — face
    coefficients, sparse products, support statuses, and a rank-revealing
    square core carried across pivots rather than re-solved.
-2. **Original-data certification.** Every accepted result must pass one
-   componentwise backward-error certificate on the unscaled input, independent
-   of `t`. Solver status strings are not accepted as evidence of accuracy.
+2. **Original-data certification.** Every accepted result must pass one KKT
+   certificate on the unscaled input, independent of `t`, using componentwise
+   scaling on the primal and dual residuals. Solver status strings are not
+   accepted as evidence of accuracy.
 3. **Rank-deficient-face repairs**, including a weak-subspace SVD/COD repair
    and deterministic statuses for dependent zero rows, so that fixed-`t`
    exchanges cannot cycle by revisiting an equivalent support label.

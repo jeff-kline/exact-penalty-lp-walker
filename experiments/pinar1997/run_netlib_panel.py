@@ -47,7 +47,11 @@ def main():
             row = {
                 "model": model,
                 "status": "NOT_MEASURED",
-                "detail": f"fixture not found: {fixture_path}",
+                # Report a repository-relative path: an absolute one bakes the
+                # runner's home directory into a record we publish.
+                "detail": "fixture not found: {}".format(
+                    fixture_path.relative_to(ROOT)
+                    if fixture_path.is_relative_to(ROOT) else fixture_path.name),
                 "algorithm": "Pinar1997-LPPEN",
                 "elapsed_ms": None,
                 "certificate": None,

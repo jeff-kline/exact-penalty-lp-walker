@@ -67,11 +67,69 @@ Corrections made during preparation, before any public version existed:
   `SOURCE_DATE_EPOCH` in the build script, repeated clean builds are
   byte-identical.
 
-- **2026-08-17 — build no longer depends on a private path.**
+- **2026-08-17 — private absolute paths removed (revised).**
   `cpp/twalker/Makefile` hardcoded an absolute path inside the author's
   virtualenv as the default location of the HiGHS shared library. It now
   discovers that directory from a configurable `PYTHON` interpreter, or accepts
   `HIGHS_LIBDIR` directly.
+
+  **This entry originally claimed the build "no longer depends on a private
+  path." That was an overclaim: only the Makefile had been fixed.** A
+  subsequent audit found the same absolute path in six reader-facing commands
+  in `cpp/twalker/README.md`, and a seventh baked into the frozen record
+  `records/pinar1997/netlib_panel.json` as the `grow7` "fixture not found"
+  detail string. All seven are now removed: the README uses `.venv/bin/python`,
+  `experiments/pinar1997/run_netlib_panel.py` emits a repository-relative path
+  instead of an absolute one, and the single string in the frozen record was
+  rewritten to the relative form. No measurement was altered — `grow7` has no
+  measurement, only a missing-fixture notice.
+
+- **2026-08-17 — the terminal test was described incorrectly.**
+  Section 3 of the note stated that the test `g'g <= tolerance` "serves as both
+  a geometric stopping rule and the zero-curvature test." The zero-curvature
+  reading is correct; the stopping-rule reading is false. Because
+  `g = (I - P_W) b_W`, the vector `g` vanishes identically on any face whose
+  active rows are independent — which includes every vertex of the dual
+  feasible set that the path passes through en route to the optimum. A stop on
+  `g'g` alone would therefore return a suboptimal point, and not only in
+  contrived cases.
+
+  The shipped C++ never used the bare test: `cpp/twalker/src/walker.cpp`
+  requires a stationary face **and** an audited ratio scan showing no forward
+  event **and** a passing original-data certificate, and its own comments say
+  "vanishing motion on the active face is not a terminal proof." This was a
+  defect in the prose, contradicted by the implementation. No code changed; the
+  note and README now describe what the code does.
+
+- **2026-08-17 — the value function was undefined and the piecewise claim was
+  imprecise.** The note asserted that "the optimal penalty value is piecewise
+  quadratic" while using the symbol `phi` without ever defining it. Read
+  literally against the penalty program described one paragraph earlier, the
+  claim is false: that program's value is `phi(t)/t`, which carries a `1/t`
+  term and is not piecewise quadratic. The intended object,
+  `phi(t) = max { t b'y - (1/2)||y||^2 : y in D }`, is now defined explicitly,
+  and the distinction is stated.
+
+- **2026-08-17 — the accuracy score was misnamed.**
+  The note called its acceptance check a "componentwise backward-error
+  certificate." The primal and dual terms are componentwise backward errors up
+  to a guard term in the denominator, but the `y >= 0` violation and the
+  primal-dual gap are neither backward errors nor componentwise, and no single
+  perturbed linear program admits the pair as optimal. It is now described as
+  an original-data KKT certificate with componentwise scaling on the primal and
+  dual residuals — which is what the implementation's own schema string,
+  `common-original-data-kkt-accuracy-v1`, has always called it. The score,
+  the tolerance, and every reported measurement are unchanged.
+
+- **2026-08-17 — the headline claim counted two methods instead of three.**
+  The note's opening and the README's claim box described taking "the faster
+  certified result" of t-walker and Newton. The measured frontier is a lower
+  envelope over **three** methods — the default-seed walker, the
+  triangular-seeded walker, and staged Newton — as the frozen record's own
+  frontier rule states and as both documents said correctly elsewhere. The
+  comparison was also restated against staged Newton alone, since a lower
+  envelope beats each of its members by construction and the "improves on
+  either alone" phrasing was therefore unfalsifiable.
 
 - **2026-08-17 — incomplete dependency pin.**
   The benchmark requirements file omitted `clarabel` and `pillow`, both of

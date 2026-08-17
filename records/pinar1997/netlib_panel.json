@@ -303,7 +303,7 @@
     {
       "algorithm": "Pinar1997-LPPEN",
       "certificate": null,
-      "detail": "fixture not found: /Users/klinellc/Documents/exact-penalty-lp-walker_release/cpp/twalker/fixtures_panel/grow7.twfx",
+      "detail": "fixture not found: cpp/twalker/fixtures_panel/grow7.twfx",
       "elapsed_ms": null,
       "model": "grow7",
       "status": "NOT_MEASURED"

@@ -4,9 +4,20 @@
 
 **Public prototype - 17 August 2026**
 
-The TeX source `paper/twalker_progress_note.tex` is now the canonical PDF
-source. This Markdown copy remains the working source for a planned HTML
-companion; the two versions should be reconciled before public release.
+**Status.** Public prototype, not a peer-reviewed paper. This release is in
+draft state and has no stable tag, permanent archive, or DOI.
+
+Jeff Kline directed the mathematical and computational work. Large language
+models substantially assisted with drafting code, running bounded experiments,
+auditing claims, and editing this prototype. They are neither authors nor
+referees, and their agreement with each other is evidence about the checking
+process, not a certificate of correctness.
+
+`paper/twalker_progress_note.tex` and the built PDF at
+`output/pdf/twalker_progress_note.pdf` are canonical. This Markdown file is an
+abridged copy: it omits the exact change-of-variable derivation, several
+prior-work citations, and the definition of the value function. Where the two
+differ, the PDF governs.
 
 Mangasarian showed that a quadratic penalty program yields an exact LP solution
 at a sufficiently large but finite penalty parameter. He used that result to
@@ -21,9 +32,10 @@ gaps.
 We built a complementary method, the **t-walker**, for this regime. The walker
 follows the exact dual projection path from face to face instead of solving the
 penalty problem afresh at a sequence of penalty values. On the tested low-ratio
-problems, t-walker outpaces Newton. Choosing the faster certified result from
-t-walker or Newton also improves Mangasarian's performance across Netlib. The
-pair still trails HiGHS, but it measurably improves on Newton alone.
+problems, t-walker outpaces Newton. Choosing the fastest certified result among
+the default-seed walker, the triangular-seeded walker, and staged Newton
+improves on staged Newton alone across Netlib. The envelope still trails HiGHS
+by more than an order of magnitude.
 
 We test both raw methods against the same original-data accuracy standard, and
 both pass on the problems they solve. A common simplex crossover cuts their
@@ -59,7 +71,8 @@ program returns exactly
 `y(t) = P_D(t b)`.
 
 The optimizer path is continuous and piecewise affine. The optimal penalty
-value is piecewise quadratic, and the path direction determines its curvature.
+value function `phi(t) = max{ t b'y - (1/2)||y||^2 : y in D }` is piecewise
+quadratic, and the path direction determines its curvature.
 The walker therefore follows an affine state on each face even though the
 value function is quadratic there.
 
@@ -84,8 +97,12 @@ The walker finds the next breakpoint with a minimum-ratio test over these
 margins. At a tie, it exchanges rows at fixed `t` to resolve degeneracy; those
 exchanges do not count as progress. A valid next segment must reach a strictly
 larger `t` or prove that the path is terminal. Within a face, the penalty
-curvature is `phi''(t)=g'g`. The terminal test `g'g <= tolerance` therefore
-serves as both a geometric stopping rule and the zero-curvature test.
+curvature of `phi(t) = max{ t b'y - (1/2)||y||^2 : y in D }` is
+`phi''(t)=g'g`, so `g'g <= tolerance` detects a stationary face.  That is
+necessary but not sufficient for termination: `g` vanishes identically on any
+face whose active rows are independent, including every vertex the path passes
+through.  The walker accepts an endpoint only when the ratio scan also shows no
+forward event and the original-data certificate passes.
 
 We made the implementation faster and more stable by treating the walker state
 like a numerical simplex state. The solver now carries the face coefficients,
@@ -129,7 +146,8 @@ not a theorem that aspect ratio alone is causal.
 
 Solver status strings do not measure accuracy on a common scale. We therefore
 reevaluated every available primal-dual pair on the original inequality form
-with one componentwise backward-error certificate. The score is the largest
+with one original-data KKT certificate, using componentwise scaling on the
+primal and dual residuals. The score is the largest
 of four normalized errors: primal infeasibility, dual equality, violation of
 `y >= 0`, and the primal-dual gap. The acceptance tolerance is `1e-7`. DNF and
 resource-limit cases count as coverage failures, not zero-error samples.
@@ -174,10 +192,11 @@ characterized least-norm LP solutions by projection. Madsen, Nielsen, and
 Pinar developed finite continuation methods on piecewise-linear paths. Most
 directly, Pinar's 1997 algorithm follows a quadratic-penalty path with
 predictor steps, modified-Newton correction, retained factor updates, and
-iterative refinement. This work predates Mangasarian's 2002 Newton report.
+iterative refinement. This work predates Mangasarian's 2002 Newton report,
+published in 2004.
 
-After dualization and the change of parameter `T = 1/tau`, Pinar's perturbed
-optimizer is exactly `P_D(T b)`, the path used here. The distinction is
+After dualization and the change of parameter `t = 1/eps`, Pinar's perturbed
+optimizer is exactly `P_D(t b)`, the path used here. The distinction is
 algorithmic. Pinar evaluates selected penalty values with predictor and
 corrector steps; t-walker attempts to visit the next certified breakpoint.
 General parametric-QP active-set methods already supply the larger setting for
@@ -204,12 +223,12 @@ and path solve; larger models use sparse LSMR. Pinar maintained and updated
 AAFAC factors, and his paper reports successful runs on its ten-model panel.
 One possible reading of our failures is that a geometric predictor and
 corrector may still need an explicit combinatorial basis/status policy at
-degenerate breakpoints. That is a hunch to test, not a conclusion from 4/27.
+degenerate breakpoints. That is a hunch to test, not a conclusion from 5 of 27.
 
 ### Sources and protocol
 
-Mangasarian, "A Newton method for linear programming," *JOTA* 121 (2002),
-1-18; Mangasarian and Meyer, "Nonlinear perturbation of linear programs,"
+Mangasarian, "A Newton method for linear programming," *JOTA* 121 (2004),
+1-18 (first circulated as technical report DMI 02-02 in 2002); Mangasarian and Meyer, "Nonlinear perturbation of linear programs,"
 *SICON* 17 (1979), 745-752; Pinar, "Piecewise-linear pathways to the optimal
 solution set in linear programming," *JOTA* 93 (1997), 619-634; Huangfu and
 Hall, "Parallelizing the dual revised simplex method," *MPC* 10 (2018),

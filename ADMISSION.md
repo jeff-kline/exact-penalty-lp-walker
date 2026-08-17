@@ -23,9 +23,9 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 
 | Gate | Status | Evidence and disposition |
 |---|---|---|
-| P1 — prior work and credit | **OPEN** | The note credits Mangasarian–Meyer (1979), Mangasarian (1984, 2004), Madsen–Nielsen–Pinar (1996), Pinar (1996, 1997), Best (1996), Bock et al. (2010), Ferreau et al. (2014), and Bartels (1980), and states explicitly that no new path or homotopy principle is claimed. It also derives the exact change of variables showing Pinar's perturbed optimizer *is* the path used here. The literature review was bounded, not exhaustive. The citation and prior-art audit lane has not run. |
-| A1 — claim and artifact consistency | **OPEN** | README written and aligned to the note. One material inconsistency was found and corrected during preparation: the note's §5 Pinar counts disagreed with what the shipped code produces (see `CORRECTIONS.md`). Because that was a claim edit, A1 restarts from the corrected text. The claim/public-prose audit lane has not run. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified. Four documented reproduction paths execute. Correction policy, citation metadata, and third-party provenance exist. Blocking: no manifest, no tag, no archive, no DOI, and one reproduction gap named below. |
+| P1 — prior work and credit | **PASS, bounded** | The note credits Mangasarian–Meyer (1979), Mangasarian (1984, 2004), Madsen–Nielsen–Pinar (1996), Pinar (1996, 1997), Best (1996), Bock et al. (2010), Ferreau et al. (2014), and Bartels (1980), and states explicitly that no new path or homotopy principle is claimed. A citation lane verified that all 14 citation keys resolve, no entry is orphaned or duplicated, and all 14 bibliography entries match authoritative records. A separate lane re-derived the change of variables showing Pinar's perturbed optimizer *is* the path used here, and confirmed the algebra is exact — so the novelty concession rests on a correct derivation. A bounded prior-art search over the four claimed contributions found no mechanism-level collision. **That is a source-negative result over a non-exhaustive search and is not a claim of global novelty.** One caveat could not be closed here: whether Pinar (1997) perturbs by exactly `(ε/2)‖z‖²` is a bibliographic fact requiring the original paper, which is not in this checkout. |
+| A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, eleven material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
+| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte from independent checkouts. Four documented reproduction paths execute. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over all 213 tracked files exist and verify. Blocking: no tag, no archive, no DOI, and one reproduction gap named below. |
 
 ## Claim boundary
 
@@ -92,11 +92,16 @@ provider zipball.
 
 ## Remaining work before CANDIDATE
 
-1. Run the bounded audit lanes and record dispositions.
-2. Resolve or formally accept the Netlib reproduction gap above.
+1. ~~Run the bounded audit lanes and record dispositions.~~ Done: four lanes
+   ran on commit `40a4f58`. Dispositions are recorded in `CORRECTIONS.md`.
+   Because several were claim edits, A1 restarts from the corrected text and a
+   confirming pass is still required.
+2. Resolve or formally accept the Netlib reproduction gap named above.
 3. Replace the `CITATION.cff` `message` with publication-safe, timeless
    wording — Zenodo imports it verbatim into the permanent record.
-4. Generate `MANIFEST.sha256` over the frozen tree.
+4. Decide whether `paper/twalker_progress_note.md` ships at all. It duplicates
+   every claim in the paper, it has already drifted from it once, and the HTML
+   companion it exists for does not exist yet.
 5. Run the bundled release audit at `--state candidate --require-clean`.
 
 ## State transitions

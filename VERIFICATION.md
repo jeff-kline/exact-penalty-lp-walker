@@ -211,7 +211,17 @@ Beyond file selection, the following edits were made, all mechanical:
    now computes the certified count from its input instead of printing a
    hardcoded literal.
 
-Doc comments in several migrated scripts still cite internal report numbers
-(`agent_reports/11`, `agent_reports/28`, and similar) that are not part of this
-release. These are dangling references in code comments, not in reader-facing
-prose. They have not been rewritten.
+6. `cpp/twalker/README.md`: six reproduction commands that hardcoded an
+   absolute path inside the author's virtualenv now use `.venv/bin/python`.
+7. `experiments/pinar1997/run_netlib_panel.py`: a missing-fixture message now
+   reports a repository-relative path rather than an absolute one, and the one
+   absolute path already frozen into `records/pinar1997/netlib_panel.json` was
+   rewritten to match. No measurement was affected.
+
+Several migrated files still cite internal report numbers (`agent_reports/11`,
+`agent_reports/28`, and similar) that are not part of this release. These
+dangling references are **not** confined to code comments: they also appear in
+reader-facing prose in `cpp/twalker/README.md` and `cpp/twalker/revised/README.md`,
+which additionally references `cpp/walk.cpp`, a file deliberately excluded from
+this release. They have not been rewritten. An earlier version of this section
+described the problem as limited to code comments; that was inaccurate.

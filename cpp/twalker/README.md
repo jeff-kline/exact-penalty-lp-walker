@@ -6,12 +6,12 @@ normal-equations walker in `cpp/walk.cpp`.
 
 The Python scripts under `tools/` only extract immutable oracle fixtures and
 measure the sparse factorization structure.  They must be run with
-`/Users/klinellc/.venvs/claude/bin/python`; `experiments/` remains unchanged.
+`.venv/bin/python`; `experiments/` remains unchanged.
 
 Fixture export:
 
 ```sh
-OMP_NUM_THREADS=1 /Users/klinellc/.venvs/claude/bin/python \
+OMP_NUM_THREADS=1 .venv/bin/python \
   cpp/twalker/tools/export_fixtures.py
 ```
 
@@ -21,12 +21,12 @@ Phase 1 direct-C++ fill/timing probe:
 make -C cpp/twalker build/fill_probe
 cpp/twalker/build/fill_probe \
   cpp/twalker/fixtures/{sctap1,brandy,scorpion}.twfx \
-  --out agent_reports/raw/twalker_phase1/fill_probe.csv
-/Users/klinellc/.venvs/claude/bin/python \
+  --out records/twalker_phase1/fill_probe.csv
+.venv/bin/python \
   cpp/twalker/tools/summarize_fill.py \
-  agent_reports/raw/twalker_phase1/fill_probe.csv \
+  records/twalker_phase1/fill_probe.csv \
   cpp/twalker/fixtures/{sctap1,brandy,scorpion}.twfx \
-  --out agent_reports/raw/twalker_phase1/summary.json
+  --out records/twalker_phase1/summary.json
 ```
 
 Build and run the correctness gates:
@@ -258,9 +258,9 @@ by `verify_walker`.
 The bounded exact-equality quotient probe is likewise offline preprocessing:
 
 ```sh
-/Users/klinellc/.venvs/claude/bin/python \
+.venv/bin/python \
   cpp/twalker/tools/export_quotient_fixture.py --model sctap1 --faces 60
-/Users/klinellc/.venvs/claude/bin/python \
+.venv/bin/python \
   cpp/twalker/tools/certify_quotient_walker.py \
   cpp/twalker/fixtures_quotient/sctap1_quotient.twfx \
   cpp/twalker/fixtures_quotient/sctap1_quotient_lift.npz
@@ -291,7 +291,7 @@ Cheap panel coverage (one accepted post-seed oracle face per model, continuing
 past parser or seed failures):
 
 ```sh
-OMP_NUM_THREADS=1 /Users/klinellc/.venvs/claude/bin/python \
+OMP_NUM_THREADS=1 .venv/bin/python \
   cpp/twalker/tools/export_fixtures.py \
   --initial-only --continue-on-error --faces 1 \
   --outdir cpp/twalker/fixtures_panel \
