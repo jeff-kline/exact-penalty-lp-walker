@@ -121,6 +121,37 @@ Corrections made during preparation, before any public version existed:
   `common-original-data-kkt-accuracy-v1`, has always called it. The score,
   the tolerance, and every reported measurement are unchanged.
 
+- **2026-08-17 — the paper was renamed and its formatting normalized.**
+  The note was `paper/twalker_progress_note.{tex,bib}` with its PDF under
+  `output/pdf/`. It is now `paper/main.{tex,bib,pdf}`, matching four of the six
+  prior releases including the most recent. This is not only cosmetic: the
+  bundled release audit hardcodes `paper/main.tex`, so under the old name the
+  paper was silently excluded from the DOI-surface check at candidate,
+  archived, and admitted states — a check that would have passed by not
+  running.
+
+  The layout was normalized to the house style: 11pt, 1in margins, `\maketitle`
+  with a version-and-date block, a centered repository/archive line, and an
+  abstract. The abstract is a **marked placeholder** and states no result. The
+  hand-rolled title, the compressed section spacing, the `fancyhdr` footer, and
+  the custom status box were removed; the status text now sits in the abstract.
+  The byline is `Jeffery Kline`, matching `CITATION.cff` and the other papers,
+  where the note previously said `Jeff Kline`.
+
+  Two package changes were forced by this installation rather than chosen.
+  `microtype` was dropped: with `T1` font encoding there is no scalable font
+  here for it to expand, and the build fails outright. None of the reference
+  papers use it. `cmap` was added, which they also do not use; it repairs the
+  PDF text layer so that ligatures extract correctly. Greek letters in math
+  mode still do not survive text extraction.
+
+- **2026-08-17 — a latent release-audit failure was fixed.**
+  `ADMISSION.md` opened "Current verdict: NOT ADMITTED". The bundled audit
+  requires the literal phrase "not yet admitted" in the file's first sixteen
+  lines and fails the candidate and archived states without it. The heading now
+  reads "NOT YET ADMITTED". The verdict is unchanged; only the wording was
+  out of step with the checker.
+
 - **2026-08-17 — a published number did not reproduce.**
   The note reported synthetic cell speedups "from 1.69 to 11.76" for ratios at
   most 2. Recomputing from the published record — per-cell median over the five

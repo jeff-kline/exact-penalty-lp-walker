@@ -215,13 +215,13 @@ on the frontier, but it is not measurement noise and is recorded as such.
 sh paper/build_paper.sh
 ```
 
-Observed: 7 pages, exits 0, writes `paper/main.pdf`.
+Observed: 8 pages, exits 0, writes `paper/main.pdf`.
 
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-d8df575dad90f4850e47ca2362bcb6368444a1b17ae497e99c9db3aa74db6376  build 1
-d8df575dad90f4850e47ca2362bcb6368444a1b17ae497e99c9db3aa74db6376  build 2
+30fb55a1e01c696d341c07b5c6eba2fac1474bc924c374b280ba2063bec4d49c  build 1
+30fb55a1e01c696d341c07b5c6eba2fac1474bc924c374b280ba2063bec4d49c  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
@@ -275,6 +275,15 @@ Beyond file selection, the following edits were made, all mechanical:
 5. `experiments/pinar1997/render_provisional_netlib.py`: the figure footnote
    now computes the certified count from its input instead of printing a
    hardcoded literal.
+8. The paper was renamed to `paper/main.tex` / `paper/main.bib` /
+   `paper/main.pdf` and its layout normalized to match the other releases:
+   11pt, 1in margins, `\maketitle`, a centered repository/archive block, and an
+   abstract. `microtype` was removed because this TeX installation has no
+   scalable T1 fonts for it to expand, and none of the reference papers use it.
+   `cmap` was added, which the reference papers do not use; it makes the PDF
+   text layer extract ligatures correctly. Greek letters in math mode still do
+   not survive text extraction, so the epsilon in the change-of-parameter
+   derivation is legible on the page but absent from copied text.
 
 6. `cpp/twalker/README.md`: six reproduction commands that hardcoded an
    absolute path inside the author's virtualenv now use `.venv/bin/python`.
