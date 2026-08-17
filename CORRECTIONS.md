@@ -162,7 +162,7 @@ Corrections made during preparation, before any public version existed:
   authority. Both are now corrected, along with two further code comments.
 
 - **2026-08-17 — the duplicate Markdown note was removed.**
-  `paper/twalker_progress_note.md` was an abridged second copy of the technical
+  the Markdown copy of the note was an abridged second copy of the technical
   note, kept as a working source for a planned HTML companion that does not
   exist. It drifted from the TeX source twice during preparation — carrying
   superseded Pinar counts and a wrong publication year — which is the failure

@@ -1,6 +1,6 @@
 # Admission record
 
-**Current verdict: NOT ADMITTED — preparation in progress.**
+**Current verdict: NOT YET ADMITTED — preparation in progress.**
 
 **Release state:** DRAFT
 
@@ -141,7 +141,7 @@ provider zipball.
    where the frozen record shows 11.
 3. Replace the `CITATION.cff` `message` with publication-safe, timeless
    wording — Zenodo imports it verbatim into the permanent record.
-4. ~~Decide whether `paper/twalker_progress_note.md` ships.~~ Done: removed.
+4. ~~Decide whether the Markdown copy of the note ships.~~ Done: removed.
    It duplicated every claim in the paper and had drifted from it twice. The
    TeX source is now the single claim surface for the note.
 5. Run the bundled release audit at `--state candidate --require-clean`.

@@ -212,10 +212,10 @@ on the frontier, but it is not measurement noise and is recorded as such.
 ### 6. Deterministic document build
 
 ```sh
-sh paper/build_twalker_progress_note.sh
+sh paper/build_paper.sh
 ```
 
-Observed: 7 pages, exits 0, writes `output/pdf/twalker_progress_note.pdf`.
+Observed: 7 pages, exits 0, writes `paper/main.pdf`.
 
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
@@ -270,7 +270,7 @@ Beyond file selection, the following edits were made, all mechanical:
    missing `clarabel` and `pillow` pins, and the one reference to it updated.
 3. `cpp/twalker/Makefile`: the default HiGHS library location no longer
    hardcodes an absolute path inside the author's virtualenv.
-4. `paper/twalker_progress_note.tex`: `\pdftrailerid{}` added; §5 counts and
+4. `paper/main.tex`: `\pdftrailerid{}` added; §5 counts and
    the Netlib figure caption corrected.
 5. `experiments/pinar1997/render_provisional_netlib.py`: the figure footnote
    now computes the certified count from its input instead of printing a

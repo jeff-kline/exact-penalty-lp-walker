@@ -30,8 +30,8 @@ constraints `y ≥ 0` holds with equality; the path moves from one to the next.
 [Evidence and its limits](#evidence-and-its-limits). *Netlib* is a long-standing
 public collection of benchmark linear programs.
 
-The technical note is [`output/pdf/twalker_progress_note.pdf`](output/pdf/twalker_progress_note.pdf);
-its source is [`paper/twalker_progress_note.tex`](paper/twalker_progress_note.tex).
+The technical note is [`paper/main.pdf`](paper/main.pdf);
+its source is [`paper/main.tex`](paper/main.tex).
 
 ## The methods
 
@@ -182,7 +182,7 @@ Then, from the repository root:
     --output records/twalker_cpp/netlib27_rerun.json
 
 # The PDF (deterministic; two clean builds are byte-identical)
-sh paper/build_twalker_progress_note.sh
+sh paper/build_paper.sh
 ```
 
 Re-running the walker panel and recomputing the frontier lands within about
@@ -249,7 +249,7 @@ version yet. When a version is archived, the citation metadata will be in
   method," *Math. Prog. Comp.* 10 (2018), 119–142.
 
 The full bibliography is in
-[`paper/twalker_progress_note.bib`](paper/twalker_progress_note.bib).
+[`paper/main.bib`](paper/main.bib).
 
 ## License
 

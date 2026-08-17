@@ -3,8 +3,8 @@ set -eu
 
 repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 paper_dir="$repo_dir/paper"
-build_dir="$repo_dir/tmp/texbuild/twalker_progress_note"
-output_dir="$repo_dir/output/pdf"
+build_dir="$repo_dir/tmp/texbuild/main"
+output_dir="$paper_dir"
 
 mkdir -p "$build_dir" "$output_dir"
 
@@ -19,14 +19,14 @@ bibtex_cmd=${BIBTEX:-bibtex}
 
 cd "$paper_dir"
 "$pdflatex_cmd" -interaction=nonstopmode -halt-on-error -file-line-error \
-  -output-directory="$build_dir" twalker_progress_note.tex
+  -output-directory="$build_dir" main.tex
 cd "$build_dir"
-"$bibtex_cmd" twalker_progress_note
+"$bibtex_cmd" main
 cd "$paper_dir"
 "$pdflatex_cmd" -interaction=nonstopmode -halt-on-error -file-line-error \
-  -output-directory="$build_dir" twalker_progress_note.tex
+  -output-directory="$build_dir" main.tex
 "$pdflatex_cmd" -interaction=nonstopmode -halt-on-error -file-line-error \
-  -output-directory="$build_dir" twalker_progress_note.tex
+  -output-directory="$build_dir" main.tex
 
-cp "$build_dir/twalker_progress_note.pdf" "$output_dir/twalker_progress_note.pdf"
-echo "$output_dir/twalker_progress_note.pdf"
+cp "$build_dir/main.pdf" "$output_dir/main.pdf"
+echo "$output_dir/main.pdf"
