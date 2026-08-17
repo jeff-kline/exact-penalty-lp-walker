@@ -121,6 +121,14 @@ Corrections made during preparation, before any public version existed:
   `common-original-data-kkt-accuracy-v1`, has always called it. The score,
   the tolerance, and every reported measurement are unchanged.
 
+- **2026-08-17 — the duplicate Markdown note was removed.**
+  `paper/twalker_progress_note.md` was an abridged second copy of the technical
+  note, kept as a working source for a planned HTML companion that does not
+  exist. It drifted from the TeX source twice during preparation — carrying
+  superseded Pinar counts and a wrong publication year — which is the failure
+  mode a second claim surface invites. It has been deleted. The TeX source and
+  the PDF built from it are now the only statement of the note's claims.
+
 - **2026-08-17 — the headline claim counted two methods instead of three.**
   The note's opening and the README's claim box described taking "the faster
   certified result" of t-walker and Newton. The measured frontier is a lower

@@ -99,9 +99,9 @@ provider zipball.
 2. Resolve or formally accept the Netlib reproduction gap named above.
 3. Replace the `CITATION.cff` `message` with publication-safe, timeless
    wording — Zenodo imports it verbatim into the permanent record.
-4. Decide whether `paper/twalker_progress_note.md` ships at all. It duplicates
-   every claim in the paper, it has already drifted from it once, and the HTML
-   companion it exists for does not exist yet.
+4. ~~Decide whether `paper/twalker_progress_note.md` ships.~~ Done: removed.
+   It duplicated every claim in the paper and had drifted from it twice. The
+   TeX source is now the single claim surface for the note.
 5. Run the bundled release audit at `--state candidate --require-clean`.
 
 ## State transitions
