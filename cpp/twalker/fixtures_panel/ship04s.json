@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "ship04s.twfx",
+  "format_version": 1,
+  "m": 1458,
+  "model": "ship04s",
+  "n": 2214,
+  "nnz": 8648,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 1583,
+  "sha256": "af1dbe6b2d442c9e5ef2c6c0755117c5fcb64f704cbcdfda94fa9fc66516d245",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

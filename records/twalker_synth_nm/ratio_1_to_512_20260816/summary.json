@@ -1,0 +1,3898 @@
+{
+  "all_certified": false,
+  "cells": {
+    "m100_r1": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.4602935775405547e-13,
+            "median": 2.4602935775405547e-13,
+            "min": 2.4602935775405547e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 4.0,
+            "median": 4.0,
+            "min": 4.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.003399112000010973,
+            "median": 0.003012114000004118,
+            "min": 0.002625115999997263,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.2147508201949022e-14,
+            "median": 1.2147508201949022e-14,
+            "min": 1.2147508201949022e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 20.0,
+            "median": 20.0,
+            "min": 20.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.045,
+            "median": 0.043,
+            "min": 0.041,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 3.947834181202521e-12,
+            "median": 3.947834181202521e-12,
+            "min": 3.947834181202521e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 142.0,
+            "median": 142.0,
+            "min": 142.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0036813199999983226,
+            "median": 0.003349471500001755,
+            "min": 0.0030176230000051874,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.009881104623337e-13,
+            "median": 1.009881104623337e-13,
+            "min": 1.009881104623337e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.018918288000000002,
+            "median": 0.0183715905,
+            "min": 0.017824892999999998,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.013985001,
+            "median": 0.013889195,
+            "min": 0.013793389,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 100,
+      "nnz": 820,
+      "ratio": 1.0
+    },
+    "m100_r1.5": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.7251906303569484e-13,
+            "median": 3.7251906303569484e-13,
+            "min": 3.7251906303569484e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.028229555999985223,
+            "median": 0.023646106499992214,
+            "min": 0.019062656999999206,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 3.133605644004205e-14,
+            "median": 2.3127976895847934e-14,
+            "min": 1.4919897351653818e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 41.0,
+            "median": 41.0,
+            "min": 41.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.082,
+            "median": 0.07500000000000001,
+            "min": 0.068,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.355142368609953e-12,
+            "median": 2.355142368609953e-12,
+            "min": 2.355142368609953e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 180.0,
+            "median": 180.0,
+            "min": 180.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.00853866500000322,
+            "median": 0.007643593000000948,
+            "min": 0.006748520999998675,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.4260190082776877e-13,
+            "median": 1.4260190082776877e-13,
+            "min": 1.4260190082776877e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 68.0,
+            "median": 68.0,
+            "min": 68.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.059919256,
+            "median": 0.0496802695,
+            "min": 0.039441283,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.004360554,
+            "median": 0.004150219,
+            "min": 0.003939884,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 150,
+      "nnz": 1320,
+      "ratio": 1.5
+    },
+    "m100_r128": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.2338533221500103e-10,
+            "median": 2.2338533221500103e-10,
+            "min": 2.2338533221500103e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.24988339799999437,
+            "median": 0.24850947400002354,
+            "min": 0.24713555000005272,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 9.891653619296746e-15,
+            "median": 9.891653619296746e-15,
+            "min": 9.891653619296746e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 26.0,
+            "median": 26.0,
+            "min": 26.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.427,
+            "median": 0.385,
+            "min": 0.343,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 7.461815177305572e-11,
+            "median": 7.461815177305572e-11,
+            "min": 7.461815177305572e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 714.0,
+            "median": 714.0,
+            "min": 714.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.6073752890000037,
+            "median": 0.586697564000005,
+            "min": 0.5660198390000062,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.8453883574108644e-13,
+            "median": 3.8453883574108644e-13,
+            "min": 3.8453883574108644e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 6369.0,
+            "median": 6369.0,
+            "min": 6369.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 11.308176587,
+            "median": 11.150592167500001,
+            "min": 10.993007748,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.022999364,
+            "median": 0.021555642,
+            "min": 0.020111920000000002,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 12800,
+      "nnz": 127820,
+      "ratio": 128.0
+    },
+    "m100_r16": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.910831365543256e-12,
+            "median": 2.910831365543256e-12,
+            "min": 2.910831365543256e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.052210696999999584,
+            "median": 0.05201235399998794,
+            "min": 0.05181401099997629,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.0658141036401389e-14,
+            "median": 1.0658141036401389e-14,
+            "min": 1.0658141036401389e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.081,
+            "median": 0.07150000000000001,
+            "min": 0.062,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 9.201296188543841e-13,
+            "median": 9.201296188543841e-13,
+            "min": 9.201296188543841e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 466.0,
+            "median": 466.0,
+            "min": 466.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.06483539000000604,
+            "median": 0.059230819000003265,
+            "min": 0.05362624800000049,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 5.484501741647972e-14,
+            "median": 5.484501741647972e-14,
+            "min": 5.484501741647972e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 764.0,
+            "median": 764.0,
+            "min": 764.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.183380435,
+            "median": 0.1792360045,
+            "min": 0.175091574,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.004425017999999999,
+            "median": 0.004341572,
+            "min": 0.004258126,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 1600,
+      "nnz": 15820,
+      "ratio": 16.0
+    },
+    "m100_r2": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.7315102132594035e-14,
+            "median": 1.7315102132594035e-14,
+            "min": 1.7315102132594035e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.03489335899996604,
+            "median": 0.030895382999982957,
+            "min": 0.026897406999999873,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 5.809450570842083e-14,
+            "median": 4.915688944558721e-14,
+            "min": 4.02192731827536e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 73.0,
+            "median": 71.0,
+            "min": 69.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.12,
+            "median": 0.11149999999999999,
+            "min": 0.103,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.0814515678005476e-12,
+            "median": 1.0780999617019957e-12,
+            "min": 1.074748355603444e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 275.0,
+            "median": 275.0,
+            "min": 275.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0128624230000014,
+            "median": 0.01246542450000021,
+            "min": 0.012068425999999022,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 4.605386079912151e-12,
+            "median": 4.605386079912151e-12,
+            "min": 4.605386079912151e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 178.0,
+            "median": 178.0,
+            "min": 178.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.036650381,
+            "median": 0.0338494695,
+            "min": 0.031048558,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.0022899250000000004,
+            "median": 0.002247315,
+            "min": 0.002204705,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 200,
+      "nnz": 1820,
+      "ratio": 2.0
+    },
+    "m100_r256": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 8.722957191601456e-13,
+            "median": 8.722957191601456e-13,
+            "min": 8.722957191601456e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.5971602550000057,
+            "median": 0.5110150785000016,
+            "min": 0.4248699019999975,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 8.288465590009186e-15,
+            "median": 8.288465590009186e-15,
+            "min": 8.288465590009186e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 25.0,
+            "min": 25.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.904,
+            "median": 0.8175,
+            "min": 0.731,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.869852474793887e-13,
+            "median": 2.869852474793887e-13,
+            "min": 2.869852474793887e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 717.0,
+            "median": 717.0,
+            "min": 717.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.7937574549999908,
+            "median": 1.5663098849999955,
+            "min": 1.338862315,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 25600,
+      "nnz": 255820,
+      "ratio": 256.0
+    },
+    "m100_r32": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.267874404237174e-10,
+            "median": 2.267874404237174e-10,
+            "min": 2.267874404237174e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.06851747700000033,
+            "median": 0.06816702750001014,
+            "min": 0.06781657800001994,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 3.6857885666415515e-15,
+            "median": 3.6857885666415515e-15,
+            "min": 3.6857885666415515e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 24.5,
+            "min": 24.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.14,
+            "median": 0.1275,
+            "min": 0.115,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.354174368152812e-13,
+            "median": 2.354174368152812e-13,
+            "min": 2.354174368152812e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 512.0,
+            "median": 512.0,
+            "min": 512.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.12329587400000008,
+            "median": 0.12188611249998971,
+            "min": 0.12047635099997933,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.453837050746431e-13,
+            "median": 1.453837050746431e-13,
+            "min": 1.453837050746431e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1596.0,
+            "median": 1596.0,
+            "min": 1596.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.852817087,
+            "median": 0.7846515305,
+            "min": 0.716485974,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.006809622,
+            "median": 0.0064437995,
+            "min": 0.006077977,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 3200,
+      "nnz": 31820,
+      "ratio": 32.0
+    },
+    "m100_r4": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 7.96824603394339e-13,
+            "median": 7.96824603394339e-13,
+            "min": 7.96824603394339e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.030387404000002505,
+            "median": 0.029556301000010166,
+            "min": 0.028725198000017826,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 4.190484386274058e-15,
+            "median": 4.190484386274058e-15,
+            "min": 4.190484386274058e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 32.0,
+            "median": 31.5,
+            "min": 31.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.066,
+            "median": 0.0635,
+            "min": 0.061,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 9.92487604906737e-12,
+            "median": 9.92487604906737e-12,
+            "min": 9.92487604906737e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 362.0,
+            "median": 362.0,
+            "min": 362.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.028401296000026832,
+            "median": 0.025853370500012574,
+            "min": 0.023305444999998315,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 4.0753475292609357e-14,
+            "median": 4.0753475292609357e-14,
+            "min": 4.0753475292609357e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 191.0,
+            "median": 191.0,
+            "min": 191.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.018875171000000003,
+            "median": 0.017374759500000003,
+            "min": 0.015874348,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.002303257,
+            "median": 0.002208011,
+            "min": 0.002112765,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 400,
+      "nnz": 3820,
+      "ratio": 4.0
+    },
+    "m100_r512": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.58228581486158e-12,
+            "median": 2.58228581486158e-12,
+            "min": 2.58228581486158e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.5258463939999984,
+            "median": 1.4996682129999854,
+            "min": 1.4734900319999724,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.048411128283288e-14,
+            "median": 1.048411128283288e-14,
+            "min": 1.048411128283288e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 24.5,
+            "min": 24.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.666,
+            "median": 1.5339999999999998,
+            "min": 1.402,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.3883897448927199e-12,
+            "median": 1.3883897448927199e-12,
+            "min": 1.3883897448927199e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 728.0,
+            "median": 728.0,
+            "min": 728.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 4.081371149999995,
+            "median": 3.717392845500001,
+            "min": 3.3534145410000065,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 51200,
+      "nnz": 511820,
+      "ratio": 512.0
+    },
+    "m100_r64": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.4844906737074848e-10,
+            "median": 1.4844906737074848e-10,
+            "min": 1.4844906737074848e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.1339570050000134,
+            "median": 0.13028542100000706,
+            "min": 0.12661383700000073,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 2.0095036745714933e-14,
+            "median": 2.0095036745714933e-14,
+            "min": 2.0095036745714933e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 25.0,
+            "min": 25.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.183,
+            "median": 0.177,
+            "min": 0.171,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 3.0949640308106052e-12,
+            "median": 3.0949640308106052e-12,
+            "min": 3.0949640308106052e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 568.0,
+            "median": 568.0,
+            "min": 568.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.2503422079999993,
+            "median": 0.24752195400000332,
+            "min": 0.24470170000000735,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.203548769969674e-13,
+            "median": 3.203548769969674e-13,
+            "min": 3.203548769969674e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 3248.0,
+            "median": 3248.0,
+            "min": 3248.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 2.7984933350000003,
+            "median": 2.654224822,
+            "min": 2.509956309,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.009664986,
+            "median": 0.009473084,
+            "min": 0.009281181999999999,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 6400,
+      "nnz": 63820,
+      "ratio": 64.0
+    },
+    "m100_r8": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.0950930711366963e-11,
+            "median": 1.0950238446956365e-11,
+            "min": 1.0949546182545767e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.03833125599999221,
+            "median": 0.0365446764999966,
+            "min": 0.03475809700000099,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 9.325873406851228e-15,
+            "median": 9.325873406851228e-15,
+            "min": 9.325873406851228e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 17.0,
+            "median": 16.5,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.047,
+            "median": 0.042499999999999996,
+            "min": 0.038,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 6.443999499500229e-13,
+            "median": 6.443999499500229e-13,
+            "min": 6.443999499500229e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 399.0,
+            "median": 399.0,
+            "min": 399.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.03616859400000294,
+            "median": 0.03613050450000088,
+            "min": 0.03609241499999882,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 7.627232179174242e-14,
+            "median": 7.627232179174242e-14,
+            "min": 7.627232179174242e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 406.0,
+            "median": 406.0,
+            "min": 406.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.063987813,
+            "median": 0.061967850000000005,
+            "min": 0.059947887,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.002928919,
+            "median": 0.0029244924999999996,
+            "min": 0.002920066,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 100,
+      "n": 800,
+      "nnz": 7820,
+      "ratio": 8.0
+    },
+    "m200_r1": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.6128746347661305e-14,
+            "median": 3.6128746347661305e-14,
+            "min": 3.6128746347661305e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 4.0,
+            "median": 4.0,
+            "min": 4.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.018415278000020407,
+            "median": 0.01770670950000408,
+            "min": 0.016998140999987754,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 3.7969627442178915e-14,
+            "median": 3.7969627442178915e-14,
+            "min": 3.7969627442178915e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 25.0,
+            "min": 25.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.106,
+            "median": 0.0975,
+            "min": 0.089,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.142343972831114e-10,
+            "median": 2.142343972831114e-10,
+            "min": 2.142343972831114e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 324.0,
+            "median": 324.0,
+            "min": 324.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.028531299000007948,
+            "median": 0.026461967000003028,
+            "min": 0.02439263499999811,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 2.448871564280088e-13,
+            "median": 2.448871564280088e-13,
+            "min": 2.448871564280088e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.076788135,
+            "median": 0.06769615899999999,
+            "min": 0.058604183,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.067928796,
+            "median": 0.0601426375,
+            "min": 0.052356479,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 200,
+      "nnz": 3240,
+      "ratio": 1.0
+    },
+    "m200_r1.5": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.1587359666312177e-12,
+            "median": 1.1587359666312177e-12,
+            "min": 1.1587359666312177e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.16333583499999804,
+            "median": 0.1451236420000015,
+            "min": 0.12691144900000495,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.104190022997214e-14,
+            "median": 1.104190022997214e-14,
+            "min": 1.104190022997214e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 98.0,
+            "median": 98.0,
+            "min": 98.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.352,
+            "median": 0.311,
+            "min": 0.27,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 3.995899123125278e-09,
+            "median": 3.995899123125278e-09,
+            "min": 3.995899123125278e-09,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 497.0,
+            "median": 497.0,
+            "min": 497.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.07467454900000803,
+            "median": 0.07317796450000458,
+            "min": 0.07168138000000113,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.096113615295815e-13,
+            "median": 3.096113615295815e-13,
+            "min": 3.096113615295815e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 195.0,
+            "median": 195.0,
+            "min": 195.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.18184384499999998,
+            "median": 0.1623125435,
+            "min": 0.142781242,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.011350056,
+            "median": 0.0095961705,
+            "min": 0.007842285000000001,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 300,
+      "nnz": 5240,
+      "ratio": 1.5
+    },
+    "m200_r128": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.0011207665572875e-10,
+            "median": 1.0011207665572875e-10,
+            "min": 1.0011207665572875e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.842043512000032,
+            "median": 1.6564466775000142,
+            "min": 1.4708498429999963,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 4.922786206660267e-15,
+            "median": 4.922786206660267e-15,
+            "min": 4.922786206660267e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 26.0,
+            "median": 26.0,
+            "min": 26.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.676,
+            "median": 1.492,
+            "min": 1.308,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.1849095958329503e-12,
+            "median": 1.1849095958329503e-12,
+            "min": 1.1849095958329503e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1593.0,
+            "median": 1593.0,
+            "min": 1593.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 6.652069159999996,
+            "median": 6.167816360499998,
+            "min": 5.683563561,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 25600,
+      "nnz": 511240,
+      "ratio": 128.0
+    },
+    "m200_r16": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.691982011541867e-13,
+            "median": 2.691982011541867e-13,
+            "min": 2.691982011541867e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 17.0,
+            "median": 17.0,
+            "min": 17.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.4166970269999979,
+            "median": 0.39798068749999516,
+            "min": 0.3792643479999924,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.4210854715201802e-14,
+            "median": 1.4210854715201802e-14,
+            "min": 1.4210854715201802e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.265,
+            "median": 0.2305,
+            "min": 0.196,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 5.4646463497502166e-12,
+            "median": 5.4646463497502166e-12,
+            "min": 5.4646463497502166e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1091.0,
+            "median": 1091.0,
+            "min": 1091.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.5907549880000147,
+            "median": 0.5197496374999986,
+            "min": 0.4487442869999825,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 9.392486788327942e-14,
+            "median": 9.392486788327942e-14,
+            "min": 9.392486788327942e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1567.0,
+            "median": 1567.0,
+            "min": 1567.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.536919895,
+            "median": 1.350806733,
+            "min": 1.164693571,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.023984979,
+            "median": 0.022611955000000003,
+            "min": 0.021238931000000003,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 3200,
+      "nnz": 63240,
+      "ratio": 16.0
+    },
+    "m200_r2": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.4246302973582536e-13,
+            "median": 3.4246302973582536e-13,
+            "min": 3.4246302973582536e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 17.0,
+            "median": 17.0,
+            "min": 17.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.1989499620000288,
+            "median": 0.1726266220000099,
+            "min": 0.146303281999991,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 2.20093290233913e-14,
+            "median": 2.20093290233913e-14,
+            "min": 2.20093290233913e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 89.0,
+            "median": 89.0,
+            "min": 89.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.325,
+            "median": 0.28800000000000003,
+            "min": 0.251,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.4665416924207527e-13,
+            "median": 1.4665416924207527e-13,
+            "min": 1.4665416924207527e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 683.0,
+            "median": 683.0,
+            "min": 683.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.1376577450000127,
+            "median": 0.12691082800000686,
+            "min": 0.11616391100000101,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 5.00511414062718e-13,
+            "median": 5.00511414062718e-13,
+            "min": 5.00511414062718e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 248.0,
+            "median": 248.0,
+            "min": 248.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.111117993,
+            "median": 0.09818025749999999,
+            "min": 0.08524252199999999,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.010968594,
+            "median": 0.0101849605,
+            "min": 0.009401327000000001,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 400,
+      "nnz": 7240,
+      "ratio": 2.0
+    },
+    "m200_r256": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.5071710808552576e-11,
+            "median": 3.5071710808552576e-11,
+            "min": 3.5071710808552576e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 3.3615106700000297,
+            "median": 3.03814640100002,
+            "min": 2.7147821320000105,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 5.594909595323978e-15,
+            "median": 5.594909595323978e-15,
+            "min": 5.594909595323978e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 27.0,
+            "median": 27.0,
+            "min": 27.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 3.349,
+            "median": 3.0985,
+            "min": 2.848,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 3.0108191352991936e-11,
+            "median": 3.0108191352991936e-11,
+            "min": 3.0108191352991936e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1705.0,
+            "median": 1705.0,
+            "min": 1705.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 15.601672293000092,
+            "median": 14.260827573500052,
+            "min": 12.919982854000011,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 51200,
+      "nnz": 1023240,
+      "ratio": 256.0
+    },
+    "m200_r32": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.234641991365424e-12,
+            "median": 1.234641991365424e-12,
+            "min": 1.234641991365424e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.557329985000024,
+            "median": 0.48687915700000417,
+            "min": 0.4164283289999844,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 3.241851231905352e-14,
+            "median": 3.241851231905352e-14,
+            "min": 3.241851231905352e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 25.0,
+            "median": 25.0,
+            "min": 25.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.452,
+            "median": 0.4395,
+            "min": 0.427,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 7.524713275303869e-12,
+            "median": 7.524713275303869e-12,
+            "min": 7.524713275303869e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1307.0,
+            "median": 1307.0,
+            "min": 1307.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.3106232439999985,
+            "median": 1.1387301569999977,
+            "min": 0.9668370699999969,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.3042357417135189e-13,
+            "median": 1.3042357417135189e-13,
+            "min": 1.3042357417135189e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 3177.0,
+            "median": 3177.0,
+            "min": 3177.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 6.053302905,
+            "median": 5.741157405,
+            "min": 5.429011905,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.039357298,
+            "median": 0.03872394,
+            "min": 0.038090582,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 6400,
+      "nnz": 127240,
+      "ratio": 32.0
+    },
+    "m200_r4": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.0221631063808002e-10,
+            "median": 1.0221631063808002e-10,
+            "min": 1.0221631063808002e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 17.0,
+            "median": 17.0,
+            "min": 17.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.22579651000000922,
+            "median": 0.201002545999998,
+            "min": 0.1762085819999868,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.665334536937707e-14,
+            "median": 1.665334536937707e-14,
+            "min": 1.665334536937707e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 35.0,
+            "median": 35.0,
+            "min": 35.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.179,
+            "median": 0.16149999999999998,
+            "min": 0.144,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.948566139165157e-12,
+            "median": 1.948566139165157e-12,
+            "min": 1.948566139165157e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 826.0,
+            "median": 826.0,
+            "min": 826.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.2088828669999998,
+            "median": 0.19215365750000046,
+            "min": 0.17542444800000112,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 2.7929201575649033e-13,
+            "median": 2.7929201575649033e-13,
+            "min": 2.7929201575649033e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 412.0,
+            "median": 412.0,
+            "min": 412.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.168656137,
+            "median": 0.150249044,
+            "min": 0.13184195099999999,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.011214188,
+            "median": 0.0097863875,
+            "min": 0.008358587,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 800,
+      "nnz": 15240,
+      "ratio": 4.0
+    },
+    "m200_r512": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.9352234077427907e-13,
+            "median": 1.9352234077427907e-13,
+            "min": 1.9352234077427907e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 7.572881645999928,
+            "median": 6.919228962499943,
+            "min": 6.2655762789999585,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 7.260351151748613e-15,
+            "median": 7.260351151748613e-15,
+            "min": 7.260351151748613e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 24.0,
+            "median": 24.0,
+            "min": 24.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 7.746,
+            "median": 6.960000000000001,
+            "min": 6.174,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 0.6337748652704431,
+            "median": 0.3776496519438362,
+            "min": 0.12152443861722927,
+            "n": 2
+          },
+          "certified": 0,
+          "iterations": {
+            "max": 1975.0,
+            "median": 1775.0,
+            "min": 1575.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 30.066675488999977,
+            "median": 30.064030687000013,
+            "min": 30.06138588500005,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 102400,
+      "nnz": 2047240,
+      "ratio": 512.0
+    },
+    "m200_r64": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.962293045059838e-12,
+            "median": 3.962293045059838e-12,
+            "min": 3.962293045059838e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.9089800890000106,
+            "median": 0.7815205310000124,
+            "min": 0.6540609730000142,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 3.497548245207339e-15,
+            "median": 3.497548245207339e-15,
+            "min": 3.497548245207339e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 18.0,
+            "median": 18.0,
+            "min": 18.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.819,
+            "median": 0.703,
+            "min": 0.587,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 3.0257785067960973e-12,
+            "median": 3.0257785067960973e-12,
+            "min": 3.0257785067960973e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1564.0,
+            "median": 1564.0,
+            "min": 1564.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 3.1301161760000014,
+            "median": 2.6454743535000063,
+            "min": 2.160832531000011,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.002974702753853e-13,
+            "median": 1.002974702753853e-13,
+            "min": 1.002974702753853e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 6413.0,
+            "median": 6413.0,
+            "min": 6413.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 25.425304274,
+            "median": 22.640356699,
+            "min": 19.855409124,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.062992493,
+            "median": 0.056100121499999996,
+            "min": 0.049207749999999995,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 12800,
+      "nnz": 255240,
+      "ratio": 64.0
+    },
+    "m200_r8": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 3.8253121389308224e-13,
+            "median": 3.8253121389308224e-13,
+            "min": 3.8253121389308224e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.2740286370000149,
+            "median": 0.2442007925000098,
+            "min": 0.21437294800000473,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.9761969838327395e-14,
+            "median": 1.9761969838327395e-14,
+            "min": 1.9761969838327395e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 26.0,
+            "median": 26.0,
+            "min": 26.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.212,
+            "median": 0.20400000000000001,
+            "min": 0.196,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.0055807608376293e-11,
+            "median": 1.0055807608376293e-11,
+            "min": 1.0055807608376293e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 838.0,
+            "median": 838.0,
+            "min": 838.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.29359125999997104,
+            "median": 0.25547833349999394,
+            "min": 0.21736540700001683,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 5.828670879281732e-14,
+            "median": 5.828670879281732e-14,
+            "min": 5.828670879281732e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 782.0,
+            "median": 782.0,
+            "min": 782.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.414432409,
+            "median": 0.384678802,
+            "min": 0.35492519499999997,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.015061657,
+            "median": 0.014670536500000001,
+            "min": 0.014279416,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 200,
+      "n": 1600,
+      "nnz": 31240,
+      "ratio": 8.0
+    },
+    "m50_r1": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.6844885591812104e-15,
+            "median": 1.6844885591812104e-15,
+            "min": 1.6844885591812104e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 4.0,
+            "median": 4.0,
+            "min": 4.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.00147474699999961,
+            "median": 0.0013233259999889668,
+            "min": 0.0011719049999783238,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 5.696165388052266e-15,
+            "median": 5.696165388052266e-15,
+            "min": 5.696165388052266e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 8.0,
+            "median": 8.0,
+            "min": 8.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.017,
+            "median": 0.0145,
+            "min": 0.012,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 4.2453503734359896e-15,
+            "median": 4.2453503734359896e-15,
+            "min": 4.2453503734359896e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 69.0,
+            "median": 69.0,
+            "min": 69.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0014032720000010102,
+            "median": 0.001183841999987223,
+            "min": 0.0009644119999734357,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 1.658110865755696e-13,
+            "median": 1.658110865755696e-13,
+            "min": 1.658110865755696e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.006743890999999999,
+            "median": 0.0066562015,
+            "min": 0.006568512,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.0035941999999999997,
+            "median": 0.003590032,
+            "min": 0.003585864,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 50,
+      "nnz": 210,
+      "ratio": 1.0
+    },
+    "m50_r1.5": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.6862512072159533e-14,
+            "median": 1.6862512072159533e-14,
+            "min": 1.6862512072159533e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 9.0,
+            "median": 9.0,
+            "min": 9.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.003923491000023205,
+            "median": 0.003561928500012357,
+            "min": 0.003200366000001509,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.2768933135159168e-14,
+            "median": 1.0791237269725303e-14,
+            "min": 8.813541404291439e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 43.0,
+            "median": 42.5,
+            "min": 42.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.05,
+            "median": 0.049,
+            "min": 0.048,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.2178844388759636e-13,
+            "median": 1.2178844388759636e-13,
+            "min": 1.2178844388759636e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 97.0,
+            "median": 97.0,
+            "min": 97.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0015908510000031129,
+            "median": 0.0015040525000031835,
+            "min": 0.001417254000003254,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.5683622506192527e-13,
+            "median": 3.5683622506192527e-13,
+            "min": 3.5683622506192527e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 45.0,
+            "median": 45.0,
+            "min": 45.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.005501194,
+            "median": 0.005020261,
+            "min": 0.0045393280000000005,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.0011662539999999998,
+            "median": 0.0010711135,
+            "min": 0.000975973,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 75,
+      "nnz": 335,
+      "ratio": 1.5
+    },
+    "m50_r128": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 5.638279672241224e-11,
+            "median": 5.638279672241224e-11,
+            "min": 5.638279672241224e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 14.0,
+            "median": 14.0,
+            "min": 14.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.05538541300001043,
+            "median": 0.04959962600000445,
+            "min": 0.04381383899999847,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 6.257174626376002e-13,
+            "median": 6.257174626376002e-13,
+            "min": 6.257174626376002e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 23.0,
+            "median": 23.0,
+            "min": 23.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.1,
+            "median": 0.088,
+            "min": 0.076,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.2574894736466316e-11,
+            "median": 2.2574894736466316e-11,
+            "min": 2.2574894736466316e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 234.0,
+            "median": 234.0,
+            "min": 234.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.07696329800000967,
+            "median": 0.07646413050000511,
+            "min": 0.07596496300000055,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.2939727229765425e-11,
+            "median": 3.2939727229765425e-11,
+            "min": 3.2939727229765425e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 3197.0,
+            "median": 3197.0,
+            "min": 3197.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 1.730467752,
+            "median": 1.6541145225,
+            "min": 1.577761293,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.004850939,
+            "median": 0.004415256,
+            "min": 0.003979573,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 6400,
+      "nnz": 31960,
+      "ratio": 128.0
+    },
+    "m50_r16": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.5829926805612233e-12,
+            "median": 2.5829926805612233e-12,
+            "min": 2.5829926805612233e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.009888430999978937,
+            "median": 0.009035861499988584,
+            "min": 0.008183291999998232,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.4398667130775434e-14,
+            "median": 1.4398667130775434e-14,
+            "min": 1.4398667130775434e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.03,
+            "median": 0.028999999999999998,
+            "min": 0.028,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 6.3821050988376e-14,
+            "median": 6.3821050988376e-14,
+            "min": 6.3821050988376e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 203.0,
+            "median": 203.0,
+            "min": 203.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.010788496999964536,
+            "median": 0.010433918999982694,
+            "min": 0.010079341000000852,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.9745984281579026e-14,
+            "median": 3.9745984281579026e-14,
+            "min": 3.9745984281579026e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 383.0,
+            "median": 383.0,
+            "min": 383.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.047159388,
+            "median": 0.041546428999999996,
+            "min": 0.03593347,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.001516079,
+            "median": 0.001374354,
+            "min": 0.001232629,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 800,
+      "nnz": 3960,
+      "ratio": 16.0
+    },
+    "m50_r2": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.5584177599466046e-13,
+            "median": 1.5584177599466046e-13,
+            "min": 1.5584177599466046e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 11.0,
+            "median": 11.0,
+            "min": 11.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.004796017999979085,
+            "median": 0.004362756999990225,
+            "min": 0.0039294960000013646,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 7.549516567451008e-15,
+            "median": 7.549516567451008e-15,
+            "min": 7.549516567451008e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 46.0,
+            "median": 43.0,
+            "min": 40.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.071,
+            "median": 0.06,
+            "min": 0.049,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.028608804004668e-13,
+            "median": 2.028608804004668e-13,
+            "min": 2.028608804004668e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 108.0,
+            "median": 108.0,
+            "min": 108.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0021991389999698185,
+            "median": 0.0019931189999855548,
+            "min": 0.001787099000001291,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 3.690117181282449e-14,
+            "median": 3.690117181282449e-14,
+            "min": 3.690117181282449e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 47.0,
+            "median": 47.0,
+            "min": 47.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.006307883,
+            "median": 0.005334283,
+            "min": 0.004360683,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.0006755029999999999,
+            "median": 0.0006630869999999999,
+            "min": 0.000650671,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 100,
+      "nnz": 460,
+      "ratio": 2.0
+    },
+    "m50_r256": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.0853971410569231e-11,
+            "median": 1.0853971410569231e-11,
+            "min": 1.0853971410569231e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 12.0,
+            "median": 12.0,
+            "min": 12.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.09840311400000701,
+            "median": 0.09495968650000286,
+            "min": 0.09151625899999871,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 8.615829474432086e-13,
+            "median": 8.615829474432086e-13,
+            "min": 8.615829474432086e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 26.0,
+            "median": 25.0,
+            "min": 24.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.164,
+            "median": 0.161,
+            "min": 0.158,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.429740951879167e-10,
+            "median": 1.429740951879167e-10,
+            "min": 1.429740951879167e-10,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 288.0,
+            "median": 288.0,
+            "min": 288.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.18032321999999112,
+            "median": 0.17214156949999548,
+            "min": 0.16395991899999984,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 5.205108270131647e-11,
+            "median": 5.205108270131647e-11,
+            "min": 5.205108270131647e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 6494.0,
+            "median": 6494.0,
+            "min": 6494.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 8.029956766,
+            "median": 7.933231606,
+            "min": 7.8365064460000005,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.009981379,
+            "median": 0.0096357535,
+            "min": 0.009290128,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 12800,
+      "nnz": 63960,
+      "ratio": 256.0
+    },
+    "m50_r32": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 1.6111350334497242e-11,
+            "median": 1.6111350334497242e-11,
+            "min": 1.6111350334497242e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 12.0,
+            "median": 12.0,
+            "min": 12.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.016804755999999088,
+            "median": 0.016168006500009824,
+            "min": 0.01553125700002056,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 5.760220606320587e-13,
+            "median": 5.760220606320587e-13,
+            "min": 5.760220606320587e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 23.0,
+            "median": 23.0,
+            "min": 23.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.053,
+            "median": 0.0505,
+            "min": 0.048,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.194040687963905e-11,
+            "median": 1.194040687963905e-11,
+            "min": 1.194040687963905e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 216.0,
+            "median": 216.0,
+            "min": 216.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.02466533300000151,
+            "median": 0.022570205999997484,
+            "min": 0.020475078999993457,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 2.0340189591993632e-12,
+            "median": 2.0340189591993632e-12,
+            "min": 2.0340189591993632e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 795.0,
+            "median": 795.0,
+            "min": 795.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.129492712,
+            "median": 0.12390548750000001,
+            "min": 0.118318263,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.001536974,
+            "median": 0.0015260644999999999,
+            "min": 0.001515155,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 1600,
+      "nnz": 7960,
+      "ratio": 32.0
+    },
+    "m50_r4": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 5.715736088665209e-13,
+            "median": 5.715736088665209e-13,
+            "min": 5.715736088665209e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.005708312999999521,
+            "median": 0.005583130499978495,
+            "min": 0.005457947999957469,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 5.093567718444938e-14,
+            "median": 5.093567718444938e-14,
+            "min": 5.093567718444938e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 32.0,
+            "median": 31.5,
+            "min": 31.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.041,
+            "median": 0.04,
+            "min": 0.039,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 9.852395721967645e-14,
+            "median": 9.841225205276071e-14,
+            "min": 9.830054688584496e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 156.0,
+            "median": 156.0,
+            "min": 156.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.004206378999999316,
+            "median": 0.004049405999987599,
+            "min": 0.003892432999975881,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 5.689807850360824e-14,
+            "median": 5.689807850360824e-14,
+            "min": 5.689807850360824e-14,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 98.0,
+            "median": 98.0,
+            "min": 98.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.006040648,
+            "median": 0.0058259975,
+            "min": 0.005611347,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.00068261,
+            "median": 0.0006639875,
+            "min": 0.000645365,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 200,
+      "nnz": 960,
+      "ratio": 4.0
+    },
+    "m50_r512": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 6.623019334259264e-13,
+            "median": 6.608825122226979e-13,
+            "min": 6.594630910194696e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 15.0,
+            "median": 15.0,
+            "min": 15.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.2868036230000257,
+            "median": 0.27545206600001215,
+            "min": 0.2641005089999986,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 6.795961116286516e-15,
+            "median": 6.795961116286516e-15,
+            "min": 6.795961116286516e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 24.0,
+            "median": 24.0,
+            "min": 24.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.293,
+            "median": 0.2895,
+            "min": 0.286,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 6.640387862062846e-12,
+            "median": 6.640387862062846e-12,
+            "min": 6.640387862062846e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 301.0,
+            "median": 301.0,
+            "min": 301.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.4001772790000011,
+            "median": 0.39494541500000047,
+            "min": 0.3897135509999998,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {},
+          "certified": 0,
+          "iterations": {},
+          "runs": 2,
+          "seconds": {
+            "max": 30.0,
+            "median": 30.0,
+            "min": 30.0,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "RESOURCE_LIMIT"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 25600,
+      "nnz": 127960,
+      "ratio": 512.0
+    },
+    "m50_r64": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 4.0841670195856e-11,
+            "median": 4.0841670195856e-11,
+            "min": 4.0841670195856e-11,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.02843672000000197,
+            "median": 0.026184904500000883,
+            "min": 0.023933088999999796,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 7.41156003918182e-15,
+            "median": 7.41156003918182e-15,
+            "min": 7.41156003918182e-15,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 20.0,
+            "median": 20.0,
+            "min": 20.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.055,
+            "median": 0.0535,
+            "min": 0.052,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 2.8479609712651307e-13,
+            "median": 2.8479609712651307e-13,
+            "min": 2.8479609712651307e-13,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 224.0,
+            "median": 224.0,
+            "min": 224.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0394705540000011,
+            "median": 0.03774836000000015,
+            "min": 0.03602616599999919,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 7.382389737589285e-12,
+            "median": 7.382389737589285e-12,
+            "min": 7.382389737589285e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 1634.0,
+            "median": 1634.0,
+            "min": 1634.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.45483336,
+            "median": 0.44719920950000003,
+            "min": 0.43956505900000004,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.003097297,
+            "median": 0.0030733365,
+            "min": 0.003049376,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 3200,
+      "nnz": 15960,
+      "ratio": 64.0
+    },
+    "m50_r8": {
+      "arms": {
+        "ipm": {
+          "certificate_max": {
+            "max": 2.139154882977293e-12,
+            "median": 2.139154882977293e-12,
+            "min": 2.139154882977293e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 13.0,
+            "median": 13.0,
+            "min": 13.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.007880731000000196,
+            "median": 0.007496366999987458,
+            "min": 0.00711200299997472,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "newton": {
+          "certificate_max": {
+            "max": 1.2260328976458406e-12,
+            "median": 1.2260328976458406e-12,
+            "min": 1.2260328976458406e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 16.0,
+            "median": 16.0,
+            "min": 16.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.037,
+            "median": 0.032,
+            "min": 0.027,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "simplex": {
+          "certificate_max": {
+            "max": 1.3011912147119843e-12,
+            "median": 1.3011912147119843e-12,
+            "min": 1.3011912147119843e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 154.0,
+            "median": 154.0,
+            "min": 154.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.0077254650000000424,
+            "median": 0.006695516500020204,
+            "min": 0.005665568000040366,
+            "n": 2
+          },
+          "seed_seconds": {},
+          "statuses": [
+            "CERTIFIED"
+          ]
+        },
+        "twalker": {
+          "certificate_max": {
+            "max": 2.2610201803685012e-12,
+            "median": 2.2610201803685012e-12,
+            "min": 2.2610201803685012e-12,
+            "n": 2
+          },
+          "certified": 2,
+          "iterations": {
+            "max": 197.0,
+            "median": 197.0,
+            "min": 197.0,
+            "n": 2
+          },
+          "runs": 2,
+          "seconds": {
+            "max": 0.01526688,
+            "median": 0.0137140455,
+            "min": 0.012161211,
+            "n": 2
+          },
+          "seed_seconds": {
+            "max": 0.00077775,
+            "median": 0.0007701755000000001,
+            "min": 0.000762601,
+            "n": 2
+          },
+          "statuses": [
+            "CERTIFIED"
+          ]
+        }
+      },
+      "m": 50,
+      "n": 400,
+      "nnz": 1960,
+      "ratio": 8.0
+    }
+  },
+  "correctness": "original-data componentwise certificate",
+  "experiment": "seeded t-walker vs shipped Newton vs HiGHS simplex/IPM",
+  "parameters": {
+    "attempted_repeats": 3,
+    "density": 0.1,
+    "excluded_incomplete_repeats": [
+      2
+    ],
+    "m_list": [
+      50,
+      100,
+      200
+    ],
+    "ratios": [
+      1.0,
+      1.5,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      64.0,
+      128.0,
+      256.0,
+      512.0
+    ],
+    "repeats": 2,
+    "seconds": 30.0,
+    "seed": 20260810,
+    "selected_complete_repeats": [
+      0,
+      1
+    ],
+    "threads": 1,
+    "walker_pivots": 2000
+  },
+  "raw_runs_including_partial": 349,
+  "reproduction": {
+    "benchmark_harness_sha256": "657c62f016f39431b433ca980f3a5504924a0a2127d159eacbf311a711579bee",
+    "generator_sha256": "2cd86e66730118127d8a747993b60ac05736def2a7c936990ff73c72860e7d54",
+    "git_head": "b4b079df08f14f3d92dfefda5922dff8314f103c",
+    "highspy": "1.15.1",
+    "note": "The user stopped the third repeat to avoid redundant timing churn; repeats 0 and 1 are complete and repeat 2 is mechanically excluded.",
+    "numpy": "2.0.2",
+    "original_command": [
+      "experiments/bench_twalker_synth_nm.py",
+      "--m-list",
+      "50",
+      "100",
+      "200",
+      "--ratios",
+      "1",
+      "1.5",
+      "2",
+      "4",
+      "8",
+      "16",
+      "32",
+      "64",
+      "128",
+      "256",
+      "512",
+      "--density",
+      "0.10",
+      "--seed",
+      "20260810",
+      "--repeats",
+      "3",
+      "--seconds",
+      "30",
+      "--walker-pivots",
+      "2000",
+      "--max-consecutive-twalker-limits",
+      "0"
+    ],
+    "platform": "macOS-26.5-x86_64-i386-64bit",
+    "python": "3.9.6 (default, Apr 17 2026, 18:15:52) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "raw_runs": "agent_reports/raw/twalker_synth_nm/ratio_1_to_512_20260816/runs.jsonl",
+    "raw_runs_sha256": "57b16b8d8085d2539408598bb249c0c9fd4a1412ac42932d1a0ae8eb93c2be10",
+    "scipy": "1.13.1",
+    "solver_source_sha256": {
+      "cpp/twalker/Makefile": "e7160780477f406584847623fa5ad8965a203658010fc7b4a8b0dfb3ffe9233f",
+      "cpp/twalker/include/bound_core_face_solver.hpp": "a2777910870676d9db9e6d6ebb0cc867aef1e33a4fd013cf322d3aaaf9b61cac",
+      "cpp/twalker/include/dense_nnls.hpp": "89e9649464e5621d844f8cc1460b6460251ff0a17520263803c85304dfb9a2f2",
+      "cpp/twalker/include/face_solver.hpp": "ba06d74c765496edc6084842a879287ddf2b076a0bf81a41936208f2635aa606",
+      "cpp/twalker/include/fixture.hpp": "118904938cf440c41a2fe31ae3c9b4a14f01f1a22488f8761e191b5860b3a917",
+      "cpp/twalker/include/gram_face_solver.hpp": "72f2818da8b66452ccbad339c299f4a5b05d15ba04b4d697605e2ddbc562165f",
+      "cpp/twalker/include/highs_c_api_minimal.hpp": "f2c4682ba7c85aac400ccd05e49235591e542ae5c6228c0a8034809f7a3bcf7d",
+      "cpp/twalker/include/walker.hpp": "4725a83d86027462ff8747c07c410e9a2d5bb8faa6e185c0d9af6c8022cf5451",
+      "cpp/twalker/revised/augmented_kkt_basis.cpp": "a9af872f57993f71251d95bcbac2fd1dda9b64d92046fac33e575c92750f4cba",
+      "cpp/twalker/revised/augmented_kkt_basis.hpp": "5f3d0bca983a8a8a6cf2ae9bef131babbda2cbcfc9a5cdf126575896d747832d",
+      "cpp/twalker/revised/incremental_svd_probe.cpp": "353edcc8fceb122f3ec368cf5d1a6b279a42a04e1057f51737987db94a704753",
+      "cpp/twalker/revised/maintained_deficient_qr_solver.cpp": "21470e1e3db5b5b9a6b1414133409d8792041a023e54d6b93cf7024eb5ea5d1f",
+      "cpp/twalker/revised/maintained_deficient_qr_solver.hpp": "5400ed627c4660fc1734b80d80c6fafa030a3fb6b511561eabad64bbfd86b757",
+      "cpp/twalker/revised/maintained_rowspace_solver.cpp": "30a7271a362e7022fabb93ba3f51d40b2ed869a51dca996783169bf1b4e1446e",
+      "cpp/twalker/revised/maintained_rowspace_solver.hpp": "2649069504ea1a2d8561c761b8dcc26a051f47471ba8ec296f0147d6d265d49b",
+      "cpp/twalker/revised/maintained_svd_face_solver.cpp": "6e1e0fbdacd6924fc9df88b05b4c4397a13c069cbe203cc814d6fe8fd4c38104",
+      "cpp/twalker/revised/maintained_svd_face_solver.hpp": "944c101fa2474f0c35178cdf974c6af4b3eed2ff31969ef280cbb51d70172ed5",
+      "cpp/twalker/revised/revised_basis_probe.cpp": "3fcc4aed71cc84f4131d3228043d2f6731e109e5ef19872e26791469106d96f4",
+      "cpp/twalker/revised/revised_basis_solver.cpp": "d221036fcf1ae4e2e7ece8fb16f090691931113b2cdff8904fd36b5d75126ea9",
+      "cpp/twalker/revised/revised_basis_solver.hpp": "65e7f1dc8910aa7455301482683efae758e6b0ceffd3a21b0cd93b4a18e760d2",
+      "cpp/twalker/revised/revised_column_probe.cpp": "384f75029c5878f91849728d998d0c99a235c7e8b99025f88503cd7e78ceeb6b",
+      "cpp/twalker/revised/revised_column_solver.cpp": "2f566a66e9cedaf7b85556b31cce7fd322d9ae91943253153b6da17037e56831",
+      "cpp/twalker/revised/revised_column_solver.hpp": "f03311ff84bb3c8ab912b8ca19f41f35263c244826e34fb11b2e90bcd6cb1b45",
+      "cpp/twalker/src/bound_core_face_solver.cpp": "bbe644646572338667e2fbef14f84031caeae3a2442db4c0dd8b930b59f64961",
+      "cpp/twalker/src/dense_nnls.cpp": "2c3cbcd9e07ca0946aeecb1bb2dbd895af1a93c6b65807b29389d0a463bda98c",
+      "cpp/twalker/src/face_solver.cpp": "da1017caaab881b9a0486e8f6aef0c99f50dea1e42c931d9d4a691240899dad8",
+      "cpp/twalker/src/gram_face_solver.cpp": "4d83f209e478524a9cd30d35d1c4983ee038a17c8cbe203de39ec6d21ecec428",
+      "cpp/twalker/src/walker.cpp": "8acfb658963ed716856641feaef4e80b0587e18d9b2c3c2f403f15993624731b",
+      "cpp/twalker/tests/verify_walker.cpp": "91b4c2630cfbd5242a4f3416fb709faceb6f718876ffa78547c8d2e26fdc8a20"
+    },
+    "summarizer_sha256": "b774509d26637de1bb1ab62d6b619a6853eeb06af38d686298a4640b0af5dc34",
+    "verify_walker_sha256": "6a2fb95a2ce7326d96785ad8a1f4d2f72d04f35f8de4869d3131154e3244e5a2"
+  },
+  "runs": 264,
+  "selection_rule": "all and only structurally complete repeats; partial trailing repeats excluded",
+  "timed_regions": {
+    "newton": "shipped wall; includes equilibration",
+    "simplex_ipm": "HiGHS run only; presolve off; model build excluded",
+    "twalker": "internal C++ wall; includes native t=0 seed"
+  },
+  "warmup_discarded": "performed by benchmark harness; interrupted run did not serialize warmup rows"
+}

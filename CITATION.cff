@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "This work is in draft. It has no archived version and no DOI; please do not cite it as a fixed version yet."
+title: "Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down"
+type: software
+version: 0.1.0-draft
+authors:
+  - family-names: Kline
+    given-names: Jeffery
+repository-code: "https://github.com/jeff-kline/exact-penalty-lp-walker"
+url: "https://github.com/jeff-kline/exact-penalty-lp-walker"
+license: GPL-3.0-only
+abstract: >-
+  A linear program can be solved exactly by minimizing a quadratic penalty at a
+  finite penalty parameter. A Newton method built on that fact performs well
+  when constraints outnumber variables by roughly 5 to 10, and slows sharply
+  below about 2 or 3. This repository contains a complementary method, the
+  t-walker, which follows the exact dual projection path from face to face
+  rather than re-solving the penalty problem at a sequence of penalty values,
+  together with the C++ implementation, benchmark harness, canonical Netlib
+  fixtures, and frozen measurement records needed to check the reported
+  timings and accuracy under a single original-data certificate.
+keywords:
+  - linear programming
+  - quadratic penalty
+  - parametric quadratic programming
+  - active-set method
+  - Newton method
+  - projection path

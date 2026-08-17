@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "adlittle.twfx",
+  "format_version": 1,
+  "m": 97,
+  "model": "adlittle",
+  "n": 168,
+  "nnz": 653,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 111,
+  "sha256": "c1e6c4fd728ebb4421e7579011a881ffe64c407646a47f0238a2b17b406f6dea",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

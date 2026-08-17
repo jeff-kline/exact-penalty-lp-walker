@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "israel.twfx",
+  "format_version": 1,
+  "m": 142,
+  "model": "israel",
+  "n": 316,
+  "nnz": 2411,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 177,
+  "sha256": "eac350bc35f430a38c9f6d61c0c092739dc7e096b82c905db7c4003bd8cf298d",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

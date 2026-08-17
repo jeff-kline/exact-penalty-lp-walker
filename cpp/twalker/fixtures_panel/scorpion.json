@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "scorpion.twfx",
+  "format_version": 1,
+  "m": 358,
+  "model": "scorpion",
+  "n": 1026,
+  "nnz": 2884,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 676,
+  "sha256": "bf7cc9c123f43e22d4f6ecb66080d22496f609e4cfa48e68d945f635f3274ec7",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

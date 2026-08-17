@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "blend.twfx",
+  "format_version": 1,
+  "m": 83,
+  "model": "blend",
+  "n": 200,
+  "nnz": 872,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 94,
+  "sha256": "5be5e0c1813d38ec1ca2961cb446540209c5642a9730865ced147abcafd6837f",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

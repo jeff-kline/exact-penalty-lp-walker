@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "sc50b.twfx",
+  "format_version": 1,
+  "m": 48,
+  "model": "sc50b",
+  "n": 118,
+  "nnz": 218,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 48,
+  "sha256": "fdef3973384df1dfa700a190a565e49a573b70aa9feadc614741593cd0a68deb",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

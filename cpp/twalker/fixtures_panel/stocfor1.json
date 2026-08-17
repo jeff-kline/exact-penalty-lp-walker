@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "stocfor1.twfx",
+  "format_version": 1,
+  "m": 111,
+  "model": "stocfor1",
+  "n": 291,
+  "nnz": 831,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 112,
+  "sha256": "e1c0fb971f1b029ffa5f33625df6a4310feb755987b1bee9909ac22528968892",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

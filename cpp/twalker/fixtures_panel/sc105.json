@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "sc105.twfx",
+  "format_version": 1,
+  "m": 103,
+  "model": "sc105",
+  "n": 253,
+  "nnz": 505,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 112,
+  "sha256": "8541e932639532e1896debdb1bf9a6a2bb0139a6375dacf60042d769a274d73f",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

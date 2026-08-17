@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "lotfi.twfx",
+  "format_version": 1,
+  "m": 308,
+  "model": "lotfi",
+  "n": 556,
+  "nnz": 2327,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 311,
+  "sha256": "e6e0ca5962ea90bc3c43fbd890a0f333071795f3f1e65511e04854cef0aa9db1",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

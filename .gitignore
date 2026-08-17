@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# LaTeX build scratch.  The built PDF in output/pdf/ is tracked deliberately:
+# it is the primary artifact.  Everything under tmp/ is regenerable.
+tmp/
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+
+# Compiled C++ objects and binaries
+cpp/twalker/build/
+*.o
+*.dylib
+*.so
+
+# macOS
+.DS_Store

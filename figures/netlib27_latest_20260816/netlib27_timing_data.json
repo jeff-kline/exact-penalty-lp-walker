@@ -1,0 +1,1033 @@
+{
+  "artifact_production": {
+    "command": "python3 experiments/render_solver_timing_charts.py --netlib-only --output-dir agent_reports/figures/netlib27_latest_20260816",
+    "renderer": "experiments/render_solver_timing_charts.py",
+    "renderer_sha256": "fdb7b9bc1352be6f319e53d6575d887c6b0a89ac2731fd2f6e786fc214d98a4e",
+    "requirements": "requirements-benchmark.txt",
+    "requirements_sha256": "be981439d4a16b1b4d1ec31fdad858f5c3c99434bdce18dcadf987089757e8c5"
+  },
+  "mangasarian_frontier": {
+    "interpretation": "measured portfolio lower envelope, not an oracle-free dispatch policy",
+    "members": [
+      "twalker",
+      "wolfe_dual_twalker",
+      "newton"
+    ],
+    "rule": "per program, fastest certified default-seed t-walker, Wolfe-seed t-walker, or Newton"
+  },
+  "netlib": [
+    {
+      "ipm": {
+        "milliseconds": 7.0,
+        "status": "OPTIMAL"
+      },
+      "m": 97,
+      "mangasarian_frontier": {
+        "milliseconds": 61.498339,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "adlittle",
+      "n": 168,
+      "newton": {
+        "milliseconds": 180.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.731958762886598,
+      "simplex": {
+        "milliseconds": 2.9,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 61.498339,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 61.574122,
+        "seed_ms": 7.598251,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 2.3,
+        "status": "OPTIMAL"
+      },
+      "m": 32,
+      "mangasarian_frontier": {
+        "milliseconds": 7.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "afiro",
+      "n": 67,
+      "newton": {
+        "milliseconds": 7.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.09375,
+      "simplex": {
+        "milliseconds": 0.8,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 9.042552,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 17.930559,
+        "seed_ms": 0.83411,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 40.4,
+        "status": "OPTIMAL"
+      },
+      "m": 472,
+      "mangasarian_frontier": {
+        "milliseconds": 1222.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "bandm",
+      "n": 1082,
+      "newton": {
+        "milliseconds": 1222.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.292372881355932,
+      "simplex": {
+        "milliseconds": 52.3,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 3884.815039,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 3304.537735,
+        "seed_ms": 639.314271,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 15.100000000000001,
+        "status": "OPTIMAL"
+      },
+      "m": 262,
+      "mangasarian_frontier": {
+        "milliseconds": 164.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "beaconfd",
+      "n": 575,
+      "newton": {
+        "milliseconds": 164.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.1946564885496183,
+      "simplex": {
+        "milliseconds": 21.7,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 581.866732,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 525.306084,
+        "seed_ms": 95.096424,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 5.2,
+        "status": "OPTIMAL"
+      },
+      "m": 83,
+      "mangasarian_frontier": {
+        "milliseconds": 12.969927,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "wolfe_dual_twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "blend",
+      "n": 200,
+      "newton": {
+        "milliseconds": 19.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.4096385542168677,
+      "simplex": {
+        "milliseconds": 2.2,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 14.827586,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 12.969927,
+        "seed_ms": 9.993453,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 10.8,
+        "status": "OPTIMAL"
+      },
+      "m": 143,
+      "mangasarian_frontier": {
+        "milliseconds": 128.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "boeing2",
+      "n": 386,
+      "newton": {
+        "milliseconds": 128.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.699300699300699,
+      "simplex": {
+        "milliseconds": 8.1,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 740.40152,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 706.380191,
+        "seed_ms": 24.857748,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 27.900000000000002,
+        "status": "OPTIMAL"
+      },
+      "m": 249,
+      "mangasarian_frontier": {
+        "milliseconds": 684.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "brandy",
+      "n": 635,
+      "newton": {
+        "milliseconds": 684.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.5502008032128516,
+      "simplex": {
+        "milliseconds": 30.0,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "breakpoint face rejected: settle support cycle",
+        "milliseconds": 4502.230564,
+        "status": "DNF"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 4634.594678,
+        "seed_ms": 93.316073,
+        "status": "breakpoint face rejected: settle support cycle"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 28.1,
+        "status": "OPTIMAL"
+      },
+      "m": 353,
+      "mangasarian_frontier": {
+        "milliseconds": 716.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "capri",
+      "n": 899,
+      "newton": {
+        "milliseconds": 716.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.546742209631728,
+      "simplex": {
+        "milliseconds": 24.5,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "breakpoint face rejected: settle support cycle",
+        "milliseconds": 9002.696423,
+        "status": "DNF"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 6484.553741,
+        "seed_ms": 372.490692,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 43.4,
+        "status": "OPTIMAL"
+      },
+      "m": 534,
+      "mangasarian_frontier": {
+        "milliseconds": 383.253608,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "degen2",
+      "n": 1199,
+      "newton": {
+        "milliseconds": 710.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.245318352059925,
+      "simplex": {
+        "milliseconds": 43.8,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 383.253608,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 655.919559,
+        "seed_ms": 404.75002,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 26.8,
+        "status": "OPTIMAL"
+      },
+      "m": 282,
+      "mangasarian_frontier": {
+        "milliseconds": 712.636231,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "wolfe_dual_twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "e226",
+      "n": 538,
+      "newton": {
+        "milliseconds": 1361.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.9078014184397163,
+      "simplex": {
+        "milliseconds": 15.6,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 1297.626443,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 712.636231,
+        "seed_ms": 102.256966,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 52.900000000000006,
+        "status": "OPTIMAL"
+      },
+      "m": 1026,
+      "mangasarian_frontier": {
+        "milliseconds": 1482.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "fit1d",
+      "n": 2077,
+      "newton": {
+        "milliseconds": 1482.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.0243664717348926,
+      "simplex": {
+        "milliseconds": 63.0,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 35226.258665,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": true,
+        "milliseconds": 20000.0,
+        "seed_ms": null,
+        "status": "RESOURCE_LIMIT"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 30.0,
+        "status": "OPTIMAL"
+      },
+      "m": 301,
+      "mangasarian_frontier": {
+        "milliseconds": 261.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "grow7",
+      "n": 861,
+      "newton": {
+        "milliseconds": 261.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.86046511627907,
+      "simplex": {
+        "milliseconds": 7.1000000000000005,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "breakpoint face rejected: settle empty support",
+        "milliseconds": 7109.209392,
+        "status": "DNF"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 7346.271043,
+        "seed_ms": 210.186456,
+        "status": "breakpoint face rejected: settle empty support"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 15.4,
+        "status": "OPTIMAL"
+      },
+      "m": 142,
+      "mangasarian_frontier": {
+        "milliseconds": 260.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "israel",
+      "n": 316,
+      "newton": {
+        "milliseconds": 260.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.2253521126760565,
+      "simplex": {
+        "milliseconds": 10.0,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 874.564331,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 686.548067,
+        "seed_ms": 38.104549,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 5.3,
+        "status": "OPTIMAL"
+      },
+      "m": 41,
+      "mangasarian_frontier": {
+        "milliseconds": 11.372851,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "kb2",
+      "n": 109,
+      "newton": {
+        "milliseconds": 53.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.658536585365854,
+      "simplex": {
+        "milliseconds": 1.5,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 11.372851,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 15.258083,
+        "seed_ms": 6.070119,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 19.599999999999998,
+        "status": "OPTIMAL"
+      },
+      "m": 308,
+      "mangasarian_frontier": {
+        "milliseconds": 539.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "lotfi",
+      "n": 556,
+      "newton": {
+        "milliseconds": 539.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.8051948051948052,
+      "simplex": {
+        "milliseconds": 25.8,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 16394.5805,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 13537.824334,
+        "seed_ms": 90.630734,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 9.2,
+        "status": "OPTIMAL"
+      },
+      "m": 180,
+      "mangasarian_frontier": {
+        "milliseconds": 40.229985,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "wolfe_dual_twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "recipe",
+      "n": 433,
+      "newton": {
+        "milliseconds": 44.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.4055555555555554,
+      "simplex": {
+        "milliseconds": 2.5,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 53.811786,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 40.229985,
+        "seed_ms": 18.869882,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 4.6,
+        "status": "OPTIMAL"
+      },
+      "m": 103,
+      "mangasarian_frontier": {
+        "milliseconds": 20.692182,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "sc105",
+      "n": 253,
+      "newton": {
+        "milliseconds": 48.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.4563106796116503,
+      "simplex": {
+        "milliseconds": 2.7,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 20.692182,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 21.574195,
+        "seed_ms": 11.799415,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 8.9,
+        "status": "OPTIMAL"
+      },
+      "m": 203,
+      "mangasarian_frontier": {
+        "milliseconds": 90.294531,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "sc205",
+      "n": 499,
+      "newton": {
+        "milliseconds": 164.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.458128078817734,
+      "simplex": {
+        "milliseconds": 6.5,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 90.294531,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 97.982559,
+        "seed_ms": 63.501932,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 2.7,
+        "status": "OPTIMAL"
+      },
+      "m": 48,
+      "mangasarian_frontier": {
+        "milliseconds": 5.50618,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "sc50a",
+      "n": 118,
+      "newton": {
+        "milliseconds": 23.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.4583333333333335,
+      "simplex": {
+        "milliseconds": 0.9,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 5.50618,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 6.292526,
+        "seed_ms": 2.278455,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 3.0,
+        "status": "OPTIMAL"
+      },
+      "m": 48,
+      "mangasarian_frontier": {
+        "milliseconds": 4.293954,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "sc50b",
+      "n": 118,
+      "newton": {
+        "milliseconds": 18.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.4583333333333335,
+      "simplex": {
+        "milliseconds": 0.8,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 4.293954,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 5.872898,
+        "seed_ms": 2.74321,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 8.8,
+        "status": "OPTIMAL"
+      },
+      "m": 140,
+      "mangasarian_frontier": {
+        "milliseconds": 37.944611,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "scagr7",
+      "n": 353,
+      "newton": {
+        "milliseconds": 170.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.5214285714285714,
+      "simplex": {
+        "milliseconds": 4.8999999999999995,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 37.944611,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 63.809886,
+        "seed_ms": 35.357285,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 14.1,
+        "status": "OPTIMAL"
+      },
+      "m": 358,
+      "mangasarian_frontier": {
+        "milliseconds": 94.164857,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "scorpion",
+      "n": 1026,
+      "newton": {
+        "milliseconds": 283.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.8659217877094973,
+      "simplex": {
+        "milliseconds": 8.4,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 94.164857,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 194.789269,
+        "seed_ms": 156.782315,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 35.2,
+        "status": "OPTIMAL"
+      },
+      "m": 480,
+      "mangasarian_frontier": {
+        "milliseconds": 949.4085,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "sctap1",
+      "n": 900,
+      "newton": {
+        "milliseconds": 1068.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.875,
+      "simplex": {
+        "milliseconds": 17.9,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 949.4085,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 1141.164655,
+        "seed_ms": 206.491301,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 24.0,
+        "status": "OPTIMAL"
+      },
+      "m": 225,
+      "mangasarian_frontier": {
+        "milliseconds": 188.83209,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "wolfe_dual_twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "share1b",
+      "n": 431,
+      "newton": {
+        "milliseconds": 445.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.9155555555555555,
+      "simplex": {
+        "milliseconds": 8.0,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 438.401208,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 188.83209,
+        "seed_ms": 101.556748,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 6.1000000000000005,
+        "status": "OPTIMAL"
+      },
+      "m": 79,
+      "mangasarian_frontier": {
+        "milliseconds": 96.71875,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "share2b",
+      "n": 188,
+      "newton": {
+        "milliseconds": 97.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.3797468354430378,
+      "simplex": {
+        "milliseconds": 2.3,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 96.71875,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 127.268257,
+        "seed_ms": 9.204766,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 51.9,
+        "status": "OPTIMAL"
+      },
+      "m": 1458,
+      "mangasarian_frontier": {
+        "milliseconds": 1371.0,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "newton",
+        "status": "CERTIFIED"
+      },
+      "model": "ship04s",
+      "n": 2214,
+      "newton": {
+        "milliseconds": 1371.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 1.5185185185185186,
+      "simplex": {
+        "milliseconds": 38.5,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 9160.476398,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 11959.083781,
+        "seed_ms": 3747.51301,
+        "status": "CERTIFIED"
+      }
+    },
+    {
+      "ipm": {
+        "milliseconds": 6.7,
+        "status": "OPTIMAL"
+      },
+      "m": 111,
+      "mangasarian_frontier": {
+        "milliseconds": 52.139147,
+        "rule": "fastest certified of default-seed t-walker, Wolfe-seed t-walker, and shipped Newton",
+        "source": "wolfe_dual_twalker",
+        "status": "CERTIFIED"
+      },
+      "model": "stocfor1",
+      "n": 291,
+      "newton": {
+        "milliseconds": 82.0,
+        "status": "CERTIFIED"
+      },
+      "ratio": 2.6216216216216215,
+      "simplex": {
+        "milliseconds": 5.0,
+        "status": "OPTIMAL"
+      },
+      "twalker": {
+        "detail": "CERTIFIED",
+        "milliseconds": 54.448413,
+        "status": "CERTIFIED"
+      },
+      "wolfe_dual_twalker": {
+        "detail": "opt-in triangular fixed-t seed; unchanged walker",
+        "lower_bound": false,
+        "milliseconds": 52.139147,
+        "seed_ms": 43.280276,
+        "status": "CERTIFIED"
+      }
+    }
+  ],
+  "protocol": {
+    "comparability": "different sessions; use for order-of-magnitude program-level comparison, not sub-10% claims",
+    "highs": "cached 2026-08-09 baseline; one thread; presolve off; model build excluded; solver version was not recorded",
+    "newton": "shipped default staged Newton; per-program median of five runs",
+    "twalker": "default native t=0 seed; internal wall; one run; long-budget fit1d and lotfi overrides",
+    "wolfe_dual_twalker": "opt-in triangular fixed-t seed followed by unchanged t-walker; full 27-program one-thread sweep; 20-second per-program limit"
+  },
+  "schema": "netlib-solver-timing-chart-data-v1",
+  "shape": {
+    "maximum": 2.8659217877094973,
+    "median": 2.4055555555555554,
+    "minimum": 1.5185185185185186,
+    "ratio": "converted constraints / variables"
+  },
+  "sources": {
+    "highs": {
+      "path": "agent_reports/raw/highs_baselines_20260809/hnp_baseline_results_20260809.jsonl",
+      "sha256": "72af7d807fe35c8407f0ca47c4c2fd8aee4c6281a234acea6f2da6c611c7065f"
+    },
+    "newton": {
+      "path": "agent_reports/raw/noise_floor/20260809T202623Z-pid60355/runs.jsonl",
+      "sha256": "438c8d0556a35794a07c69520e313dc2f1fe5f850f2887a66bbb42817d22d77f"
+    },
+    "twalker_base": {
+      "path": "agent_reports/raw/twalker_cpp/native_seed_t0_netlib27_full_budgeted_20260816.json",
+      "sha256": "dbfb43b6116bc21e94c95dad85a4d1e864fbbeea034e5a068ea17e75c29d7a7c"
+    },
+    "twalker_fit1d": {
+      "path": "agent_reports/raw/twalker_cpp/native_seed_t0_fit1d_long90_20260816.json",
+      "sha256": "fcac9763e00dd7a23e490df563b22fba6ac4c181abda0e45dde066fca9007842"
+    },
+    "twalker_lotfi": {
+      "path": "agent_reports/raw/twalker_cpp/native_seed_t0_fit1d_lotfi_long_20260816.json",
+      "sha256": "f11a151a4f9d2b12b5b99f76644c13aec5c484e09e417135f915579035898d2c"
+    },
+    "wolfe_dual_twalker": {
+      "path": "agent_reports/raw/wolfe_dual_twalker_netlib27_161.json",
+      "sha256": "667753e89738e84f35d099e625839fc54a0a221a7d279064987c3397da11cdc0"
+    }
+  },
+  "units": "milliseconds"
+}

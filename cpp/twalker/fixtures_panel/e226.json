@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "e226.twfx",
+  "format_version": 1,
+  "m": 282,
+  "model": "e226",
+  "n": 538,
+  "nnz": 3798,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 335,
+  "sha256": "159884cd8b5f3cff08c1038256db8ea1bb9c4d805e8565fe34387c181dc03e4c",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

@@ -1,0 +1,88 @@
+NOTICE
+======
+
+Copyright 2026 Jeffery Kline.
+
+Original source, text, and figures in this repository are licensed under the
+GNU General Public License, version 3 only (GPL-3.0-only). The full text is in
+LICENSE.
+
+
+Commercial licensing
+--------------------
+
+The GPL permits commercial use. What it requires is that anyone who
+distributes a derivative work also release that work's source under the GPL.
+
+This repository's original code is additionally available under separate
+commercial terms, for use where those copyleft obligations are unwanted.
+Contact Jeff Kline to discuss a commercial license.
+
+One limit on what such a license can convey. Building the C++ walker links
+against SuiteSparse (SPQR and CHOLMOD), which carries its own copyleft
+obligations independent of anything granted here. A commercial licensee would
+also need either a separate SuiteSparse commercial license from its author or
+a substitute factorization backend. A grant from this repository covers only
+this repository's original work.
+
+
+Third-party components
+----------------------
+
+None of the following are vendored into this repository. They are external
+build or runtime dependencies, listed with the versions used to produce the
+measurements recorded in `records/`.
+
+SuiteSparse 7.13.0 (SPQR, CHOLMOD, SuiteSparse_config)
+    https://people.engr.tamu.edu/davis/suitesparse.html
+    Copyright Timothy A. Davis and contributors.
+    Modules are licensed separately; consult the SuiteSparse LICENSE file for
+    the authoritative per-module terms. SPQR, which this project links, states:
+    "This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the Free
+    Software Foundation; either version 2 of the License, or (at your option)
+    any later version," and further notes that "SPQR is available under
+    alternate licenses, contact T. Davis for details."
+    GPL-2.0-or-later is upgrade-compatible with the GPL-3.0-only terms above.
+
+HiGHS 1.15.1 (via the highspy wheel)
+    https://highs.dev/
+    MIT License.
+    Used as the benchmark reference solver, and by the walker for optional
+    endpoint selection and terminal face repair.
+    `cpp/twalker/include/highs_c_api_minimal.hpp` is an original, hand-written
+    declaration of the HiGHS public C API entry points this project calls. It
+    is not copied from the HiGHS sources.
+
+OSQP 1.0.0
+    https://osqp.org/
+    Apache License 2.0.
+
+Apple Accelerate / vecLib (BLAS and LAPACK)
+    Operating-system framework, used under the terms that accompany macOS.
+
+NumPy, SciPy, matplotlib, Pillow, Clarabel, PySPQR
+    See `requirements.txt` for pinned versions and each project's own license.
+
+
+Benchmark data
+--------------
+
+`netlib/` contains MPS files from the Netlib linear programming test set,
+a long-standing public benchmark collection distributed by Netlib
+(https://www.netlib.org/lp/). These files are not original to this repository
+and are included unmodified so that the reported measurements can be
+reproduced. They retain whatever terms attach to the original collection.
+
+`cpp/twalker/fixtures_panel/` contains compact binary and JSON re-encodings of
+those same Netlib models, produced by `cpp/twalker/tools/export_fixtures.py`.
+They are a format conversion of the Netlib data, not new data.
+
+
+AI assistance
+-------------
+
+Large language models substantially assisted with drafting code, running
+bounded experiments, auditing claims, and editing the accompanying technical
+note. They are neither authors nor referees. Jeff Kline directed the work and
+is responsible for the claims released under his name.

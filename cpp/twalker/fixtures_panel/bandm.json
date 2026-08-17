@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "bandm.twfx",
+  "format_version": 1,
+  "m": 472,
+  "model": "bandm",
+  "n": 1082,
+  "nnz": 5460,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 554,
+  "sha256": "4fe8e4fc61b85fe062128c2595abb5fc009e88cd4148b48e01cae437918b7b41",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

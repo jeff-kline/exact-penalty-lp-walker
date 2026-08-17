@@ -1,0 +1,15 @@
+# Pinned benchmark and rendering environment (Python 3.9.6).
+#
+# Required by every documented reproduction command.
+highspy==1.15.1
+matplotlib==3.9.4
+numpy==2.0.2
+scipy==1.13.1
+pillow==11.3.0
+clarabel==0.11.1
+
+# Optional.  PySPQR supplies the sparse rank-revealing QR used by the
+# sparse face solver; experiments/sparse_face_solver.py falls back to a
+# dense LAPACK path when it is absent, at a measurable cost on the larger
+# Netlib faces.  It needs a SuiteSparse installation to build.
+# sparseqr==1.6.0

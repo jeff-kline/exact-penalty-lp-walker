@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "scagr7.twfx",
+  "format_version": 1,
+  "m": 140,
+  "model": "scagr7",
+  "n": 353,
+  "nnz": 922,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 158,
+  "sha256": "5f4719362ae6c57472e94045e94077f521bb28d21e087193d438da2607b660c8",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "fit1d.twfx",
+  "format_version": 1,
+  "m": 1026,
+  "model": "fit1d",
+  "n": 2077,
+  "nnz": 16482,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 1038,
+  "sha256": "e7473bbc5411e77edb0074d1695eaad1c4d44b044089f77f9fdd14ccb2ec5385",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}

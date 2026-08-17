@@ -1,0 +1,17 @@
+{
+  "captured_breakpoints": 0,
+  "face_count": 1,
+  "face_solve_count": -1,
+  "fixture": "boeing2.twfx",
+  "format_version": 1,
+  "m": 143,
+  "model": "boeing2",
+  "n": 386,
+  "nnz": 1536,
+  "oracle": "experiments.exp23_path_primal_dual.piece_y",
+  "oracle_cutoff": "s0 * max(shape) * eps",
+  "post_seed_support_size": 201,
+  "sha256": "c4491febab4edebb555689f253a763e23ca55dbbedd90c2dd6047013325a57d6",
+  "walk_pivots": 0,
+  "walk_status": "initial-only"
+}
