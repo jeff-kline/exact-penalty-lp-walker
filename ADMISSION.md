@@ -25,7 +25,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 |---|---|---|
 | P1 — prior work and credit | **PASS, bounded** | The note credits Mangasarian–Meyer (1979), Mangasarian (1984, 2004), Madsen–Nielsen–Pinar (1996), Pinar (1996, 1997), Best (1996), Bock et al. (2010), Ferreau et al. (2014), and Bartels (1980), and states explicitly that no new path or homotopy principle is claimed. A citation lane verified that all 14 citation keys resolve, no entry is orphaned or duplicated, and all 14 bibliography entries match authoritative records. A separate lane re-derived the change of variables showing Pinar's perturbed optimizer *is* the path used here, and confirmed the algebra is exact — so the novelty concession rests on a correct derivation. A bounded prior-art search over the four claimed contributions found no mechanism-level collision. **That is a source-negative result over a non-exhaustive search and is not a claim of global novelty.** One caveat could not be closed here: whether Pinar (1997) perturbs by exactly `(ε/2)‖z‖²` is a bibliographic fact requiring the original paper, which is not in this checkout. |
 | A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, eleven material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte from independent checkouts. Four documented reproduction paths execute. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over all 213 tracked files exist and verify. Blocking: no tag, no archive, no DOI, and one reproduction gap named below. |
+| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte from independent checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
 ## Claim boundary
 
@@ -46,13 +46,28 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 
 ## Named residual risks
 
-- **The Netlib headline is not re-derivable from this repository.** The record
-  `records/twalker_cpp/native_seed_t0_netlib27_full_budgeted_20260816.json`
-  supplies the 9.60 s frontier figure, and no script here regenerates it. The
-  figures render from it faithfully, and the C++ walker that produced it is
-  present, but the measuring harness itself is not. Until that harness is
-  identified and shipped, the Netlib timings are *frozen evidence*, not a
-  reproducible measurement, and R1's reproduction row cannot reach PASS.
+- **The Netlib headline reproduces to about 1%, on a rebuilt walker whose
+  internal path has since changed on some models.** The producing harness was
+  missing when this release was assembled; it now ships as
+  `experiments/bench_twalker_netlib_panel.py`. Re-running it against a freshly
+  built `verify_walker` and recomputing the frontier gives **9.712 s against
+  the published 9.596 s, a 1.2% difference**.
+
+  Two qualifications. First, the current build does not reproduce the frozen
+  record's *internal* counters on 13 of 24 comparable models — pivot counts,
+  seed iterations, and accepted supports differ, and `capri` now certifies
+  where the record shows a settle-support cycle. Since two independent reruns
+  agree with each other on all 26 models, and a batched invocation agrees too,
+  the walker is deterministic on a fixed build; the divergence is against the
+  older code state that produced the record, not run-to-run noise. Second, one
+  model regressed sharply: `beaconfd` takes 11x longer than the record, tracking
+  a seed-iteration count that rose from 11 to 300. It does not affect the
+  headline, because Newton wins `beaconfd` on the frontier.
+
+  The frozen records therefore remain the published evidence, and the note's
+  existing instruction to read Netlib times at order-of-magnitude precision is
+  the right one. What is now also true is that a reader can rebuild the walker
+  and land within about 1% of the published total.
 - The synthetic generator varies aspect ratio and planted support geometry
   together, so the panel establishes a regime rather than isolating a cause.
 - The prototype is hybrid: an in-process Newton method builds the default
@@ -96,7 +111,11 @@ provider zipball.
    ran on commit `40a4f58`. Dispositions are recorded in `CORRECTIONS.md`.
    Because several were claim edits, A1 restarts from the corrected text and a
    confirming pass is still required.
-2. Resolve or formally accept the Netlib reproduction gap named above.
+2. ~~Resolve or formally accept the Netlib reproduction gap.~~ Resolved: the
+   missing producer was reconstructed and the frontier reproduces to 1.2%.
+   A separate question remains open for the author, and is a research matter
+   rather than a release blocker: `beaconfd`'s seed now takes 300 iterations
+   where the frozen record shows 11.
 3. Replace the `CITATION.cff` `message` with publication-safe, timeless
    wording — Zenodo imports it verbatim into the permanent record.
 4. ~~Decide whether `paper/twalker_progress_note.md` ships.~~ Done: removed.

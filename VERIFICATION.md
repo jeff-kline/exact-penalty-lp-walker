@@ -147,6 +147,43 @@ tolerance.
 
 ---
 
+### 6. Netlib walker panel, and how far it reproduces
+
+```sh
+.venv/bin/python experiments/bench_twalker_netlib_panel.py \
+    --output records/twalker_cpp/netlib27_rerun.json
+```
+
+Re-derives: the walker's status, certificate, and timing on all 27 panel
+models, from scratch, one `verify_walker` subprocess per model. This **does**
+run the solver and needs the built binary.
+
+Observed: 24 of 27 certified. Substituting these times into the frontier where
+a walker variant won gives **9.712 s against the published 9.596 s, +1.2%.**
+
+Determinism was measured, not assumed:
+
+| Comparison | Structurally identical |
+|---|---|
+| Two independent per-model runs | **26 / 26** |
+| Batched single invocation vs per-model | **26 / 26** |
+| Current build vs the frozen 2026-08-16 record | **11 / 24** |
+
+So the walker's path is deterministic on a fixed build. The divergence is
+against the older code state that produced the frozen record: pivot counts,
+seed iterations, and accepted supports differ on 13 models, and `capri` now
+certifies where the record shows a settle-support cycle.
+
+Per-model wall-time ratios against the frozen record have **median 0.96x**,
+with 21 of 24 models inside 2x. The exceptions are `sc50a` and `sc50b`, which
+finish in single-digit milliseconds where a 3 ms jitter is a large ratio, and
+`beaconfd`, which is **11x slower** than the record with its seed iteration
+count risen from 11 to 300. That last one is a genuine regression in the
+current build. It does not move the headline, because Newton wins `beaconfd`
+on the frontier, but it is not measurement noise and is recorded as such.
+
+---
+
 ### 5. Deterministic document build
 
 ```sh
@@ -176,14 +213,13 @@ These are documented for completeness. Each is a real gap, not an oversight.
 - **`experiments/bench_common_accuracy.py`** — regenerates the accuracy table
   by re-running every solver and crossover. Not executed here; the accuracy
   figure was rendered from the frozen table instead.
-- **The Netlib walker timing harness** — no script in this repository produces
-  `records/twalker_cpp/native_seed_t0_netlib27_full_budgeted_20260816.json`,
-  which is the source of the 9.60 s frontier. The record is present and the
-  figures render from it correctly, and the C++ walker that produced it is
-  present, but the measuring harness is not. **The Netlib timings are frozen
-  evidence, not a measurement this repository can reproduce.** This is recorded
-  as a named residual risk in `ADMISSION.md` and blocks R1's reproduction row
-  from reaching PASS.
+- **`experiments/bench_twalker_netlib_panel.py`** now exists and was run; see
+  §6 below. An earlier version of this file said no script in the repository
+  produced the Netlib walker record and that the timings were "not a
+  measurement this repository can reproduce." That was too strong: the
+  measuring apparatus (`verify_walker`) was always present, and only the loop
+  around it was missing. It has been reconstructed and the frontier reproduces
+  to 1.2%.
 - **`experiments/bench_twalker_synth_nm.py`** — the synthetic timing producer
   is shipped but was not re-executed; the synthetic figures were rendered from
   the frozen summary.
