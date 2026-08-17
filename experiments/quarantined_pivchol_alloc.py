@@ -148,7 +148,7 @@ Canonical invocations -- thread env vars MUST be set before python starts::
     env PYTHONPYCACHEPREFIX=/tmp/fable_lp_pycache OMP_NUM_THREADS=1 \\
       OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \\
       NUMEXPR_NUM_THREADS=1 \\
-      ~/.venvs/claude/bin/python experiments/quarantined_pivchol_alloc.py \\
+      .venv/bin/python experiments/quarantined_pivchol_alloc.py \\
         --differential --models afiro sc50a adlittle beaconfd scorpion
 
     ... experiments/quarantined_pivchol_alloc.py --self-check

@@ -63,10 +63,11 @@ back first to an explicitly labelled supporting-face simplex crossover when
 optional ``highspy`` and a certified projection point are available, then to
 the direct HiGHS dual-simplex solve.  These are ordinary LP escape branches,
 not path successes.  Every success, including a terminal affine piece, must
-pass a separate componentwise backward-error certificate for the original LP.
+pass a separate original-data KKT certificate for the original LP, with
+componentwise scaling on the primal and dual residuals.
 Set ``fallback=False`` to require path-only success.
 
-Run:  ~/.venvs/claude/bin/python exp23_path_primal_dual.py
+Run:  .venv/bin/python exp23_path_primal_dual.py
 """
 
 import numpy as np

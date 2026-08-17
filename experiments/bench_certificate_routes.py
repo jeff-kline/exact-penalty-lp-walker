@@ -80,7 +80,7 @@ than pretends):
     env PYTHONPYCACHEPREFIX=/tmp/fable_lp_pycache \
       OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
       VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
-      ~/.venvs/claude/bin/python experiments/bench_certificate_routes.py \
+      .venv/bin/python experiments/bench_certificate_routes.py \
       --models ship04s --repeats 6
 """
 

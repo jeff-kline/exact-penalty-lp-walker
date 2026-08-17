@@ -123,7 +123,7 @@ Self-check (correctness only, no timing):
     env PYTHONPYCACHEPREFIX=/tmp/fable_lp_pycache OMP_NUM_THREADS=1 \
       OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
       NUMEXPR_NUM_THREADS=1 \
-      ~/.venvs/claude/bin/python experiments/quarantined_speedups.py --self-check
+      .venv/bin/python experiments/quarantined_speedups.py --self-check
 """
 
 from __future__ import annotations

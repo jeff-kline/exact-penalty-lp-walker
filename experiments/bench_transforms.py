@@ -150,7 +150,7 @@ Canonical invocation (thread env vars MUST be set before python starts):
     env PYTHONPYCACHEPREFIX=/tmp/fable_lp_pycache \
       OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
       VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
-      ~/.venvs/claude/bin/python experiments/bench_transforms.py --repeats 3
+      .venv/bin/python experiments/bench_transforms.py --repeats 3
 """
 
 from __future__ import annotations

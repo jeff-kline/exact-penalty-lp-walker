@@ -135,7 +135,7 @@ SHA-256 of ``(B, b, d)`` so reproduction can be verified byte for byte.
 CLI
 ---
     # one instance, self-test it, print its census
-    ~/.venvs/claude/bin/python experiments/synth_nm.py \
+    .venv/bin/python experiments/synth_nm.py \
         --m 100 --ratio 10 --density 0.10 --seed 20260810 --check
 
     # explicit n instead of a ratio, and save it
