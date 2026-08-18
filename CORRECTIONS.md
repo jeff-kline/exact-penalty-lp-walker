@@ -387,6 +387,15 @@ Corrections made during preparation, before any public version existed:
   quoted in prose, so it passed 6/0/0 with the record stale — a gap worth
   knowing about when reading a green audit.
 
+- **2026-08-17 — two verification rows carried a number without the scope that
+  makes it true.** `VERIFICATION.md` §1 listed "Max cell speedup 11.76x" and
+  "Min cell speedup 1.69x" with no ratio qualifier, while the median row above
+  them was correctly labelled "ratio <= 2". Over all 24 synthetic cells the
+  minimum is 1.0000x, on five cells at ratio 8 and above where Newton wins
+  outright. The note's own sentence scopes the range to ratios at most 2 and is
+  correct as written; only the verification table was ambiguous. Both rows are
+  now labelled and the all-cell minimum is stated alongside.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

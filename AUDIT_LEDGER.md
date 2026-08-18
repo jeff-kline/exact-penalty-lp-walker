@@ -23,6 +23,8 @@ of them agreed on the same wrong answer.
 
 | 10 | 2026-08-17 | `4942f81` | external reviewer | Component-test disposition, coverage floors, citation metadata | Reproduced all three verifiers, both deliberately failing floors, and the clean draft audit. Accepted the `share1b` disposition as a documented smoke-test policy and corrected its description from "wrong property" to *miscalibrated and incomplete*. Found the determinism record still quoting the pre-P1 PDF hash, which the mechanical audit cannot catch because it does not read hashes out of prose |
 
+| 11 | 2026-08-17 | `dedc0b4` | primary agent, **self-check — weakest evidence in this table** | A1 confirming pass: every quantitative and scope claim in the abstract, paper, README, `CITATION.cff`, and `ADMISSION.md`, recomputed against the frozen records rather than cross-read | 24 of 25 checked claims reproduce exactly. **A1 does not close.** One high-severity finding: the abstract's "Mangasarian *first* built a Newton LP method from a quadratic penalty" is contradicted by §5 of the same paper and by entry 9's own report, which records Pinar (1996) as already giving a finite modified-Newton penalty algorithm. Three lower items on scope labels and qualifier placement. One fixed here; the rest touch author prose and are referred |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

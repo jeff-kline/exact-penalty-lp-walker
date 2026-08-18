@@ -109,8 +109,9 @@ The numbers behind the figure do reproduce exactly:
 |---|---|---|
 | Panel size | 24 cells | 24 (ratio > 1.0) |
 | Median speedup, ratio <= 2 | 2.82x | 2.8194x |
-| Max cell speedup | 11.76x | 11.7603x |
-| Min cell speedup | 1.69x | **1.6950x** via the shipped renderer — agrees. A hand-rolled min-of-medians gives 1.6292 and is the wrong estimator; see `CORRECTIONS.md` |
+| Max cell speedup, ratio <= 2 | 11.76x | 11.7603x |
+| Min cell speedup, ratio <= 2 | 1.69x | **1.6950x** via the shipped renderer — agrees. A hand-rolled min-of-medians gives 1.6292 and is the wrong estimator; see `CORRECTIONS.md` |
+| Min cell speedup, all 24 cells | not stated | 1.0000x, on five cells at ratio >= 8 where Newton wins outright. The note's range is scoped to ratios at most 2 and is correct as written; these two rows previously carried no scope label |
 | Envelope picks | 11 / 6 / 7 | 11 / 6 / 7 |
 
 ---
