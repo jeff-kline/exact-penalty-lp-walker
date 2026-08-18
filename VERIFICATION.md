@@ -22,7 +22,7 @@ where an output disagrees with a claim, that is stated rather than omitted.
 | Compiler | Apple clang, `-O3 -march=native -std=c++17` |
 | TeX | pdfTeX (TeX Live), `pdflatex` + `bibtex` |
 
-`-march=native` means the compiled walker is tuned to the build host. Timings
+`-march=native` means the compiled t-walker is tuned to the build host. Timings
 are not expected to reproduce exactly on different hardware; statuses and
 certificates are.
 
@@ -164,7 +164,7 @@ corrected to match the code; see `CORRECTIONS.md`.
 
 ---
 
-### 4. C++ walker build and panel
+### 4. C++ t-walker build and panel
 
 ```sh
 cd cpp/twalker
@@ -172,7 +172,7 @@ make build/verify_walker PYTHON=../../.venv/bin/python
 ./build/verify_walker fixtures_panel/*.twfx
 ```
 
-Re-derives: the walker's status and original-data certificate on each panel
+Re-derives: the t-walker's status and original-data certificate on each panel
 fixture, from scratch. This **does** run the solver.
 
 Observed: builds with warnings only (deprecated Accelerate CBLAS prototypes),
@@ -186,12 +186,12 @@ no errors.
 | Worst certificate residual among certified | 6.99e-09 |
 | Total wall time | 81.3 s |
 
-Two qualifications on this run. First, it uses the walker's **default**
+Two qualifications on this run. First, it uses the t-walker's **default**
 budgets; the note records that `fit1d` and `lotfi` needed authorized extended
 budgets, so `lotfi` failing here is consistent with the note rather than
 contrary to it. Second, the frozen record reports `capri` as a cycling model,
 whereas `capri` certifies on the current build and `lotfi` does not. This is
-**not** run-to-run instability — §5 below shows the walker is deterministic
+**not** run-to-run instability — §5 below shows the t-walker is deterministic
 across independent runs — but a difference against the older code state that
 produced the record. Claims about *which* models fail are specific to a build.
 
@@ -201,19 +201,19 @@ tolerance.
 
 ---
 
-### 5. Netlib walker panel, and how far it reproduces
+### 5. Netlib t-walker panel, and how far it reproduces
 
 ```sh
 .venv/bin/python experiments/bench_twalker_netlib_panel.py \
     --output records/twalker_cpp/netlib27_rerun.json
 ```
 
-Re-derives: the walker's status, certificate, and timing on all 27 panel
+Re-derives: the t-walker's status, certificate, and timing on all 27 panel
 models, from scratch, one `verify_walker` subprocess per model. This **does**
 run the solver and needs the built binary.
 
 Observed: 24 of 27 certified. Substituting these times into the frontier where
-a walker variant won gives **9.712 s against the published 9.596 s, +1.2%.**
+a t-walker variant won gives **9.712 s against the published 9.596 s, +1.2%.**
 
 Determinism was measured, not assumed:
 
@@ -223,7 +223,7 @@ Determinism was measured, not assumed:
 | Batched single invocation vs per-model | **26 / 26** |
 | Current build vs the frozen 2026-08-16 record | **11 / 24** |
 
-So the walker's path is deterministic on a fixed build. The divergence is
+So the t-walker's path is deterministic on a fixed build. The divergence is
 against the older code state that produced the frozen record: pivot counts,
 seed iterations, and accepted supports differ on 13 models, and `capri` now
 certifies where the record shows a settle-support cycle.
@@ -294,7 +294,7 @@ values, 12 and 1. Both were verified to bite: `--min-served=13` and
 `--min-served=2` exit 1 on this panel.
 
 **Each fixture carries exactly one face.** All three verifiers exercise 26
-faces in total, one per model, not the thousands the walker visits on a full
+faces in total, one per model, not the thousands the t-walker visits on a full
 solve. That is the largest weakness in this section and no flag fixes it. Read
 these as smoke tests on one face per model.
 
@@ -311,8 +311,8 @@ Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `p
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-878efb8776aab068e7d200f8b3980d46685ff5a738e71a97fb24a92d1661209c  build 1
-878efb8776aab068e7d200f8b3980d46685ff5a738e71a97fb24a92d1661209c  build 2
+6f861b143c76b5bedce010a274ee7d348c667c72508dc019ffb98142b04b9306  build 1
+6f861b143c76b5bedce010a274ee7d348c667c72508dc019ffb98142b04b9306  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
@@ -331,7 +331,7 @@ These are documented for completeness. Each is a real gap, not an oversight.
   figure was rendered from the frozen table instead.
 - **`experiments/bench_twalker_netlib_panel.py`** now exists and was run; see
   §5 below. An earlier version of this file said no script in the repository
-  produced the Netlib walker record and that the timings were "not a
+  produced the Netlib t-walker record and that the timings were "not a
   measurement this repository can reproduce." That was too strong: the
   measuring apparatus (`verify_walker`) was always present, and only the loop
   around it was missing. It has been reconstructed and the frontier reproduces

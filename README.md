@@ -12,10 +12,11 @@ where it does well. It slows down sharply when constraints outnumber variables
 by less than about 2 or 3.
 
 Converted to the `Bx ≥ b` form used throughout this repository, all 27 Netlib
-models sit in that band, between 1.5 and 2.9. That is worth stating carefully:
-in their canonical MPS form those models have far fewer rows than columns, so
-the band is a property of this encoding rather than something discovered about
-the benchmark.
+models sit in that band, between 1.5 and 2.9. In canonical MPS notation the
+models have fewer explicit rows than columns, but MPS also imposes default
+variable bounds. The conversion makes those bounds explicit and represents
+equalities as paired inequalities. The ratio therefore describes the explicit
+inequality system solved here, not merely the number of MPS row records.
 
 This repository contains a second method for that regime, called the
 **t-walker**, together with the code, fixtures, and frozen measurements needed
@@ -24,7 +25,7 @@ to check what it does.
 > **What is claimed.** On the low-ratio problems measured here, following the
 > dual projection path from face to face is faster than re-solving the penalty
 > problem at a sequence of penalty values. Taking the fastest certified result
-> of three methods — the default-seed walker, the triangular-seeded walker,
+> of three methods — the default-seed t-walker, the triangular-seeded t-walker,
 > and staged Newton — beats staged Newton alone on both panels measured here.
 > The envelope still trails a mature production solver by more than an order
 > of magnitude.
@@ -74,7 +75,7 @@ Those three are the methods the measured frontier selects among.
 Write `φ(t) = max { t·bᵀy − ½‖y‖² : y ∈ D }`. Within a face `φ″(t) = gᵀg`, so
 `gᵀg ≤ tol` detects a stationary face. That is **necessary but not sufficient**
 for termination — `g` vanishes identically on any face whose active rows are
-independent, including every vertex the path passes through — so the walker
+independent, including every vertex the path passes through — so the t-walker
 accepts an endpoint only when the ratio scan also shows no forward event and
 the certificate passes.
 
@@ -95,7 +96,7 @@ is claimed.**
 The narrower contributions are:
 
 1. **A sparse direct breakpoint implementation** of that classical path, with
-   the walker state maintained like a numerical simplex state — face
+   the t-walker state maintained like a numerical simplex state — face
    coefficients, sparse products, support statuses, and a rank-revealing
    square core carried across pivots rather than re-solved.
 2. **Original-data certification.** Every accepted result must pass one KKT
@@ -115,7 +116,7 @@ Four kinds of support are kept separate:
 - **Measurement.** Timings and accuracy on a 24-cell synthetic panel and the
   27-model Netlib panel, under one accuracy standard, from the frozen records
   in [`records/`](records/).
-- **Implementation.** The C++ walker in [`cpp/twalker/`](cpp/twalker/) and the
+- **Implementation.** The C++ t-walker in [`cpp/twalker/`](cpp/twalker/) and the
   Python harness in [`experiments/`](experiments/).
 - **Literature.** The projection path, finite exactness, and the parametric-QP
   setting are credited to earlier work and are not claimed here.
@@ -134,9 +135,9 @@ Limitations that matter:
   rule is supplied that picks the right method without running them.
 - **Coverage is incomplete.** The t-walker does not certify every Netlib model.
 - **The prototype is hybrid.** By default an in-process Newton method builds the
-  walker's `t = 0` seed, and on difficult faces the walker can invoke
+  t-walker's `t = 0` seed, and on difficult faces the t-walker can invoke
   HiGHS-backed endpoint selection or terminal face repair. That time is counted
-  against the walker, but the benchmark does not isolate purely native path
+  against the t-walker, but the benchmark does not isolate purely native path
   algebra.
 - **The generator confounds two variables.** It changes aspect ratio and
   planted support geometry together, so the synthetic panel establishes a
@@ -154,7 +155,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-Build the C++ walker. It needs SuiteSparse (SPQR, CHOLMOD), OSQP, and the
+Build the C++ t-walker. It needs SuiteSparse (SPQR, CHOLMOD), OSQP, and the
 HiGHS shared library; point `PYTHON` at the virtualenv so the Makefile can
 locate `highspy`:
 
@@ -182,7 +183,7 @@ Then, from the repository root:
              stocfor1 \
     --timeout 10 --output records/pinar1997/netlib_panel.json
 
-# Netlib walker panel, from scratch (needs the built verify_walker)
+# Netlib t-walker panel, from scratch (needs the built verify_walker)
 .venv/bin/python experiments/bench_twalker_netlib_panel.py \
     --output records/twalker_cpp/netlib27_rerun.json
 
@@ -190,8 +191,8 @@ Then, from the repository root:
 sh paper/build_paper.sh
 ```
 
-Re-running the walker panel and recomputing the frontier lands within about
-1% of the published 9.60 s. The walker's path is deterministic on a fixed
+Re-running the t-walker panel and recomputing the frontier lands within about
+1% of the published 9.60 s. The t-walker's path is deterministic on a fixed
 build, but the current build does not reproduce the frozen record's internal
 counters on every model, and `beaconfd` has regressed. See
 [`VERIFICATION.md`](VERIFICATION.md) §6 for the measurements.
@@ -210,7 +211,7 @@ what each command does and does not re-derive.
 
 - `paper/` — the technical note source, bibliography, figures, and the
   deterministic build script.
-- `cpp/twalker/` — the C++ walker: face algebra (`src/`), maintained-state
+- `cpp/twalker/` — the C++ t-walker: face algebra (`src/`), maintained-state
   solvers (`revised/`), unit tests (`tests/`), fixture tools (`tools/`), and
   the compact Netlib panel fixtures (`fixtures_panel/`).
 - `experiments/` — the Python harness: benchmark drivers, the frozen
@@ -265,7 +266,7 @@ licensed under the GNU General Public License version 3 only
 The GPL permits commercial use; what it requires is that anyone distributing a
 derivative also release that derivative's source under the GPL. This work is
 additionally available under separate commercial terms for use where those
-obligations are unwanted — contact Jeff Kline. Note that building the walker
+obligations are unwanted — contact Jeff Kline. Note that building the t-walker
 links against SuiteSparse, whose own copyleft terms are independent of anything
 granted here; see [`NOTICE`](NOTICE) for the full third-party record.
 

@@ -24,8 +24,8 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 | Gate | Status | Evidence and disposition |
 |---|---|---|
 | P1 — prior work and credit | **PASS** | All 14 cited works were checked against primary material: ten full texts and four primary publisher/author records and abstracts where the full text was not freely obtainable. The audit compares the closest mechanisms, not just titles: the 1996 continuation papers already contain piecewise-linear paths, predictor–corrector/Newton machinery, and factor reuse; Pinar (1997) is the closest work because his `(CD)`/`(PB)` formulations map exactly to `P_D(tb)` under the paper's stated dualization and `t = 1/τ`; and general parametric-QP work already supplies ratio events, dependent-set exchanges, and factor updates. The release therefore claims no new path, homotopy, or generic active-set machinery and distinguishes its implementation/computation contribution. The corpus is bounded, four full-text access failures and the absence of independent specialist review remain explicit, and no global novelty claim is inferred. Full dispositions and exact checked-copy hashes are in `audit/reports/p1-primary-source-audit-20260817.md`. |
-| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later abstract-focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–15. The final surface removes the unsupported priority and accuracy motivations; identifies the converted inequality encoding behind the Netlib ratio band; labels the synthetic panel, two walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. Title, author, draft status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
+| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later abstract-focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–16. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. Title, author, draft status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
+| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib t-walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
 ## Claim boundary
 
@@ -46,7 +46,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 
 ## Named residual risks
 
-- **The Netlib headline reproduces to about 1%, on a rebuilt walker whose
+- **The Netlib headline reproduces to about 1%, on a rebuilt t-walker whose
   internal path has since changed on some models.** The producing harness was
   missing when this release was assembled; it now ships as
   `experiments/bench_twalker_netlib_panel.py`. Re-running it against a freshly
@@ -58,7 +58,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   seed iterations, and accepted supports differ, and `capri` now certifies
   where the record shows a settle-support cycle. Since two independent reruns
   agree with each other on all 26 models, and a batched invocation agrees too,
-  the walker is deterministic on a fixed build; the divergence is against the
+  the t-walker is deterministic on a fixed build; the divergence is against the
   older code state that produced the record, not run-to-run noise. Second, one
   model regressed sharply: `beaconfd` takes 11x longer than the record, tracking
   a seed-iteration count that rose from 11 to 300. It does not affect the
@@ -66,7 +66,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 
   The frozen records therefore remain the published evidence, and the note's
   existing instruction to read Netlib times at order-of-magnitude precision is
-  the right one. What is now also true is that a reader can rebuild the walker
+  the right one. What is now also true is that a reader can rebuild the t-walker
   and land within about 1% of the published total.
 - **The synthetic figure now regenerates, after repairing two scripts, but
   not pixel-for-pixel.** `summarize_twalker_synth_nm.py` rejected the record
@@ -87,7 +87,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   from this repository. See `VERIFICATION.md` §1.
 - **The C++ component verifiers exercise one face per model.** All three read
   the 26 panel fixtures, and each fixture carries exactly one face — 26 faces
-  in total, against the thousands the walker visits on a full solve. They are
+  in total, against the thousands the t-walker visits on a full solve. They are
   smoke tests. Two of them additionally serve only part of that: the Gram route
   serves 12 of 26 and the bound-core route 1 of 26, both by fail-closed design.
   Coverage floors are now asserted at those observed values, so a silent drop
@@ -99,7 +99,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   together, so the panel establishes a regime rather than isolating a cause.
 - The prototype is hybrid: an in-process Newton method builds the default
   `t = 0` seed, and difficult faces may invoke HiGHS-backed endpoint selection
-  or terminal repair. That cost is charged to the walker, but the benchmark
+  or terminal repair. That cost is charged to the t-walker, but the benchmark
   does not isolate purely native path algebra.
 - Novelty language is bounded by a non-exhaustive literature review and should
   remain provisional until an optimization specialist checks the equation map

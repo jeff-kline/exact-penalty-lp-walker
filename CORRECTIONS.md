@@ -528,6 +528,19 @@ Corrections made during preparation, before any public version existed:
   No priority, path, homotopy, or generic active-set claim is added. A narrow
   consistency check against §5 and the P1 record leaves A1 at **PASS**.
 
+- **2026-08-18 — supersedes the 2026-08-17 Netlib-encoding entry above.**
+  That entry compared only MPS `ROWS` records with columns and concluded that
+  the conversion “creates” the 1.5–2.9 ratio band. That was wrong. Standard
+  MPS also imposes default nonnegativity bounds, and finite variable bounds are
+  genuine constraints even when they are not listed as row records. The
+  repository's converter makes those bounds explicit as inequalities and
+  represents each equality as a pair of inequalities. The paper and README
+  now say that the reported ratio describes the explicit `Bx >= b` system
+  solved here, not merely the number of MPS row records. The conversion changes
+  the representation and the row count; it does not invent the restrictions.
+  A focused check of the converter and active claim surfaces leaves A1 at
+  **PASS**.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

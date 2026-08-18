@@ -64,13 +64,12 @@ coefficients, support statuses, and a rank-revealing core across pivots, repairs
 rank-deficient faces, and accepts only primal-dual pairs passing a KKT
 certificate on the original unscaled data, whose errors we report.
 
-On generated low-ratio instances the walker beats Newton in eleven of twelve
+On generated low-ratio instances the t-walker beats Newton in eleven of twelve
 certified cells. The fastest of the two seeds and Newton is a median 2.82 times
-faster than Newton at ratios from 1.1 to 2. On Netlib-27, the frozen total falls
-from about 11.6 to 9.6 seconds, versus 0.37 for HiGHS. For the walker and Newton,
-simplex crossover cuts median error by about three orders. Choosing the fastest
-of three per problem is hindsight, not a dispatcher, and remains about 17 times
-slower than HiGHS in geometric mean.
+faster than Newton at ratios from 1.1 to 2. For the t-walker and Newton, simplex
+crossover cuts median error by about three
+orders. Choosing the fastest of three per problem is hindsight, not a
+dispatcher, and remains about 17 times slower than HiGHS in geometric mean.
 \end{abstract}
 
 \medskip
@@ -81,15 +80,15 @@ no permanent archive, and no DOI.
 
 \section{The gap}
 
-Mangasarian showed that a quadratic penalty program yields an exact LP solution at a sufficiently large but finite penalty parameter \citep{mangasarian-meyer-1979,mangasarian-1984,mangasarian-2004}. He used that result to build a Newton method for LPs. Mangasarian aimed the method at very tall systems, and empirically it excels there, often reaching the LP solution in only a few nonlinear iterations; on our synthetic panel the measured frontier falls back to Newton on every cell at ratio 32. But a gap remains. Newton slows sharply below roughly 2 to 3 constraints per variable. That ratio is measured on the converted $Bx\ge b$ form this note uses throughout, not on the original MPS files, and it is worth saying plainly what the conversion does: in their canonical form the Netlib models have far fewer rows than columns, and it is the conversion that lifts all 27 of them into the narrow band from 1.5 to 2.9 where the walker is aimed. The band is a property of this encoding, not a discovered property of the benchmark. This note addresses that gap. Separately, because solver status strings do not measure accuracy on a common scale, we re-evaluate every method under one original-data certificate rather than trusting its own stopping test; that is a measurement protocol, not a claim that the walker is the more accurate method.
+Mangasarian showed that a quadratic penalty program yields an exact LP solution at a sufficiently large but finite penalty parameter \citep{mangasarian-meyer-1979,mangasarian-1984,mangasarian-2004}. He used that result to build a Newton method for LPs. Mangasarian aimed the method at very tall systems, and empirically it excels there, often reaching the LP solution in only a few nonlinear iterations; on our synthetic panel the measured frontier falls back to Newton on every cell at ratio 32. But a gap remains. Newton slows sharply below roughly 2 to 3 constraints per variable. That ratio is measured after expanding each model into the $Bx\ge b$ form used throughout this note. In canonical MPS notation the models have fewer explicit rows than columns, but MPS also imposes default variable bounds. Our conversion makes those bounds explicit and represents equalities as paired inequalities, yielding ratios from 1.5 to 2.9. Thus the ratio describes the explicit inequality system solved here, not merely the number of MPS row records. This note addresses that gap. Separately, because solver status strings do not measure accuracy on a common scale, we re-evaluate every method under one original-data certificate rather than trusting its own stopping test; that is a measurement protocol.
 
-We built a complementary method, the \method{t-walker}, for this regime. The walker follows the exact dual projection path from face to face instead of solving the penalty problem afresh at a sequence of penalty values. On the tested low-ratio problems, t-walker outpaces Newton in eleven of the twelve measured cells; the exception is $m=200$ at ratio 1.1, where Newton is 1.24 times faster and the triangular seed recovers the cell. Choosing the fastest certified result among the default-seed walker, the triangular-seeded walker, and staged Newton improves on staged Newton alone across Netlib. The envelope still trails HiGHS by more than an order of magnitude.
+We built a complementary method, the \method{t-walker}, for this regime. The t-walker follows the exact dual projection path from face to face instead of solving the penalty problem afresh at a sequence of penalty values. On the tested low-ratio problems, t-walker outpaces Newton in eleven of the twelve measured cells; the exception is $m=200$ at ratio 1.1, where Newton is 1.24 times faster and the triangular seed recovers the cell. Choosing the fastest certified result among the default-seed t-walker, the triangular-seeded t-walker, and staged Newton improves on staged Newton alone across Netlib.
 
 We test both raw methods against the same original-data accuracy standard, and both pass on the problems they solve. A common simplex crossover cuts their median Netlib error by about three orders of magnitude. After crossover, their median errors have the same order as HiGHS IPM with crossover, although the synthetic tails remain mixed and t-walker still has three Netlib DNFs.
 
-On the current 24-cell synthetic panel (25, 50, and 200 variables; ratios 1.1 through 32; five interleaved runs), the fastest certified result among the three methods runs a median \textbf{2.82 times faster than Newton alone for ratios at most 2}, with cell speedups from 1.69 to 11.76. Across all 24 cells, the measured lower envelope chooses the default-seed walker 11 times, the triangular-seeded walker 6 times, and Newton 7 times. This measured frontier uses hindsight; it does not yet provide an automatic dispatcher.
+On the current 24-cell synthetic panel (25, 50, and 200 variables; ratios 1.1 through 32; five interleaved runs), the fastest certified result among the three methods runs a median \textbf{2.82 times faster than Newton alone for ratios at most 2}, with cell speedups from 1.69 to 11.76. Across all 24 cells, the measured lower envelope chooses the default-seed t-walker 11 times, the triangular-seeded t-walker 6 times, and Newton 7 times. This measured frontier uses hindsight; it does not yet provide an automatic dispatcher.
 
-The standard Netlib-27 panel gives a harder test. The current frontier takes \textbf{9.60 s}, versus \textbf{11.60 s} for shipped Newton and \textbf{0.370 s} for the faster HiGHS engine on each model. Its geometric-mean ratio to HiGHS is \textbf{16.6 times}, down from Newton's 26.5 but still far from production parity. That is progress, not victory. HiGHS draws on roughly eighty years of simplex and interior-point ideas and implementation practice \citep{huangfu-hall-2018}; we assembled the walker prototype in a handful of AI-assisted engineering sessions.
+The standard Netlib-27 panel gives a harder test. The current frontier takes \textbf{9.60 s}, versus \textbf{11.60 s} for shipped Newton and \textbf{0.370 s} for the faster HiGHS engine on each model. Its geometric-mean ratio to HiGHS is \textbf{16.6 times}, down from Newton's 26.5 but still far from production parity. That is progress, not victory. HiGHS draws on roughly eighty years of simplex and interior-point ideas and implementation practice \citep{huangfu-hall-2018}; we assembled the t-walker prototype in a handful of AI-assisted engineering sessions.
 
 \section{Two computational strategies}
 
@@ -107,7 +106,7 @@ The optimizer path is continuous and piecewise affine. Write
 \[
   \phi(t)=\max_{y\in D}\left(t\,b^\mathsf{T}y-\tfrac12\lVert y\rVert^2\right),
 \]
-the value of the projection program up to the constant $\tfrac12 t^2\lVert b\rVert^2$. Then $\phi$ is piecewise quadratic with $\phi'(t)=b^\mathsf{T}y(t)$ piecewise affine, and the path direction determines its curvature. The walker therefore follows an affine state on each face even though $\phi$ is quadratic there. Mangasarian's penalty program has value $\phi(t)/t$, which is not itself piecewise quadratic.
+the value of the projection program up to the constant $\tfrac12 t^2\lVert b\rVert^2$. Then $\phi$ is piecewise quadratic with $\phi'(t)=b^\mathsf{T}y(t)$ piecewise affine, and the path direction determines its curvature. The t-walker therefore follows an affine state on each face even though $\phi$ is quadratic there. Mangasarian's penalty program has value $\phi(t)/t$, which is not itself piecewise quadratic.
 
 \begin{table}[t]
 \centering
@@ -127,32 +126,32 @@ HiGHS simplex/IPM & Mature production bases, pricing, presolve, scaling, and cro
 \end{tabularx}
 \end{table}
 
-\section{How the walker advances}
+\section{How the t-walker advances}
 
 On a face with positive dual support $W$, the projection equations reduce to
 \[
   y_W(t)=tg+h.
 \]
-Here $g=(I-\Pi_W)b_W$, where $\Pi_W$ is the orthogonal projector onto the range of $B_W$, and $h=B_W(B_W^\mathsf{T}B_W)^{+}d$. Each active coordinate $y_i(t)$ must remain nonnegative. Each inactive coordinate has an affine multiplier margin that must also remain nonnegative. The walker finds the next breakpoint with a minimum-ratio test over these margins. At a tie, it exchanges rows at fixed $t$ to resolve degeneracy; those exchanges do not count as progress. A valid next segment must reach a strictly larger $t$ or prove that the path is terminal.
+Here $g=(I-\Pi_W)b_W$, where $\Pi_W$ is the orthogonal projector onto the range of $B_W$, and $h=B_W(B_W^\mathsf{T}B_W)^{+}d$. Each active coordinate $y_i(t)$ must remain nonnegative. Each inactive coordinate has an affine multiplier margin that must also remain nonnegative. The t-walker finds the next breakpoint with a minimum-ratio test over these margins. At a tie, it exchanges rows at fixed $t$ to resolve degeneracy; those exchanges do not count as progress. A valid next segment must reach a strictly larger $t$ or prove that the path is terminal.
 
-Within a face the curvature of $\phi$ is $\phi''(t)=g^\mathsf{T}g$, so the test $g^\mathsf{T}g\le\text{tolerance}$ detects a stationary face. A stationary face is necessary but not sufficient for termination: $g$ vanishes identically on any face whose active rows are independent, which includes every vertex of $D$ the path passes through on its way to the optimum. The walker therefore accepts an endpoint only when the audited ratio scan additionally shows no forward event and the original-data certificate passes. Treating $g^\mathsf{T}g\le\text{tolerance}$ alone as a stopping rule would return a suboptimal point on any instance whose path dwells at a vertex.
+Within a face the curvature of $\phi$ is $\phi''(t)=g^\mathsf{T}g$, so the test $g^\mathsf{T}g\le\text{tolerance}$ detects a stationary face. A stationary face is necessary but not sufficient for termination: $g$ vanishes identically on any face whose active rows are independent, which includes every vertex of $D$ the path passes through on its way to the optimum. The t-walker therefore accepts an endpoint only when the audited ratio scan additionally shows no forward event and the original-data certificate passes. Treating $g^\mathsf{T}g\le\text{tolerance}$ alone as a stopping rule would return a suboptimal point on any instance whose path dwells at a vertex.
 
-We made the implementation faster and more stable by treating the walker state like a numerical simplex state. The solver now carries the face coefficients, sparse products, support statuses, and a rank-revealing square core across pivots instead of solving unrelated least-squares problems at each one. A one-row change updates that state. The solver fully reconstructs it only after a failed error bound, a rank change, or a rare repair. We made six main changes:
+We made the implementation faster and more stable by treating the t-walker state like a numerical simplex state. The solver now carries the face coefficients, sparse products, support statuses, and a rank-revealing square core across pivots instead of solving unrelated least-squares problems at each one. A one-row change updates that state. The solver fully reconstructs it only after a failed error bound, a rank change, or a rare repair. We made six main changes:
 \begin{enumerate}
   \item native C++ face algebra and cached affine artifacts instead of default library calls at every pivot;
   \item a stable square orthogonal core, with a small weak-subspace SVD/COD repair when the face is rank deficient;
   \item deterministic statuses for dependent zero rows, so fixed-$t$ exchanges cannot cycle merely by revisiting an equivalent support label;
-  \item iterative refinement and forward-horizon error bounds that the walker invokes only when coefficient uncertainty can change the next event;
+  \item iterative refinement and forward-horizon error bounds that the t-walker invokes only when coefficient uncertainty can change the next event;
   \item fixed-$t$ seed and endpoint repairs that feed the unchanged original-data acceptance gate; and
   \item a final primal-dual certificate, independent of $t$, on the unscaled input.
 \end{enumerate}
 
-The prototype remains hybrid. By default, an in-process Newton method builds the walker's $t=0$ seed. An optional triangular/Wolfe-space seed instead factors $B$ and solves the same fixed-$t$ projection without forming a dense null-space basis. On difficult Netlib faces, the walker can also invoke HiGHS-backed endpoint selection or terminal face repair. We count these calls toward walker time, and every result must pass the original-data certificate. The benchmark therefore does not yet isolate wholly native path algebra.
+The prototype remains hybrid. By default, an in-process Newton method builds the t-walker's $t=0$ seed. An optional triangular/Wolfe-space seed instead factors $B$ and solves the same fixed-$t$ projection without forming a dense null-space basis. On difficult Netlib faces, the t-walker can also invoke HiGHS-backed endpoint selection or terminal face repair. We count these calls toward t-walker time, and every result must pass the original-data certificate. The benchmark therefore does not yet isolate wholly native path algebra.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{synthetic_aspect_timings_public.png}
-  \caption{Complete time above and post-initialization kernel time below. The black line shows the fastest certified default-seed walker, triangular-seeded walker, or Newton result. The measured axis starts at 1.1; we retain 1.0 only as a reference. The generator changes aspect ratio and planted support geometry together, so the plot establishes a useful regime, not a theorem that aspect ratio alone is causal.}
+  \caption{Complete time above and post-initialization kernel time below. The black line shows the fastest certified default-seed t-walker, triangular-seeded t-walker, or Newton result. The measured axis starts at 1.1; we retain 1.0 only as a reference. The generator changes aspect ratio and planted support geometry together, so the plot establishes a useful regime, not a theorem that aspect ratio alone is causal.}
   \label{fig:synthetic}
 \end{figure}
 
@@ -169,9 +168,9 @@ For t-walker and Newton, we send each solver's dual point to the same warm-start
   \label{fig:accuracy}
 \end{figure}
 
-These results do not show that a new LP solver beats HiGHS. They show that Newton and the walker cover different regimes. On the controlled family, Newton has a reproducible weak band that the walker fills. On Netlib, the measured Pareto frontier saves about 2.0 seconds over Newton alone. The portfolio still trails mature solvers by more than an order of magnitude and does not certify every model.
+These results do not show that a new LP solver beats HiGHS. They show that Newton and the t-walker cover different regimes. On the controlled family, Newton has a reproducible weak band that the t-walker fills. On Netlib, the measured Pareto frontier saves about 2.0 seconds over Newton alone. The portfolio still trails mature solvers by more than an order of magnitude and does not certify every model.
 
-Three problems remain. First, turn the hindsight frontier into a dispatcher that uses observed geometry---rank, weak singular values, and identification margin---rather than aspect ratio alone. Second, replace the remaining HiGHS face selectors with the maintained basis and bounded native repairs. Third, close the three-program coverage gap without slowing the cheap branch. The walker now covers part of the left-hand synthetic gap, and we measure the remaining benchmark deficit under one accuracy standard.
+Three problems remain. First, turn the hindsight frontier into a dispatcher that uses observed geometry---rank, weak singular values, and identification margin---rather than aspect ratio alone. Second, replace the remaining HiGHS face selectors with the maintained basis and bounded native repairs. Third, close the three-program coverage gap without slowing the cheap branch. The t-walker now covers part of the left-hand synthetic gap, and we measure the remaining benchmark deficit under one accuracy standard.
 
 \clearpage
 \section{Related work and a provisional Pinar check}
@@ -225,7 +224,7 @@ The TeX source and BibTeX file are the canonical and only inputs to this PDF. Cu
         \code{render\_common\_accuracy.py};
   \item provisional Pinar panel: \code{pinar1997/run\_netlib\_panel.py}\\
         and \code{pinar1997/render\_provisional\_netlib.py};
-  \item Netlib walker panel: \code{bench\_twalker\_netlib\_panel.py}; and
+  \item Netlib t-walker panel: \code{bench\_twalker\_netlib\_panel.py}; and
   \item this PDF: \code{paper/build\_paper.sh}.
 \end{itemize}
 One thread; HiGHS presolve off; IPM uses both crossover settings. We report five interleaved runs for raw synthetic values and one deterministic warm-point run per problem for crossover accuracy. The Netlib panel combines frozen records, so read its times at order-of-magnitude precision.

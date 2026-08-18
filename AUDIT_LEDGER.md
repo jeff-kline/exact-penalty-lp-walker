@@ -33,6 +33,8 @@ of them agreed on the same wrong answer.
 
 | 15 | 2026-08-18 | `c6d1db5` | primary agent, narrow post-closure check | User-directed abstract clarification of the algorithmic distinction from Pinar; checked against §5 and the P1 record | **A1 PASS.** The abstract now says directly that the method differs by following $y(t)$ face by face and seeking breakpoints. That is the same bounded distinction already stated in §5; it does not claim a new path, homotopy, predictor-corrector principle, or generic active-set machinery. The incidental “we run it from two seeds” clause is removed. No other claim changes |
 
+| 16 | 2026-08-18 | `30fe475` | author-directed correction + primary-agent check | MPS constraint-count interpretation across the paper, README, CFF, admission record, and converter | **A1 PASS after correction.** Standard MPS default variable bounds are genuine LP restrictions. The repository converter makes finite bounds explicit as inequality rows and represents equalities as paired inequalities. Earlier prose wrongly treated the 1.5–2.9 band as merely manufactured by an encoding. Active claim surfaces now state that the ratio describes the explicit inequality system solved here, not MPS `ROWS` records alone. |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their
