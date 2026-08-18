@@ -305,6 +305,26 @@ Corrections made during preparation, before any public version existed:
   which are unconditional imports on the documented reproduction paths. The
   pinned environment is now `requirements.txt`, which lists them.
 
+- **2026-08-17 — supersedes the abstract description in the renaming entry
+  above.** That entry says the abstract is a "marked placeholder" that "states
+  no result," and that "the status text now sits in the abstract." Both were
+  true when written and are false now. The placeholder was replaced the same
+  day with a written abstract that states the measured results, and the status
+  paragraph was moved out of the abstract to its own block after it. The
+  earlier entry is left as written, per the append-only policy.
+
+- **2026-08-17 — three entries in this file were amended in place, against its
+  own append-only policy.** The header says entries are "added, never rewritten
+  or removed." Today three were rewritten: the `1.69` entry, the Pinar entry,
+  and the synthetic-pipeline entry. Two of the three announce the rewrite in
+  their own text, and the third — Pinar — was replaced by a fresh entry plus a
+  `RETRACTED` entry naming the false claim, so no correction was erased. The
+  policy was still broken, and an external reviewer caught it.
+
+  The rule from here is the one applied directly above: when an entry goes
+  stale, append a supersession note naming the entry and what changed, and
+  leave the original text alone. No entry in this file will be edited again.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that
