@@ -20,8 +20,20 @@ std::string stem(const std::string &path) {
 int main(int argc, char **argv) {
   if (argc < 2) return 2;
   bool good = true;
+  // Structural eligibility keeps this route off most faces: on the 26-fixture
+  // panel it serves exactly one, fit1d.  Exiting 0 therefore says almost
+  // nothing on its own.  Pass --min-served=1 to assert the route is still
+  // reached at all.
+  long long min_served = -1;
+  int first = 1;
+  for (; first < argc; ++first) {
+    const std::string arg = argv[first];
+    if (arg.rfind("--min-served=", 0) != 0) break;
+    min_served = std::stoll(arg.substr(13));
+  }
+  long long total_served = 0;
   std::cout << std::setprecision(17);
-  for (int argument = 1; argument < argc; ++argument) {
+  for (int argument = first; argument < argc; ++argument) {
     const std::string path = argv[argument];
     const auto fixture = twalker::read_fixture(path);
     twalker::BoundCoreFaceSolver solver(fixture);
@@ -54,6 +66,12 @@ int main(int argc, char **argv) {
               << ",\"minimum_rcond\":" << stats.minimum_rcond
               << ",\"max_dres\":" << stats.worst_dres
               << ",\"max_piece\":" << stats.worst_piece_residual << "}\n";
+    total_served += served;
+  }
+  if (min_served >= 0 && total_served < min_served) {
+    std::cerr << "coverage floor: served " << total_served
+              << " faces, require " << min_served << '\n';
+    good = false;
   }
   return good ? 0 : 1;
 }

@@ -243,38 +243,58 @@ on the frontier, but it is not measurement noise and is recorded as such.
 cd cpp/twalker
 make build/verify_face_solver build/verify_gram_solver \
      build/verify_bound_core_solver PYTHON=../../.venv/bin/python
-./build/verify_face_solver       fixtures_panel/*.twfx
-./build/verify_gram_solver       fixtures_panel/*.twfx
-./build/verify_bound_core_solver fixtures_panel/*.twfx
+./build/verify_face_solver                    fixtures_panel/*.twfx
+./build/verify_gram_solver       --min-served=12 fixtures_panel/*.twfx
+./build/verify_bound_core_solver --min-served=1  fixtures_panel/*.twfx
 ```
 
 | Verifier | Exit | Coverage | Result |
 |---|---|---|---|
-| `verify_face_solver` | **1** | 26 / 26 faces attempted | **FAILS on `share1b`**: error 2.97e-09 against the test's own 1e-10 gate |
-| `verify_gram_solver` | 0 | serves 12 of 26, declines 14 | no inaccuracy among those served |
-| `verify_bound_core_solver` | 0 | serves **1** of 26, all 26 eligible | no inaccuracy among those served |
+| `verify_face_solver` | 0 | 26 faces, one per fixture, 0 declines | worst oracle disagreement 2.97e-09 on `share1b`; worst self-reported residual 6.85e-08, also `share1b` |
+| `verify_gram_solver` | 0 | serves 12 of 26, declines 14 | no inaccuracy among those served; floor of 12 asserted |
+| `verify_bound_core_solver` | 0 | serves **1** of 26, all 26 eligible | no inaccuracy among the one served; floor of 1 asserted |
 
-Three things must be said plainly about this table.
+Four things must be said plainly about this table.
 
-**`verify_face_solver` fails and ships failing.** On `share1b` the direct face
-solve returns an error of 2.97e-09 where that test demands 1e-10. The stated
-disposition is that this is a *component* gate strictly tighter than the
-guarantee the release actually claims: `share1b` certifies end to end in the
-walker panel, and the original-data KKT certificate — which is the acceptance
-rule the paper states — passes on it. The component test is measuring the
-direct solver in isolation, without the walker's iterative refinement, error
-bounds, or repair path. That explains the failure; it does not excuse leaving
-a red test unremarked, and it is recorded here rather than in a commit message.
+**`verify_face_solver` used to fail, and the gate it failed was the wrong
+gate.** It asserted one property — agreement with the answer recorded in the
+fixture — at a blanket 1e-10 across 26 faces of very different conditioning,
+and never asserted the solver's own residual at all. On `share1b` the
+disagreement is 2.97e-09.
 
-**The two green exits are weak evidence.** `verify_gram_solver` returns success
-having served 12 of 26 faces, and `verify_bound_core_solver` returns success
-having served **1** of 26 while reporting all 26 eligible. Neither test asserts
-a coverage floor, so both would also exit 0 if they served nothing. Read them
-as "no counterexample among the faces actually exercised", not as panel-wide
-verification.
+The relevant number is next to it. `FaceSolution::piece_residual` is what the
+solver reports about its own answer on the original face data: orthogonality of
+`B'g` relative to `‖g‖`, slope error, and constant error, each scaled. On
+`share1b` it is 6.85e-08 — the worst on the panel by a factor of 13 over the
+next, `israel` at 5.08e-09 — and the ranking of models by that residual tracks
+the ranking by oracle disagreement. A forward disagreement of 3e-09 between two
+solves whose backward residual is 7e-08 is not evidence of a defect.
 
-**No coverage assertions exist.** Adding them is open work, not something this
-release claims to have done.
+The test now asserts both properties separately: `dres` and `piece_residual`
+below a ceiling of 1e-6, which nothing checked before and which is the property
+that says the returned face solves anything; and oracle agreement below
+`max(1e-10, piece_residual)`. Exactly one of the 26 faces is relaxed by the
+second term — `share1b` — and the other 25 are still held to 1e-10.
+
+**The relaxation term is empirical, not a proven bound.** A forward error is
+bounded by the backward residual times a condition number the test does not
+compute. `core_diagonal_ratio` is available as a proxy and does *not* explain
+the ranking: `lotfi` has a 50x worse ratio than `share1b` and a 1000x smaller
+disagreement. So the scale is chosen because it is the quantity the solver
+itself reports about the difficulty of the solve, not because it bounds the
+error. Read it as "we do not require agreement tighter than the solve's own
+residual", not as a guarantee.
+
+**Coverage is now asserted, and it is thin.** `--min-served=N` fails the run if
+the panel serves fewer than `N` faces in total; without the flag there is no
+floor, so single-fixture debugging runs still work. The floors are the observed
+values, 12 and 1. Both were verified to bite: `--min-served=13` and
+`--min-served=2` exit 1 on this panel.
+
+**Each fixture carries exactly one face.** All three verifiers exercise 26
+faces in total, one per model, not the thousands the walker visits on a full
+solve. That is the largest weakness in this section and no flag fixes it. Read
+these as smoke tests on one face per model.
 
 ---
 

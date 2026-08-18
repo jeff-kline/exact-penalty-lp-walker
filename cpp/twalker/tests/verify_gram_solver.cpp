@@ -25,8 +25,20 @@ int main(int argc, char **argv) {
   double min_rcond = 1e-8;
   if (const char *raw = std::getenv("TWALKER_GRAM_MIN_RCOND"))
     min_rcond = std::stod(raw);
+  // This solver declines faces it cannot serve within its guard, so exiting 0
+  // proves only that whatever it did serve was accurate.  On the 26-fixture
+  // panel it serves 12.  Pass --min-served=12 to make a silent drop in
+  // coverage fail the run rather than pass it quietly.
+  long long min_served = -1;
+  int first = 1;
+  for (; first < argc; ++first) {
+    const std::string arg = argv[first];
+    if (arg.rfind("--min-served=", 0) != 0) break;
+    min_served = std::stoll(arg.substr(13));
+  }
+  long long total_served = 0;
   std::cout << std::setprecision(17);
-  for (int argument = 1; argument < argc; ++argument) {
+  for (int argument = first; argument < argc; ++argument) {
     const std::string path = argv[argument];
     const auto fixture = twalker::read_fixture(path);
     twalker::GramFaceSolver solver(fixture, min_rcond);
@@ -85,6 +97,12 @@ int main(int argc, char **argv) {
               << stats.worst_accepted_tail_bound
               << ",\"worst_contraction\":"
               << stats.worst_accepted_contraction << "}\n";
+    total_served += served;
+  }
+  if (min_served >= 0 && total_served < min_served) {
+    std::cerr << "coverage floor: served " << total_served
+              << " faces, require " << min_served << '\n';
+    good = false;
   }
   return good ? 0 : 1;
 }

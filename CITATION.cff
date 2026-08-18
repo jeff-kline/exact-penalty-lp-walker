@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "This work is in draft. It has no archived version and no DOI; please do not cite it as a fixed version yet."
+message: "If you use this software, please cite it using the metadata in this file."
 title: "Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down"
 type: software
 version: 0.1.0-draft

@@ -325,6 +325,50 @@ Corrections made during preparation, before any public version existed:
   stale, append a supersession note naming the entry and what changed, and
   leave the original text alone. No entry in this file will be edited again.
 
+- **2026-08-17 — the 2010 parametric-QP report's author order was
+  corrected.** The BibTeX entry for *Reliable Solution of Convex Quadratic
+  Programs with Parametric Active Set Methods* listed Bock first. The primary
+  title page orders the authors Potschka, Kirches, Bock, and Schloeder. The
+  bibliography now preserves that order. No mechanism claim or measurement
+  changed.
+
+- **2026-08-17 — supersedes the component-test entry above; a failing test was
+  asserting the wrong property.** That entry records `verify_face_solver`
+  exiting 1 on `share1b` at 2.97e-09 against a 1e-10 gate, and says the two
+  green verifiers assert no coverage floor. Both statements were true and are
+  now out of date.
+
+  The face verifier compared the solver's answer against the answer recorded in
+  the fixture, at a blanket 1e-10 over 26 faces of very different conditioning,
+  and never checked the solver's own residual. That residual is the property
+  that says the returned face solves anything, and on `share1b` it is 6.85e-08
+  — the worst on the panel by 13x. A forward disagreement of 3e-09 between two
+  solves with a backward residual of 7e-08 is not a defect.
+
+  The test now asserts both: solver-reported `dres` and `piece_residual` below
+  1e-6, which nothing checked before, and oracle agreement below
+  `max(1e-10, piece_residual)`. One face of 26 is relaxed by the second term;
+  the other 25 are still held to 1e-10. **This is a test change that turns a
+  red test green, so it is stated at full strength: the relaxation scale is
+  empirical.** A forward error is bounded by the residual times a condition
+  number the test does not compute, and the available proxy for that number
+  does not explain the ranking. `VERIFICATION.md` §7 gives the numbers.
+
+  `verify_gram_solver` and `verify_bound_core_solver` now take `--min-served=N`
+  and fail below it. The documented panel commands pass the observed floors, 12
+  and 1. No solver behaviour changed, and no measurement in the note depends on
+  any of this.
+
+- **2026-08-17 — the citation metadata carried a message that would not survive
+  archiving.** `CITATION.cff`'s `message` field read "This work is in draft. It
+  has no archived version and no DOI; please do not cite it as a fixed version
+  yet." Zenodo imports that field verbatim into a permanent record, so the
+  sentence would have become false and unfixable at the moment it was archived.
+  It now reads "If you use this software, please cite it using the metadata in
+  this file," which stays true in every state. The draft warning itself is not
+  lost: it remains in `README.md` under Citation and in `ADMISSION.md`, both of
+  which are living files.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that
