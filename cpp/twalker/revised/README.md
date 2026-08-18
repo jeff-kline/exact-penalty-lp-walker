@@ -133,8 +133,7 @@ terminal `t` and reduced summed wall by 18.1%.  The guarded route remains
 slower because its blanket coefficient interval triggers a direct stability
 refactor for every revised face.  The later cost-aware/SVD work below supplied
 the original-data certificate and fail-closed perimeter used to promote this
-bounded route.  See `agent_reports/111_multi_epoch_reseed.md` for the earlier
-component experiment.
+bounded route.
 
 ## Cost-aware singularity rebase and certified restart
 
@@ -167,9 +166,7 @@ both attempts and `speculative_restarts` reports whether this occurred.
 
 This route is promoted because output certification plus restart protects the
 returned LP solution.  Promotion does not claim that every intermediate event
-decision matches the conservative path.  See
-`agent_reports/113_cost_aware_certified_rebase.md` for the admission evidence
-and `agent_reports/124_promoted_default_netlib27.md` for the default sweep.
+decision matches the conservative path.
 
 ## SVD row-space rebase
 
@@ -194,5 +191,4 @@ zero restarts, reduced dense SVDs from 439 to 362, and measured 4.330 s versus
 5.516 s.  `e226` fell from 69 SVDs to 4 and about 2.04 s to 0.60 s; `israel`
 served 12 independent-column faces.  `e226` retained 303 pivots but terminal
 `t` differed from conservative by `2.36e-7`, so the promoted route remains
-inside original-data certification and the fail-closed restart perimeter. See
-`agent_reports/119_svd_qr_below_gate_audit.md`.
+inside original-data certification and the fail-closed restart perimeter.

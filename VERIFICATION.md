@@ -66,16 +66,44 @@ cells) and produces a figure that differs materially from
 `postinit_m25_50_200_r32_20260816/runs.jsonl` (25/50/200 variables, 5 repeats,
 24 cells, with a post-initialization row and a triangular-seeded series).
 
-No shipped command bridges the two: `summarize_twalker_synth_nm.py` requires
-every arm on every cell in a repeat, and the triangular-seeded arm fails closed
-on 3 of the 27 cells, so it rejects the published record outright with "fewer
-than required complete repeats". An earlier version of this section reported
-this check simply as "Agrees", having verified only the Netlib aggregates. That
-was wrong, and the omission is recorded as a named residual risk in
-`ADMISSION.md`.
+An earlier version of this section reported this check simply as "Agrees",
+having verified only the Netlib aggregates. That was wrong.
 
-Aggregating the raw published record directly does reproduce every synthetic
-number in the note:
+A shipped command now bridges the two. `summarize_twalker_synth_nm.py` used to
+require every arm on every cell in a repeat, and the triangular-seeded arm
+fails closed on 3 of the 27 cells, so it rejected the published record outright
+with "fewer than required complete repeats". It now treats an arm that is
+absent from every repeat of a cell as a refusal, and `--require-every-arm`
+restores the old behaviour. The renderer used to crash on such a cell while
+placing its DNF marker; it now drops refused cells instead. Both panels of the
+synthetic figure render:
+
+```sh
+.venv/bin/python experiments/summarize_twalker_synth_nm.py \
+    records/twalker_synth_nm/postinit_m25_50_200_r32_20260816/runs.jsonl \
+    --output <tmp>/postinit_summary.json \
+    --attempted-repeats 5 --minimum-complete-repeats 2
+
+.venv/bin/python experiments/render_solver_timing_charts.py \
+    --synthetic-summary <tmp>/postinit_summary.json \
+    --synthetic-m-list 25 50 200 --output-dir <tmp>/figs
+```
+
+Observed: the summarizer reports 1185 runs, 5 complete repeats, 0 excluded, and
+6 refused cells (3 each for `twalker_triangular` and `twalker_triangular_init`).
+The renderer exits 0 and writes both figures.
+
+**The regenerated figure is not pixel-identical to the shipped
+`paper/figs/synthetic_aspect_timings_public.png`.** 3.17% of pixels differ.
+Four of the six panels match to 0.08–0.49%, which is antialiasing. The other
+two — 200 variables complete, and 50 variables post-initialization — differ by
+a vertical rescaling of the axis: matching them requires a y-scale factor of
+1.07 and 1.14 respectively, after which they agree to 2.7% and 3.0%. The
+plotted series coincide; those two panels were drawn with different y-limits.
+The frozen PNG predates these repairs, and the renderer as shipped at
+migration crashed on this record, so it cannot have produced that PNG.
+
+The numbers behind the figure do reproduce exactly:
 
 | Quantity | Note | Recomputed |
 |---|---|---|
@@ -261,8 +289,8 @@ Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `p
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-8e475689b8548a837cdc877a0a543b80df86617928069ae2bf59a7f2cbacedc3  build 1
-8e475689b8548a837cdc877a0a543b80df86617928069ae2bf59a7f2cbacedc3  build 2
+c0171ddcaa137fbedc3561d41639c8c43c8d3d8698d81540c097aaad474cbd9c  build 1
+c0171ddcaa137fbedc3561d41639c8c43c8d3d8698d81540c097aaad474cbd9c  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
@@ -333,10 +361,18 @@ Beyond file selection, the following edits were made, all mechanical:
    absolute path already frozen into `records/pinar1997/netlib_panel.json` was
    rewritten to match. No measurement was affected.
 
-Several migrated files still cite internal report numbers (`agent_reports/11`,
-`agent_reports/28`, and similar) that are not part of this release. These
-dangling references are **not** confined to code comments: they also appear in
-reader-facing prose in `cpp/twalker/README.md` and `cpp/twalker/revised/README.md`,
-which additionally references `cpp/walk.cpp`, a file deliberately excluded from
-this release. They have not been rewritten. An earlier version of this section
-described the problem as limited to code comments; that was inaccurate.
+9. `experiments/render_solver_timing_charts.py`: a cell that an arm refused
+   outright was still routed to the DNF-marker code, which crashed on its
+   absent timing. Refused cells are now dropped from the plot. No plotted
+   value changed.
+10. `cpp/twalker/README.md` and `cpp/twalker/revised/README.md`: nine pointers
+   to internal report files, and one to the excluded `cpp/walk.cpp`, were
+   removed. Each was a bare "see `agent_reports/NNN_....md`" appended to prose
+   that already states the finding; no claim was carried only by the pointer.
+
+Code comments under `experiments/` still cite internal report numbers
+(`agent_reports/11`, `agent_reports/28`, and similar) that are not part of this
+release. These are annotations on promoted defaults inside source files, not
+reader-facing prose, and they have been left alone. An earlier version of this
+section described the problem as limited to code comments while it also
+affected the two C++ READMEs; that is now true as written.

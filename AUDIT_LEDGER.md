@@ -17,7 +17,8 @@ of them agreed on the same wrong answer.
 | 4 | 2026-08-17 | `40a4f58` | cold agent, mid tier | Reproducibility and release mechanics | PASS on manifest, determinism, aggregates. Found 7 leaked absolute paths and an overclaimed correction entry |
 | 5 | 2026-08-17 | `ffa5cc8` | cold agent, frontier tier | Confirming pass over the applied corrections | 6 of 7 corrections landed; the certificate rename had leaked past 3 files. Found `grow7` misdescribed, an overstated "outpaces Newton", and an undisclosed second reproduction gap |
 | 6 | 2026-08-17 | `363f212` | external reviewer | Whole-release review against the public standard | Scored the work 8/10 and withheld promotion to CANDIDATE. Correctly identified premature closure: the Pinar primary source was obtainable, a stale build reference survived the rename, and the skipped component tests contained a real failure |
-| 7 | 2026-08-17 | working tree | author + agent | Acting on entry 6 | Pinar source obtained and read; §5's algebra found **wrong** and rewritten from his equations (4)–(6); P1 reduced to PARTIAL. Component tests run: one fails. Synthetic pipeline repaired end to end. **A prior correction was retracted**: the published 1.69 was right and the agent's 1.63 was wrong |
+| 7 | 2026-08-17 | working tree | author + agent | Acting on entry 6 | Pinar source obtained and read; §5's algebra rewritten from his equations (4)–(6); P1 reduced to PARTIAL. Component tests run: one fails. Synthetic pipeline repaired. **A prior correction was retracted**: the published 1.69 was right and the agent's 1.63 was wrong. Entry 8 shows the Pinar rewrite was itself wrong |
+| 8 | 2026-08-17 | `0bb2a64` | external reviewer | Second whole-release review | Found the entry-7 Pinar correction **false**: `(PB)` on p. 623 of the same paper is the constrained regularized program the original text described. Also found closure overclaimed twice — the synthetic figure and a stale `VERIFICATION.md` section — and the dangling `agent_reports/` pointers still in place. All four disposed of in this pass |
 
 ## Standing limits on this ledger
 
@@ -31,3 +32,10 @@ of them agreed on the same wrong answer.
   separated reviewers endorsed a wrong correction because both re-derived the
   quantity the same wrong way instead of running the shipped renderer.
   **Check a published figure with the tool that produced it.**
+- Entry 8 is the same failure in a second dress. Entry 7 fetched the Pinar
+  paper, read the four pages that confirmed a hypothesis already formed, and
+  declared the note wrong on the strength of them — while the equation that
+  refuted the correction sat on p. 623 of the file already open. **Two of the
+  three corrections issued under agent review have been wrong.** Weight this
+  ledger accordingly: it records that reviews happened, not that they were
+  right.

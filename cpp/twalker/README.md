@@ -1,8 +1,8 @@
 # t-walker C++ rewrite
 
-This tree is the correctness-first rewrite described in
-`agent_reports/95_cpp_rewrite_handoff.md`.  It does not reuse the quarantined
-normal-equations walker in `cpp/walk.cpp`.
+This tree is the correctness-first rewrite of the walker.  It does not reuse
+the earlier normal-equations walker, which was quarantined and is not part of
+this release.
 
 The Python scripts under `tools/` only extract immutable oracle fixtures and
 measure the sparse factorization structure.  They must be run with
@@ -141,8 +141,7 @@ exclusive.
 Audit mode also reports whether each accurate updated face produces the same
 settle support transition and complete event tie set as the authoritative
 direct answer, plus time-weighted oracle coverage and numerical-rank changes.
-It never returns the audited candidate. See
-`agent_reports/125_qr_event_equivalence.md`.
+It never returns the audited candidate.
 For bounded structural routing experiments,
 `TWALKER_QR_UPDATE_MIN_COLUMNS=<m>` overrides the default size boundary; it
 does not affect audit mode or the direct solver.
@@ -197,8 +196,8 @@ factors only a bordered dense system of order
 answer without changing the walk; `TWALKER_BOUND_CORE_LIVE=1` enables the
 fail-closed experimental route.  Numerical rank is gated by a reciprocal
 condition estimate and every returned face is checked on the original
-operator.  The bounded admission and rejected wider variant are recorded in
-`agent_reports/144_fit1d_bound_core_hinge.md`.
+operator.  The bounded route below is admitted; the wider variant after it was
+measured and rejected.
 
 The wider rank-revealing variant is also quarantined.  Set
 `TWALKER_BOUND_CORE_WIDE_SHADOW=1` with the audit flag to use an equilibrated
@@ -207,8 +206,7 @@ authoritative walk unchanged.  A full Fit1d shadow run compared 805 answers
 with zero `1e-10` audit violations, but live use skipped one numerically
 delicate event at pivot 1,168.  `TWALKER_BOUND_CORE_WIDE_LIVE=1` and
 `TWALKER_BOUND_CORE_UNGUARDED=1` exist only to reproduce that rejected A/B;
-they are not production settings.  Details are in
-`agent_reports/145_fit1d_terminal_tail.md`.
+they are not production settings.
 
 Terminal detection is intentionally split.  A small active slope first tries
 only the cheap original-data certificate; if inactive rows still expose a
@@ -269,8 +267,7 @@ The bounded exact-equality quotient probe is likewise offline preprocessing:
 The timed solve in the second command is the C++ executable; Python performs
 only the exact lift and frozen certificate on the untouched original model.
 This probe is not a default router: its maintained lane loses conditioning
-after an initial fast segment on `sctap1`, as recorded in
-`agent_reports/99_maintained_cod_execution.md`.
+after an initial fast segment on `sctap1`.
 
 Additional design probes:
 

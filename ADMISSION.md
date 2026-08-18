@@ -23,7 +23,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 
 | Gate | Status | Evidence and disposition |
 |---|---|---|
-| P1 — prior work and credit | **PARTIAL** | All 14 citation keys resolve and all 14 bibliography entries match authoritative records. The Pinar (1997) primary source has now been obtained and read (JOTA 93(3), 619–634), and it **corrected an error**: the note previously described Pinar's perturbation as a Tikhonov term `(ε/2)‖z‖²` added to a constrained standard-form primal. He does no such thing. His equations (4)–(6) define an *unconstrained* dual penalty `H(y,τ) = τ·aᵀy + ½‖(Aᵀy+c)₋‖²`, minimized for *decreasing* τ. §5 now derives the correspondence from those equations: under `A = Bᵀ, a = d, c = −b`, dividing by τ and setting `t = 1/τ` turns `H` into Mangasarian's penalty for our primal, so the paths do coincide — but by a different route than the note claimed. **P1 stays PARTIAL** until the remaining citations are checked against primary sources at the same standard, rather than against bibliographic records alone. A bounded prior-art search found no mechanism-level collision; that is source-negative over a non-exhaustive search and is not a claim of global novelty. |
+| P1 — prior work and credit | **PARTIAL** | All 14 citation keys resolve and all 14 bibliography entries match authoritative records. The Pinar (1997) primary source has been obtained and read (JOTA 93(3), 619–634). §5 now cites his equations directly and gives both of the forms he states: the unconstrained dual penalty `H(y,τ) = τ·aᵀy + ½‖(Aᵀy+c)₋‖²` of his equations (4)–(6), which is the problem his algorithm solves, and its dual `(PB) min cᵀz + (τ/2)‖z‖² s.t. Az = a, z ≥ 0` on p. 623, which is the constrained regularized program whose optimizer is `P_D(tb)` under `A = Bᵀ, a = d, c = −b, t = 1/τ`. An intermediate revision of this file claimed Pinar states no such constrained program; **that claim was wrong and is retracted** — see `CORRECTIONS.md`. **P1 stays PARTIAL** because the remaining citations have not been checked against primary sources at all, only against bibliographic records. A bounded prior-art search found no mechanism-level collision; that is source-negative over a non-exhaustive search and is not a claim of global novelty. |
 | A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, the following material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
 | R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
@@ -68,15 +68,23 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   existing instruction to read Netlib times at order-of-magnitude precision is
   the right one. What is now also true is that a reader can rebuild the walker
   and land within about 1% of the published total.
-- **The synthetic figure now regenerates, after repairing two scripts.**
-  `summarize_twalker_synth_nm.py` rejected the record behind the published
-  figure because it demanded every arm on every cell, and the triangular seed
-  fails closed on 3 of 27. It also never emitted two fields the renderer's
-  post-initialization panel needs. Both are fixed, and the shipped chain now
-  reproduces the published numbers exactly: 24 cells, envelope picks 11/6/7,
-  median 2.8194, minimum 1.6950, maximum 11.7603. One residual: the
-  post-initialization figure renders its data JSON but still fails while
-  plotting a refused arm, so that panel is not yet regenerable end to end.
+- **The synthetic figure now regenerates, after repairing three scripts, but
+  not pixel-for-pixel.** `summarize_twalker_synth_nm.py` rejected the record
+  behind the published figure because it demanded every arm on every cell, and
+  the triangular seed fails closed on 3 of 27. It also never emitted two fields
+  the renderer's post-initialization panel needs.
+  `render_solver_timing_charts.py` then crashed while placing a DNF marker for
+  a cell that carried no timing at all. All three are fixed, and the shipped
+  chain now reproduces the published numbers exactly: 24 cells, envelope picks
+  11/6/7, median 2.8194, minimum 1.6950, maximum 11.7603.
+
+  What does not reproduce is the image. 3.17% of pixels differ from the shipped
+  `synthetic_aspect_timings_public.png`. Four of six panels match to within
+  antialiasing; two were drawn with different y-axis limits, and matching them
+  needs a vertical rescale of 1.07 and 1.14. The plotted series coincide. Since
+  the renderer as migrated crashed on this record, it cannot be the code that
+  produced the frozen PNG, and the earlier renderer state is not recoverable
+  from this repository. See `VERIFICATION.md` §1.
 - The synthetic generator varies aspect ratio and planted support geometry
   together, so the panel establishes a regime rather than isolating a cause.
 - The prototype is hybrid: an in-process Newton method builds the default

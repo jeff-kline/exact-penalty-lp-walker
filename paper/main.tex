@@ -182,21 +182,29 @@ The projection path itself is classical. Mangasarian and Meyer established finit
 
 After dualization and the change of parameter $t=1/\tau$, Pinar's penalty optimizer is exactly $P_D(tb)$, the path used here. The distinction is algorithmic. Pinar evaluates selected penalty values with predictor and corrector steps; t-walker attempts to visit the next certified breakpoint. General parametric-QP active-set methods already supply the larger setting for piecewise-affine optimizer maps, ratio events, dependent-constraint exchanges, and factor updates \citep{best-1996,bock-kirches-potschka-schloeder-2010,ferreau-etal-2014}. Bartels also used reduced-gradient basis exchanges in a penalty LP method \citep{bartels-1980}. We therefore do not claim a new path or homotopy principle.
 
-The exact algebra is short, and we give it against Pinar's own equations rather than a paraphrase. He states the standard-form pair
+The exact algebra is short, and we give it against Pinar's own equations rather than a paraphrase. We rename two of his symbols to keep our own free: his right-hand side becomes $a$ and his penalty parameter $\tau$, where he writes $b$ and $t$. He states the standard-form pair
 \[
  (\mathrm{P})\ \min_z c^\mathsf{T}z\ \text{s.t.}\ Az=a,\ z\ge0,
  \qquad
  (\mathrm{D})\ \max_y -a^\mathsf{T}y\ \text{s.t.}\ A^\mathsf{T}y+c\ge0,
 \]
-and penalizes the constraints of $(\mathrm{D})$, studying the \emph{unconstrained} problem
+penalizes the constraints of $(\mathrm{D})$, and studies the \emph{unconstrained} problem
 \[
- \min_y\ H(y,\tau)=\tau\,a^\mathsf{T}y+\tfrac12\lVert(A^\mathsf{T}y+c)_-\rVert^2
+ (\mathrm{CD})\quad \min_y\ H(y,\tau)=\tau\,a^\mathsf{T}y+\tfrac12\lVert(A^\mathsf{T}y+c)_-\rVert^2
 \]
-for decreasing $\tau>0$; this is his equations (4)--(6), with $W$ the diagonal selector of violated rows. Put $A=B^\mathsf{T}$, $a=d$, $c=-b$. Then his $(\mathrm{P})$ is our dual, his $(\mathrm{D})$ is our primal, and dividing $H$ by $\tau$ and writing $t=1/\tau$ gives
+for decreasing $\tau>0$; this is his equations (4)--(6), with $W$ the diagonal selector of violated rows. He then records, on p.\ 623, the dual of $(\mathrm{CD})$ as the constrained regularized program
 \[
- \min_y\ d^\mathsf{T}y+\frac{t}{2}\lVert(b-By)_+\rVert^2,
+ (\mathrm{PB})\quad \min_z\ c^\mathsf{T}z+\frac{\tau}{2}\lVert z\rVert^2\ \text{s.t.}\ Az=a,\ z\ge0 .
 \]
-which is Mangasarian's penalty program for our primal. His perturbation result identifies the dual optimizer of that program, for $\tau$ small, with the least-2-norm solution of his $(\mathrm{P})$ --- our dual --- and that point is $P_D(tb)$. His parameter decreases where ours increases.
+Put $A=B^\mathsf{T}$, $a=d$, $c=-b$, so that his $(\mathrm{P})$ is our dual and his $(\mathrm{D})$ is our primal. Either problem now delivers our path. Dividing $H$ by $\tau$ and writing $t=1/\tau$ turns $(\mathrm{CD})$ into
+\[
+ \min_x\ d^\mathsf{T}x+\frac{t}{2}\lVert(b-Bx)_+\rVert^2,
+\]
+Mangasarian's penalty program for our primal. And $(\mathrm{PB})$ reads $\min\{-b^\mathsf{T}y+(\tau/2)\lVert y\rVert^2:y\in D\}$, whose optimizer is
+\[
+ \arg\min_{y\in D}\tfrac12\lVert y-b/\tau\rVert^2=P_D(b/\tau)=P_D(tb)=y(t).
+\]
+His perturbation result identifies that point, for $\tau$ small, with the least-2-norm solution of his $(\mathrm{P})$ --- our dual. His parameter decreases where ours increases.
 Recent work sharpens finite-exactness thresholds and shows that regularization paths need not obey simple support-monotonicity rules \citep{gonzalez-sanz-nutz-2025,gonzalez-sanz-nutz-riveros-2025}. The supportable contribution here is narrower: a sparse direct breakpoint implementation of this classical path, original-data certification and rank-deficient-face repairs, and an empirical demonstration that face following complements a Mangasarian-style Newton solver in the measured low-ratio regime.
 
 \begin{figure}[H]

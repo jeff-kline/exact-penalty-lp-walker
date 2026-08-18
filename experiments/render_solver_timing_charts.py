@@ -431,12 +431,21 @@ def render_synthetic(rows, output: Path, repeat_count: int):
                             ("simplex", SERIES["simplex"]),
                             ("ipm", SERIES["ipm"])))
             for arm, (label, color, marker) in plotted:
-                y = np.array([row[arm_source][arm]["milliseconds"]
-                              for row in group])
+                # An arm may refuse a cell outright -- the triangular seed fails
+                # closed where the face lacks full column rank -- and then
+                # carries no timing at all.  A refusal is a property of the
+                # method, not a failed solve, so the cell is dropped rather
+                # than drawn as a DNF cross.  In the post-initialization row a
+                # refused arm is absent from the dict entirely.
+                cells = [row[arm_source].get(arm) for row in group]
+                measured = np.array([cell is not None
+                                     and cell.get("milliseconds") is not None
+                                     and cell["runs"] > 0 for cell in cells])
+                y = np.array([cells[i]["milliseconds"] if ok else np.nan
+                              for i, ok in enumerate(measured)], dtype=float)
                 certified = np.array([
-                    row[arm_source][arm]["certified_runs"]
-                    == row[arm_source][arm]["runs"]
-                    and row[arm_source][arm]["runs"] > 0 for row in group
+                    ok and cells[i]["certified_runs"] == cells[i]["runs"]
+                    for i, ok in enumerate(measured)
                 ])
                 axis.plot(x[certified], y[certified], color=color,
                           marker=marker, linewidth=1.25, markersize=3.8,
@@ -444,10 +453,10 @@ def render_synthetic(rows, output: Path, repeat_count: int):
                                            else color),
                           alpha=.82, label=label, zorder=2)
                 certified_y_values.extend(y[certified])
-                if np.any(~certified):
+                failed = measured & ~certified
+                if np.any(failed):
                     dnf_points.extend((xi, yi, color)
-                                      for xi, yi in zip(x[~certified],
-                                                        y[~certified]))
+                                      for xi, yi in zip(x[failed], y[failed]))
             frontier_y = np.array([
                 (row["mangasarian_frontier"]["milliseconds"]
                  if mode == "complete"

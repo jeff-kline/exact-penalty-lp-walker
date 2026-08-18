@@ -121,28 +121,46 @@ Corrections made during preparation, before any public version existed:
   `common-original-data-kkt-accuracy-v1`, has always called it. The score,
   the tolerance, and every reported measurement are unchanged.
 
-- **2026-08-17 — the note misdescribed Pinar's perturbation.**
-  §5 stated that Pinar (1997) perturbs a standard-form LP by adding
-  `(eps/2)||z||^2` to `c'z` over `{z >= 0, Az = a}`. He does not. The primary
-  source (JOTA 93(3), 619-634) defines, in its equations (4)-(6), an
-  **unconstrained dual** penalty `H(y,tau) = tau*a'y + (1/2)||(A'y + c)_-||^2`,
-  minimized over `y` for **decreasing** `tau`, with `W` a diagonal selector of
-  violated rows.
+- **2026-08-17 — §5 now cites Pinar's equations. A correction issued earlier
+  the same day was itself wrong and is retracted below.**
 
-  An earlier audit lane recorded this fact as unverifiable because the paper was
-  not in the checkout. It is freely available from the author's institutional
-  repository, and reading it took minutes. Recording a gap is not the same as
-  closing one.
+  The note's §5 originally said that Pinar (1997) perturbs a standard-form LP
+  by adding `(eps/2)||z||^2` to `c'z` over `{z >= 0, Az = a}`, and gave no
+  equation number. An audit lane had recorded the claim as unverifiable because
+  the paper was not in the checkout. The paper is freely available from the
+  author's institutional repository, so it was fetched and read
+  (JOTA 93(3), 619-634).
 
-  The conclusion survives: setting `A = B'`, `a = d`, `c = -b` makes Pinar's
-  primal our dual, and dividing `H` by `tau` with `t = 1/tau` yields exactly
-  Mangasarian's penalty program for our primal, so the paths do coincide. But
-  §5 now derives that from his actual equations rather than from a form he never
-  wrote, and notes that his parameter decreases where ours increases. Gate P1 is
-  reduced from PASS to PARTIAL.
+  What it contains is **both** forms. His equations (4)-(6) define an
+  unconstrained dual penalty `H(y,tau) = tau*a'y + (1/2)||(A'y + c)_-||^2`,
+  minimized over `y` for **decreasing** `tau`; that problem, `(CD)`, is what his
+  algorithm solves. On p. 623 he records its dual as
+  `(PB) min c'z + (tau/2)||z||^2 s.t. Az = a, z >= 0` — a constrained
+  standard-form LP with a Tikhonov term, which is what the note described.
 
-- **2026-08-17 — the synthetic reproduction gap was closed by repairing two
-  scripts.** `summarize_twalker_synth_nm.py` demanded that every arm run on
+  §5 now gives both, with equation numbers, and states the two symbol renames
+  it makes. Under `A = B'`, `a = d`, `c = -b`, dividing `H` by `tau` with
+  `t = 1/tau` gives Mangasarian's penalty program for our primal, and `(PB)`
+  reduces directly to `argmin{ ||y - b/tau||^2 : y in D } = P_D(tb)`. The
+  measured content of the note is unaffected.
+
+- **RETRACTED, 2026-08-17 — "the note misdescribed Pinar's perturbation."**
+  Earlier today this file and `ADMISSION.md` asserted that Pinar defines no
+  constrained quadratic perturbation — "He does not," against a form "he never
+  wrote." That is false. `(PB)` on p. 623 is exactly that form. An external
+  reviewer found the error by reading the same paper.
+
+  The failure is the same one recorded above for the `1.69` number: I checked
+  the part of the source that confirmed a hypothesis I had already formed —
+  equations (4)-(6), which are indeed unconstrained — and stopped reading four
+  pages short of the equation that refuted it. Fetching a primary source is not
+  the same as reading it. Gate P1 stays **PARTIAL**, now for the plain reason
+  that the remaining citations have not been checked against primary sources at
+  all.
+
+- **2026-08-17 — the synthetic reproduction gap was narrowed by repairing two
+  scripts. It is not fully closed.**
+  `summarize_twalker_synth_nm.py` demanded that every arm run on
   every cell, which the triangular seed cannot satisfy: it fails closed where
   the face lacks full column rank, on the same 3 of 27 cells in every repeat.
   The summarizer therefore rejected the very record behind the published
@@ -155,9 +173,11 @@ Corrections made during preparation, before any public version existed:
   `render_solver_timing_charts.py` additionally skipped over a refused arm
   rather than differencing two absent timings.
 
-  With both repaired, the shipped chain reproduces the published synthetic
-  figures from the published record: 24 cells, envelope picks 11/6/7, median
-  2.8194, minimum 1.6950, maximum 11.7603.
+  With both repaired, the shipped chain reproduces every synthetic *number* in
+  the note from the published record: 24 cells, envelope picks 11/6/7, median
+  2.8194, minimum 1.6950, maximum 11.7603. One gap remains: the
+  post-initialization panel writes its data JSON but still fails while plotting
+  a refused arm, so that one figure is not yet regenerable end to end.
 
 - **2026-08-17 — a failing component test is disclosed rather than hidden.**
   `verify_face_solver` exits 1: on `share1b` the direct face solve returns
