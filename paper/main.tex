@@ -48,17 +48,16 @@ Permanent version archive: not yet assigned; this draft has no DOI.
 \end{center}
 
 \begin{abstract}
-In 2002, Mangasarian first built a Newton LP method from a quadratic penalty
-that becomes exact at a finite parameter. In our tests it works well above
-roughly 5 constraints per variable but slows sharply below roughly 3, which
-includes much of Netlib-27. Stopping tolerances can reduce accuracy, so we
-offer the \method{t-walker}.
+In 2002, Mangasarian built a Newton LP method from a quadratic penalty that
+becomes exact at a finite parameter. In our tests it works well when
+constraints outnumber variables by roughly 5 to 10, but slows sharply below
+about 2 or 3, a regime that includes much of Netlib-27. Stopping tolerances can
+reduce accuracy, so we offer the \method{t-walker}.
 
 At penalty parameter $t$, projecting $tb$ onto the dual feasible set $D$ gives
 the multiplier $y(t)=P_D(tb)$. We claim no new path or homotopy: in 1997, Pinar
 implemented a predictor-corrector solver for an equivalent penalty program on
-this path. However, on the models certified by our provisional reconstruction,
-both Newton and t-walker run faster. The \method{t-walker} follows $y(t)$ face by
+this path. The \method{t-walker} follows $y(t)$ face by
 face, finding breakpoints by a minimum-ratio test. Our t-walker contributes a
 sparse breakpoint implementation that carries face coefficients, support
 statuses, and a rank-revealing core across pivots; repairs rank-deficient faces;

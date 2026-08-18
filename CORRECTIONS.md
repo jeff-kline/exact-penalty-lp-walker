@@ -396,6 +396,30 @@ Corrections made during preparation, before any public version existed:
   correct as written; only the verification table was ambiguous. Both rows are
   now labelled and the all-cell minimum is stated alongside.
 
+- **2026-08-17 — the abstract claimed a priority the release itself refutes.**
+  It opened "In 2002, Mangasarian **first** built a Newton LP method from a
+  quadratic penalty that becomes exact at a finite parameter." Section 5 of the
+  same paper records that Pinar's 1997 algorithm uses modified-Newton
+  correction on that penalty and "predates Mangasarian's 2002 Newton report,"
+  and the primary-source audit filed the same day records Pinar (1996) as
+  already giving a finite modified-Newton penalty algorithm for linear
+  programs. The word is removed. Mangasarian's 2004 paper remains the method
+  this work measures against, and the finite-exactness result remains credited
+  to Mangasarian and Meyer (1979).
+
+  Two further abstract edits landed with it. The regime boundary now reads
+  "roughly 5 to 10" and "below about 2 or 3", matching `README.md`,
+  `CITATION.cff`, and §1; the abstract had been the only surface saying "above
+  roughly 5" and "below roughly 3". And the sentence "on the models certified
+  by our provisional reconstruction, both Newton and t-walker run faster" is
+  deleted. It was true on all five certified models, but it set a C++ walker
+  and a tuned Newton method against a deliberately correctness-first Python
+  reconstruction, and §5's caveat that those timings are directional did not
+  travel with it into the abstract.
+
+  All three were found by an A1 confirming pass over commit `dedc0b4` and are
+  claim edits, so A1 restarts from this text.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that
