@@ -25,6 +25,8 @@ of them agreed on the same wrong answer.
 
 | 11 | 2026-08-17 | `dedc0b4` | primary agent, **self-check — weakest evidence in this table** | A1 confirming pass: every quantitative and scope claim in the abstract, paper, README, `CITATION.cff`, and `ADMISSION.md`, recomputed against the frozen records rather than cross-read | 24 of 25 checked claims reproduce exactly. **A1 does not close.** One high-severity finding: the abstract's "Mangasarian *first* built a Newton LP method from a quadratic penalty" is contradicted by §5 of the same paper and by entry 9's own report, which records Pinar (1996) as already giving a finite modified-Newton penalty algorithm. Three lower items on scope labels and qualifier placement. One fixed here; the rest touch author prose and are referred |
 
+| 12 | 2026-08-17 | `6907c5a` | cold agent, frontier tier | Narrow A1 pass over the revised abstract alone: numbers re-aggregated with the shipped code, credit checked against §5 and entry 9's report, scope checked against README/CFF/ADMISSION/§1 | Every number reproduces and the priority claim is clean. **11 framing findings, A1 stays open.** Two are serious: the abstract states the Netlib result with no reference solver and none of the four caveats the rest of the release treats as governing; and the motivating claim that stopping tolerances cost accuracy is unmeasured and runs opposite to the release's own accuracy record, where Newton is the more accurate and better-covering method before crossover |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their
