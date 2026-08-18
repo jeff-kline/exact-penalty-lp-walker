@@ -464,6 +464,44 @@ Corrections made during preparation, before any public version existed:
   generator varies aspect ratio and planted support geometry together. An
   abstract is not the place for a claim the paper does not make.
 
+- **2026-08-17 — supersedes the "all of Netlib-27" entry above, which stated a
+  true number without the one word that makes it honest.** That entry justified
+  strengthening "much of Netlib-27" to "all of" on the ground that "every one of
+  the 27 models has a constraint-to-variable ratio in [1.519, 2.866]". The
+  ratio is real, but it is the ratio of the **converted** `Bx >= b` form this
+  work uses throughout, which `render_solver_timing_charts.py` labels
+  "converted constraints / variables". In their canonical MPS form the same
+  models have far *fewer* rows than columns: `fit1d` is 24 x 1026, `ship04s`
+  402 x 1458, `adlittle` 56 x 97, `afiro` 27 x 32. Constraints do not outnumber
+  variables anywhere in Netlib-27; the conversion creates the band.
+
+  `experiments/synth_nm.py` has said so since it was written — "the panel
+  above cannot see it, because it never leaves `n ~ 2m`" — so this was
+  documented in the source and absent from the claim surfaces. Strengthening
+  "much" to "all" converted a known property of an encoding into what read as a
+  discovered property of the benchmark. The abstract, §1, `README.md` and
+  `CITATION.cff` now name the conversion, and §1 states plainly that the band
+  belongs to the encoding rather than to Netlib.
+
+- **2026-08-17 — the abstract quoted two Netlib figures on incompatible
+  estimators.** A previous entry records adding "trails HiGHS by 16.6 times" to
+  fix a missing reference solver. It half-fixed it. "11.60 to 9.60 seconds" is
+  a sum over models; "16.6 times" is a geometric mean of per-model ratios
+  against the faster of two HiGHS engines. A reader dividing the abstract's own
+  numbers gets **25.9**, and nothing on that surface explained the difference.
+  The abstract now gives the HiGHS total, 0.370 s, alongside the other two, and
+  names the geometric mean where it uses one.
+
+- **2026-08-17 — three smaller abstract repairs.** The headline speedup is now
+  marked as measured on *generated* instances, which the abstract had not said;
+  a reader met "twelve certified cells" with no indication they were synthetic.
+  The unsupported "roughly 5 to 10" band is gone from all four surfaces — the
+  panel samples one ratio inside it, no Netlib model lies in it, and Newton's
+  advantage keeps growing past it to 32 — replaced by Mangasarian's own stated
+  target of very tall systems. And the abstract now introduces the second seed
+  before relying on it, where it previously referred to "two walkers" having
+  described one.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

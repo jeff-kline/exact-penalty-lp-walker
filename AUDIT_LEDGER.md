@@ -27,6 +27,8 @@ of them agreed on the same wrong answer.
 
 | 12 | 2026-08-17 | `6907c5a` | cold agent, frontier tier | Narrow A1 pass over the revised abstract alone: numbers re-aggregated with the shipped code, credit checked against §5 and entry 9's report, scope checked against README/CFF/ADMISSION/§1 | Every number reproduces and the priority claim is clean. **11 framing findings, A1 stays open.** Two are serious: the abstract states the Netlib result with no reference solver and none of the four caveats the rest of the release treats as governing; and the motivating claim that stopping tolerances cost accuracy is unmeasured and runs opposite to the release's own accuracy record, where Newton is the more accurate and better-covering method before crossover |
 
+| 13 | 2026-08-17 | `8775dec` | cold agent, frontier tier | Second narrow A1 pass over the abstract and §1, aimed at the sentences rewritten the same day, plus an orphan check on the withdrawn accuracy claim | Withdrawal is clean: no orphan of the stopping-tolerance claim survives, and §4 reads consistently with §1. Every number reproduces. **Nine findings, A1 stays open.** The sharpest: "all of Netlib-27" is true only of the converted inequality encoding — in canonical MPS form those models have far fewer rows than columns — and the release's own `synth_nm.py` had documented that all along. Also caught that the reference solver added one commit earlier was quoted on a different estimator than the totals beside it |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

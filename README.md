@@ -7,10 +7,15 @@ is nothing here that should be cited as a fixed version.
 A linear program can be solved exactly by minimizing a quadratic penalty
 function, provided the penalty parameter is large enough but finite. That is
 Mangasarian's result, and it turns an LP into a sequence of smooth problems
-that a Newton method can attack. The method works well when constraints
-outnumber variables by roughly 5 to 10. It slows down sharply when that ratio
-falls below about 2 or 3 — which is where every model in the 27-model Netlib
-panel used here lives, and where many practical linear programs live too.
+that a Newton method can attack. Mangasarian aimed it at very tall systems,
+where it does well. It slows down sharply when constraints outnumber variables
+by less than about 2 or 3.
+
+Converted to the `Bx ≥ b` form used throughout this repository, all 27 Netlib
+models sit in that band, between 1.5 and 2.9. That is worth stating carefully:
+in their canonical MPS form those models have far fewer rows than columns, so
+the band is a property of this encoding rather than something discovered about
+the benchmark.
 
 This repository contains a second method for that regime, called the
 **t-walker**, together with the code, fixtures, and frozen measurements needed

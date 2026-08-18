@@ -12,8 +12,10 @@ license: GPL-3.0-only
 abstract: >-
   A linear program can be solved exactly by minimizing a quadratic penalty at a
   finite penalty parameter. A Newton method built on that fact performs well
-  when constraints outnumber variables by roughly 5 to 10, and slows sharply
-  below about 2 or 3. This repository contains a complementary method, the
+  on very tall systems and slows sharply when constraints outnumber variables
+  by less than about 2 or 3, a band that holds every Netlib model once
+  converted to the inequality form used here. This repository contains a
+  complementary method, the
   t-walker, which follows the exact dual projection path from face to face
   rather than re-solving the penalty problem at a sequence of penalty values,
   together with the C++ implementation, benchmark harness, canonical Netlib
