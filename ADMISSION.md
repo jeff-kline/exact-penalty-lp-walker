@@ -1,19 +1,25 @@
 # Admission record
 
-**Current verdict: NOT YET ADMITTED — candidate frozen; archive pending.**
+**Current verdict: NOT YET ADMITTED — v0.1.0 archived; final living-repository
+audit and publication pending.**
 
-**Release state:** CANDIDATE
+**Release state:** ARCHIVED
 
 **Version:** 0.1.0
 
-**Immutable release:** pending. This candidate targets `v0.1.0` and predates
-its tag, archive, and DOI.
+**Immutable release:** `v0.1.0` at commit
+`ed4dc6147653991aad2abd52b2681cdfe7c69444`, archived under version DOI
+[10.5281/zenodo.21998053](https://doi.org/10.5281/zenodo.21998053). The concept
+DOI [10.5281/zenodo.21998052](https://doi.org/10.5281/zenodo.21998052) resolves
+to the latest archived version.
 
 Admission is a project-defined release decision. It means the claim, evidence,
 prior-work record, reproducibility materials, citation, and correction policy
 passed the gates below against one frozen commit. **It is not peer review, a
-correctness certificate, or proof of global novelty.** This candidate has not
-yet completed R1 and is not admitted.
+correctness certificate, or proof of global novelty.** The immutable archive
+has completed R1's tag, archive, DOI, and metadata checks. The living update
+has not yet passed its clean committed-tree audit or been published, so the
+project is not yet admitted.
 
 ## Standard applied
 
@@ -25,8 +31,8 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 | Gate | Status | Evidence and disposition |
 |---|---|---|
 | P1 — prior work and credit | **PASS** | All 14 cited works were checked against primary material: ten full texts and four primary publisher/author records and abstracts where the full text was not freely obtainable. The audit compares the closest mechanisms, not just titles: the 1996 continuation papers already contain piecewise-linear paths, predictor–corrector/Newton machinery, and factor reuse; Pinar (1997) is the closest work because his `(CD)`/`(PB)` formulations map exactly to `P_D(tb)` under the paper's stated dualization and `t = 1/τ`; and general parametric-QP work already supplies ratio events, dependent-set exchanges, and factor updates. The release therefore claims no new path, homotopy, or generic active-set machinery and distinguishes its implementation/computation contribution. The corpus is bounded, four full-text access failures and the absence of independent specialist review remain explicit, and no global novelty claim is inferred. Full dispositions and exact checked-copy hashes are in `audit/reports/p1-primary-source-audit-20260817.md`. |
-| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–18. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. The README headline now carries the same 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap as the paper. Title, author, candidate status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib t-walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. The repository is public, its security settings are hardened, and it is enabled in Zenodo for the GitHub-integration route. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
+| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–18. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. The README headline now carries the same 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap as the paper. Title, author, release metadata, contribution boundary, limitations, evidence levels, and quantitative claims agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. The post-publication edits add only archive and citation facts; no material claim changed. Further material claim edits reopen A1. |
+| R1 — release and stewardship | **PARTIAL** | The immutable `v0.1.0` tag points to audited commit `ed4dc6147653991aad2abd52b2681cdfe7c69444`. GitHub's canonical tag zipball was downloaded twice before the Release; both copies were 2,368,081 bytes with SHA-256 `c8f719130088c73093087f48a677561640c57f833eff06efa22655574c15886d`. Zenodo published version DOI `10.5281/zenodo.21998053`; its public file has the same size and SHA-256, provider checksum `md5:7d825e0d615614a70726778c295aa60a`, and is byte-identical to the pinned GitHub zipball. The archived-state audit reports 11 pass, 0 warning, 0 fail. Deterministic builds, reproduction records, correction policy, third-party provenance, and a complete manifest also exist. Remaining before admission: commit this living reconciliation, run the clean admitted-state audit, and publish the resulting living metadata; a public-site listing remains outside this update. The frozen-build counter divergence and `beaconfd` regression remain named qualifications. |
 
 ## Claim boundary
 
@@ -114,24 +120,28 @@ Permission for one action never implies permission for the next.
 
 | Action | Owner | Status |
 |---|---|---|
-| Local edits, builds, tests | agent | complete for candidate |
+| Local edits, builds, tests | agent | complete through living metadata, deterministic PDF rebuild, and manifest regeneration; final clean committed-tree audit pending |
 | Create and publish GitHub repository | Jeff Kline | complete; repository public |
 | Review-branch push | N/A | not used |
-| Default-branch candidate push | Jeff Kline | pending exact freeze authorization |
-| Public tag | Jeff Kline | pending exact freeze authorization |
-| GitHub Release | Jeff Kline | pending exact freeze authorization |
-| Zenodo portal (enable repo, mint DOI) | Jeff Kline — authenticated portal, agent must not open it | repository enabled; DOI mints after Release |
-| Public-site listing | Jeff Kline | not requested |
+| Default-branch candidate push | Jeff Kline | complete at `ed4dc6147653991aad2abd52b2681cdfe7c69444` |
+| Public tag | Jeff Kline | complete: immutable `v0.1.0` |
+| GitHub Release | Jeff Kline | complete: `v0.1.0`, published 2026-08-18 |
+| Zenodo portal (enable repo, mint DOI) | Jeff Kline — authenticated portal, agent must not open it | complete: version DOI `10.5281/zenodo.21998053` |
+| Living-metadata push | Jeff Kline | pending exact admission authorization |
+| Public-site listing | Jeff Kline | outside this update; not yet authorized |
 
 ## Archive route
 
-**Zenodo GitHub integration.** No DOI exists before the GitHub Release, so
-candidate metadata stays timeless and carries no DOI field. The repository must
-be enabled in Zenodo *before* the Release is created. Before the Release, the
-GitHub tag zipball is downloaded twice and pinned; the published Zenodo file
-must equal those bytes. A `git archive <tag>` is generated twice as an
-independent determinism check, and its hash is expected to differ from the
-provider zipball.
+**Zenodo GitHub integration.** The repository was enabled before the GitHub
+Release. GitHub's canonical `v0.1.0` tag zipball was downloaded twice before
+the Release and the two copies matched at 2,368,081 bytes, SHA-256
+`c8f719130088c73093087f48a677561640c57f833eff06efa22655574c15886d`.
+Zenodo's published file, `jeff-kline/exact-penalty-lp-walker-v0.1.0.zip`, is
+byte-identical to those pinned bytes and carries provider checksum
+`md5:7d825e0d615614a70726778c295aa60a`. The separately generated deterministic
+`git archive` is 2,361,607 bytes with SHA-256
+`75e7658c0de261d7245f930f51115af8ced9cd8804b458c494968f40f915bed4`;
+it is a secondary check, not the provider identity target.
 
 ## Candidate freeze
 
@@ -159,6 +169,6 @@ provider zipball.
 | State | Condition | Status |
 |---|---|---|
 | DRAFT → CANDIDATE | P1, A1, and pre-freeze R1 pass; prose and artifacts agree. | **reached; candidate audit 7 pass, 0 fail** |
-| CANDIDATE → TAGGED | Freeze one clean commit; create one immutable tag. | not reached |
-| TAGGED → ARCHIVED | Archive the tagged tree; verify the download byte-for-byte. | not reached |
-| ARCHIVED → ADMITTED | Activate DOI, reconcile public surfaces, issue the verdict. | not reached |
+| CANDIDATE → TAGGED | Freeze one clean commit; create one immutable tag. | **reached: `v0.1.0` → `ed4dc6147653991aad2abd52b2681cdfe7c69444`** |
+| TAGGED → ARCHIVED | Archive the tagged tree; verify the download byte-for-byte. | **reached: DOI resolves, metadata matches, and provider bytes are identical; archived audit 11/0/0** |
+| ARCHIVED → ADMITTED | Reconcile and publish living surfaces; run the final clean admitted-state audit; issue the verdict. | not reached |

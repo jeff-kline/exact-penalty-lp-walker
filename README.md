@@ -1,8 +1,10 @@
 # Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down
 
-**Release state: CANDIDATE for v0.1.0.** Claims and artifacts are frozen. This
-candidate snapshot predates its immutable tag, permanent archive, and DOI;
-consult the living repository for the verified citation after publication.
+**Release state: ARCHIVED at v0.1.0.** The immutable release is preserved under
+[version DOI 10.5281/zenodo.21998053](https://doi.org/10.5281/zenodo.21998053).
+Zenodo's public archive was verified byte-for-byte against the GitHub tag
+zipball pinned before the Release. The immutable tag retains its honest
+candidate-era wording; this living repository carries the active citation.
 
 A linear program can be solved exactly by minimizing a quadratic penalty
 function, provided the penalty parameter is large enough but finite. That is
@@ -236,9 +238,17 @@ withdrawals in [`CORRECTIONS.md`](CORRECTIONS.md).
 
 ## Citation
 
-This is the frozen candidate for v0.1.0. It predates the DOI and should not be
-cited as a fixed version until the Zenodo archive has been verified. Citation
-metadata is in `CITATION.cff` and will be reconciled here after publication.
+Version 0.1.0 is preserved at
+[10.5281/zenodo.21998053](https://doi.org/10.5281/zenodo.21998053):
+
+> Jeffery Kline, *Revisiting exact-penalty linear programming: a
+> projection-path walker for the regime where Newton slows down*, version
+> 0.1.0, 2026. DOI: 10.5281/zenodo.21998053.
+
+Use that version DOI when citing the released artifacts. The
+[concept DOI 10.5281/zenodo.21998052](https://doi.org/10.5281/zenodo.21998052)
+resolves to the latest archived version. Machine-readable citation metadata is
+in [`CITATION.cff`](CITATION.cff).
 
 ## References
 

@@ -308,14 +308,19 @@ sh paper/build_paper.sh
 
 Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `paper/main.pdf`.
 
-Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
+Determinism was checked again after the post-publication DOI reconciliation by
+removing `tmp/texbuild/main/` entirely before each build:
 
 ```text
-6d0af918a726b453bcf42b6560ab93c0a96c72378f148f1bf5b39aab11ae43ac  build 1
-6d0af918a726b453bcf42b6560ab93c0a96c72378f148f1bf5b39aab11ae43ac  build 2
+431e368185d3017f618f7fcc8ae7192baca51c743de444d4053d8cc1463bc59e  living build 1
+431e368185d3017f618f7fcc8ae7192baca51c743de444d4053d8cc1463bc59e  living build 2
 ```
 
-**Byte-identical.** This required a fix: two clean builds previously differed
+**Byte-identical.** The immutable `v0.1.0` archive retains the candidate PDF,
+whose SHA-256 is
+`6d0af918a726b453bcf42b6560ab93c0a96c72378f148f1bf5b39aab11ae43ac`.
+The living PDF differs only because it adds the active DOI and archived status.
+The original determinism repair was required because two clean builds differed
 in 60 of 513,258 bytes, entirely within the PDF trailer `/ID`, which pdfTeX
 derives from the output path. `\pdftrailerid{}` is now set in the preamble, and
 `SOURCE_DATE_EPOCH` was already pinned in the build script.

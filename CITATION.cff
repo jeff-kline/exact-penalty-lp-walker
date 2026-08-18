@@ -3,6 +3,8 @@ message: "If you use this software, please cite it using the metadata in this fi
 title: "Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down"
 type: software
 version: 0.1.0
+doi: 10.5281/zenodo.21998053
+date-released: "2026-08-18"
 authors:
   - family-names: Kline
     given-names: Jeffery

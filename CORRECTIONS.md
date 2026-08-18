@@ -24,6 +24,23 @@ edit.
 
 ## Version history
 
+### 0.1.0 — ARCHIVED (18 August 2026)
+
+The immutable `v0.1.0` tag points to commit
+`ed4dc6147653991aad2abd52b2681cdfe7c69444`. Zenodo preserves the release under
+version DOI [10.5281/zenodo.21998053](https://doi.org/10.5281/zenodo.21998053);
+the concept DOI
+[10.5281/zenodo.21998052](https://doi.org/10.5281/zenodo.21998052) resolves to
+the latest archived version. The 2,368,081-byte provider archive is
+byte-identical to the GitHub tag zipball pinned before the Release, with
+SHA-256 `c8f719130088c73093087f48a677561640c57f833eff06efa22655574c15886d`
+and provider checksum `md5:7d825e0d615614a70726778c295aa60a`.
+
+The immutable tag honestly says that it predates its DOI. It has not been
+rewritten. The living README, citation metadata, paper, and admission record
+add the active DOI and disclose that difference. No mathematical, algorithmic,
+or measured claim changed in this post-publication reconciliation.
+
 ### 0.1.0 — CANDIDATE (18 August 2026)
 
 Claims and artifacts are frozen for the proposed `v0.1.0` tag. This candidate
