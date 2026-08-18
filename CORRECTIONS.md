@@ -369,6 +369,24 @@ Corrections made during preparation, before any public version existed:
   lost: it remains in `README.md` under Citation and in `ADMISSION.md`, both of
   which are living files.
 
+- **2026-08-17 — supersedes the wording of the component-test entry above.**
+  That entry says the failing test was "asserting the wrong property." That
+  overstates it. Agreement with the recorded answer is a useful regression
+  property and is still asserted; the defect was that it was the only property
+  asserted, and at a tolerance that ignored how hard the face was. The accurate
+  description is *miscalibrated and incomplete*. Nothing about the change
+  itself is affected.
+
+- **2026-08-17 — the determinism record carried a stale PDF hash.**
+  `VERIFICATION.md` recorded `c0171ddc…` for both clean builds. The P1 audit
+  repaired a BibTeX author order, which changed the rendered bibliography, so
+  the committed PDF hashes to `2334a21f…`. Two clean builds from the current
+  commit were re-run and both give `2334a21f…`, matching the committed file;
+  the recorded pair is updated. Determinism itself never broke. The bundled
+  release audit compares the manifest against the tree but does not read hashes
+  quoted in prose, so it passed 6/0/0 with the record stale — a gap worth
+  knowing about when reading a green audit.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

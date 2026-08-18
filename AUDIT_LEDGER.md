@@ -21,6 +21,8 @@ of them agreed on the same wrong answer.
 | 8 | 2026-08-17 | `0bb2a64` | external reviewer | Second whole-release review | Found the entry-7 Pinar correction **false**: `(PB)` on p. 623 of the same paper is the constrained regularized program the original text described. Also found closure overclaimed twice — the synthetic figure and a stale `VERIFICATION.md` section — and the dangling `agent_reports/` pointers still in place. All four disposed of in this pass |
 | 9 | 2026-08-17 | `b2d8ff2` | primary agent, adversarial literature audit | P1 audit of all 14 cited works; equation/mechanism comparison of exactness, continuation paths, Pinar equivalence, parametric-QP events/exchanges, factor updates, and recent threshold/monotonicity claims | **P1 PASS.** Ten full primary texts read; four primary records/abstracts checked with full-text access failures named. The 1996 papers narrow the background more than the prior admission record showed, but the public text already credits them and bounds the contribution correctly. No claim-prose edit required; one credit repair corrected the 2010 report's BibTeX author order. Raw dispositions and checked-copy hashes preserved in `audit/reports/p1-primary-source-audit-20260817.md` |
 
+| 10 | 2026-08-17 | `4942f81` | external reviewer | Component-test disposition, coverage floors, citation metadata | Reproduced all three verifiers, both deliberately failing floors, and the clean draft audit. Accepted the `share1b` disposition as a documented smoke-test policy and corrected its description from "wrong property" to *miscalibrated and incomplete*. Found the determinism record still quoting the pre-P1 PDF hash, which the mechanical audit cannot catch because it does not read hashes out of prose |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their
@@ -40,3 +42,8 @@ of them agreed on the same wrong answer.
   three corrections issued under agent review have been wrong.** Weight this
   ledger accordingly: it records that reviews happened, not that they were
   right.
+- A green run of the bundled release audit does not mean the prose agrees with
+  the tree. It verifies the manifest against the files; it does not read the
+  hashes, counts, or timings quoted in `VERIFICATION.md`. Entry 10 found a
+  stale PDF hash sitting behind a 6-pass audit. Numbers written into prose have
+  to be re-checked by hand whenever the artifact they describe is rebuilt.

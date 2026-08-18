@@ -256,10 +256,11 @@ make build/verify_face_solver build/verify_gram_solver \
 
 Four things must be said plainly about this table.
 
-**`verify_face_solver` used to fail, and the gate it failed was the wrong
-gate.** It asserted one property — agreement with the answer recorded in the
-fixture — at a blanket 1e-10 across 26 faces of very different conditioning,
-and never asserted the solver's own residual at all. On `share1b` the
+**`verify_face_solver` used to fail, and its gate was miscalibrated and
+incomplete.** Agreement with the answer recorded in the fixture is a useful
+regression property and is still checked. But it was the *only* property
+checked, at a blanket 1e-10 across 26 faces of very different conditioning,
+and the solver's own residual was never asserted at all. On `share1b` the
 disagreement is 2.97e-09.
 
 The relevant number is next to it. `FaceSolution::piece_residual` is what the
@@ -309,8 +310,8 @@ Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `p
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-c0171ddcaa137fbedc3561d41639c8c43c8d3d8698d81540c097aaad474cbd9c  build 1
-c0171ddcaa137fbedc3561d41639c8c43c8d3d8698d81540c097aaad474cbd9c  build 2
+2334a21f9bf43d2dfe97f5f7066445078a0e023d2b3b3e5bbd88c6b3b58a2d90  build 1
+2334a21f9bf43d2dfe97f5f7066445078a0e023d2b3b3e5bbd88c6b3b58a2d90  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
