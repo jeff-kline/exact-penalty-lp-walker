@@ -420,6 +420,50 @@ Corrections made during preparation, before any public version existed:
   All three were found by an A1 confirming pass over commit `dedc0b4` and are
   claim edits, so A1 restarts from this text.
 
+- **2026-08-17 — a motivating claim was withdrawn: nothing here measures
+  stopping-tolerance accuracy loss, and the record points the other way.**
+  The abstract read "Stopping tolerances can reduce accuracy, so we offer the
+  t-walker," and §1 escalated it to "two gaps... This note addresses both
+  gaps." The phrase appeared in exactly those two places in the repository. No
+  record, experiment, or verification row measures it. The release's own
+  accuracy record contradicts the implied direction: before crossover, the
+  median original-data KKT error on Netlib-27 is 7.087e-13 for Newton against
+  2.208e-12 for the t-walker, and Newton certifies 27 of 27 where the walker
+  certifies 24. On the synthetic panel it is 3.264e-14 against 1.734e-13, and
+  24 of 24 against 23. **Newton is the more accurate and better-covering method
+  before crossover, and the note now says so rather than implying otherwise.**
+
+  Both passages are withdrawn. §1 keeps the accuracy work as what it is — a
+  common measurement protocol applied to every method, since solver status
+  strings are not comparable — and explicitly disclaims the stronger reading.
+  The single measured gap the note addresses is the low-ratio slowdown.
+
+- **2026-08-17 — the abstract reported the Netlib result with no reference
+  solver.** It stated "cuts Netlib-27 time from 11.60 to 9.60 seconds" while
+  the same records give 0.370 s for the faster HiGHS engine on each model, and
+  it carried none of the caveats the rest of the release treats as governing:
+  the 16.6x gap to HiGHS, the frontier's use of hindsight, incomplete coverage,
+  and the walker's own HiGHS-backed repairs. §1's "That is progress, not
+  victory" and §4's "These results do not show that a new LP solver beats
+  HiGHS" had no counterpart on the surface most likely to be read alone. The
+  abstract now names both the hindsight and the 16.6x gap.
+
+- **2026-08-17 — two scope words in the abstract.** "at ratios up to 2" now
+  reads "at ratios from 1.1 to 2": the record contains three cells at ratio
+  1.0 that the panel excludes, and including them would move the median from
+  2.8194 to 2.4502. The exclusion was already stated in §1 and in the figure
+  caption, but the abstract's phrase read as if it covered them. And "much of
+  Netlib-27" now reads "all of": every one of the 27 models has a
+  constraint-to-variable ratio in [1.519, 2.866], so the original understated
+  its own coverage. `README.md` and §1 are aligned to match.
+
+- **2026-08-17 — a speculation was dropped from the abstract.** "Informally,
+  low-ratio LPs may be governed more by discrete support changes than by the
+  within-face curvature that second-order methods can exploit" appeared nowhere
+  else in the release, and sits in tension with the stated limitation that the
+  generator varies aspect ratio and planted support geometry together. An
+  abstract is not the place for a claim the paper does not make.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

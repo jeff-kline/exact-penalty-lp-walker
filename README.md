@@ -9,8 +9,8 @@ function, provided the penalty parameter is large enough but finite. That is
 Mangasarian's result, and it turns an LP into a sequence of smooth problems
 that a Newton method can attack. The method works well when constraints
 outnumber variables by roughly 5 to 10. It slows down sharply when that ratio
-falls below about 2 or 3 — which is where much of the Netlib benchmark panel
-lives, and where many practical linear programs live too.
+falls below about 2 or 3 — which is where every model in the 27-model Netlib
+panel used here lives, and where many practical linear programs live too.
 
 This repository contains a second method for that regime, called the
 **t-walker**, together with the code, fixtures, and frozen measurements needed

@@ -51,8 +51,8 @@ Permanent version archive: not yet assigned; this draft has no DOI.
 In 2002, Mangasarian built a Newton LP method from a quadratic penalty that
 becomes exact at a finite parameter. In our tests it works well when
 constraints outnumber variables by roughly 5 to 10, but slows sharply below
-about 2 or 3, a regime that includes much of Netlib-27. Stopping tolerances can
-reduce accuracy, so we offer the \method{t-walker}.
+about 2 or 3 --- a regime that includes all of Netlib-27, and the one the
+\method{t-walker} is built for.
 
 At penalty parameter $t$, projecting $tb$ onto the dual feasible set $D$ gives
 the multiplier $y(t)=P_D(tb)$. We claim no new path or homotopy: in 1997, Pinar
@@ -62,15 +62,15 @@ face, finding breakpoints by a minimum-ratio test. Our t-walker contributes a
 sparse breakpoint implementation that carries face coefficients, support
 statuses, and a rank-revealing core across pivots; repairs rank-deficient faces;
 and accepts only primal-dual pairs passing a KKT certificate on the original
-unscaled data. We report measured KKT errors. Informally, low-ratio LPs may be
-governed more by discrete support changes than by the within-face curvature
-that second-order methods can exploit.
+unscaled data. We report measured KKT errors.
 
 The walker beats staged Newton in eleven of twelve certified low-ratio
 cells. The fastest certified of two walkers and Newton is a median 2.82 times
-faster than Newton at ratios up to 2 and cuts Netlib-27 time from 11.60 to 9.60
-seconds. For both, simplex crossover cuts median Netlib error by about three
-orders.
+faster than Newton at ratios from 1.1 to 2 and cuts Netlib-27 time from 11.60 to
+9.60 seconds. For both, simplex crossover cuts median Netlib error by about three
+orders. Choosing the fastest of three methods per problem is hindsight rather
+than a dispatcher, and the result still trails HiGHS by 16.6 times on
+Netlib-27.
 
 \end{abstract}
 
@@ -82,7 +82,7 @@ no permanent archive, and no DOI.
 
 \section{The gap}
 
-Mangasarian showed that a quadratic penalty program yields an exact LP solution at a sufficiently large but finite penalty parameter \citep{mangasarian-meyer-1979,mangasarian-1984,mangasarian-2004}. He used that result to build a Newton method for LPs. Empirically, Newton excels when constraints outnumber variables by roughly 5 to 10 and often reaches the LP solution in only a few nonlinear iterations. But two gaps remain. Newton slows sharply below roughly 2 to 3 constraints per variable, a regime that includes much of the Netlib benchmark panel and arises in practical linear programs. Its stopping tolerances can also compromise numerical accuracy. This note addresses both gaps.
+Mangasarian showed that a quadratic penalty program yields an exact LP solution at a sufficiently large but finite penalty parameter \citep{mangasarian-meyer-1979,mangasarian-1984,mangasarian-2004}. He used that result to build a Newton method for LPs. Empirically, Newton excels when constraints outnumber variables by roughly 5 to 10 and often reaches the LP solution in only a few nonlinear iterations. But a gap remains. Newton slows sharply below roughly 2 to 3 constraints per variable, a regime that includes every model in the Netlib benchmark panel used here and arises in practical linear programs. This note addresses that gap. Separately, because solver status strings do not measure accuracy on a common scale, we re-evaluate every method under one original-data certificate rather than trusting its own stopping test; that is a measurement protocol, not a claim that the walker is the more accurate method.
 
 We built a complementary method, the \method{t-walker}, for this regime. The walker follows the exact dual projection path from face to face instead of solving the penalty problem afresh at a sequence of penalty values. On the tested low-ratio problems, t-walker outpaces Newton in eleven of the twelve measured cells; the exception is $m=200$ at ratio 1.1, where Newton is 1.24 times faster and the triangular seed recovers the cell. Choosing the fastest certified result among the default-seed walker, the triangular-seeded walker, and staged Newton improves on staged Newton alone across Netlib. The envelope still trails HiGHS by more than an order of magnitude.
 
