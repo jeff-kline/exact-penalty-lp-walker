@@ -31,6 +31,8 @@ of them agreed on the same wrong answer.
 
 | 14 | 2026-08-17 | `aaf36d1` | primary agent, final A1 disposition | Frozen-surface review of entry 13's remaining timing-precision, accuracy-rounding, and applicability questions; cross-check against the frozen records, `ADMISSION.md`, and the rebuilt walker result | **A1 PASS.** Netlib totals and the geometric-mean HiGHS comparison are now explicitly approximate; the frozen values remain exact in the verification record. “About three orders” is retained because the measured reductions are 3.23 and 2.63 orders. No “practical linear programs” claim remains. All earlier material findings are resolved or carried as named limitations. The claim surface is frozen; any later material claim edit reopens A1 |
 
+| 15 | 2026-08-18 | `c6d1db5` | primary agent, narrow post-closure check | User-directed abstract clarification of the algorithmic distinction from Pinar; checked against §5 and the P1 record | **A1 PASS.** The abstract now says directly that the method differs by following $y(t)$ face by face and seeking breakpoints. That is the same bounded distinction already stated in §5; it does not claim a new path, homotopy, predictor-corrector principle, or generic active-set machinery. The incidental “we run it from two seeds” clause is removed. No other claim changes |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

@@ -517,6 +517,17 @@ Corrections made during preparation, before any public version existed:
   dispositions, A1 closes on the frozen text; any later material claim edit
   reopens it.
 
+- **2026-08-18 — the abstract states the algorithmic distinction directly.**
+  After crediting Pinar's equivalent penalty path, the abstract previously
+  began the next sentence with “The t-walker follows...” It now says, “What
+  distinguishes our method from that prior work is that it follows...” This
+  makes explicit the bounded distinction already stated in §5: Pinar evaluates
+  selected penalty values with predictor-corrector steps, while this method
+  follows the path face by face and seeks the next breakpoint. The incidental
+  clause “we run it from two seeds” is removed from that mechanism sentence.
+  No priority, path, homotopy, or generic active-set claim is added. A narrow
+  consistency check against §5 and the P1 record leaves A1 at **PASS**.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

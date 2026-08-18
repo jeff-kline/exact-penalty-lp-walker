@@ -57,12 +57,12 @@ inequality form used here, all of Netlib-27 sits in that band, which the
 At penalty parameter $t$, projecting $tb$ onto the dual feasible set $D$ gives
 the multiplier $y(t)=P_D(tb)$. We claim no new path or homotopy: in 1997, Pinar
 implemented a predictor-corrector solver for an equivalent penalty program on
-this path. The \method{t-walker} follows $y(t)$ face by face, finding
-breakpoints by a minimum-ratio test; we run it from two seeds. Our contribution
-is a sparse breakpoint implementation that carries face coefficients, support
-statuses, and a rank-revealing core across pivots, repairs rank-deficient
-faces, and accepts only primal-dual pairs passing a KKT certificate on the
-original unscaled data, whose errors we report.
+this path. What distinguishes our method from that prior work is that it follows
+$y(t)$ face by face, finding breakpoints by a minimum-ratio test. Our
+contribution is a sparse breakpoint implementation that carries face
+coefficients, support statuses, and a rank-revealing core across pivots, repairs
+rank-deficient faces, and accepts only primal-dual pairs passing a KKT
+certificate on the original unscaled data, whose errors we report.
 
 On generated low-ratio instances the walker beats Newton in eleven of twelve
 certified cells. The fastest of the two seeds and Newton is a median 2.82 times
