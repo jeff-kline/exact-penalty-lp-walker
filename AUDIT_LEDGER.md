@@ -37,6 +37,8 @@ of them agreed on the same wrong answer.
 
 | 17 | 2026-08-18 | `b260912` | primary agent, narrow README consistency pass | README title, headline claim, prior-work distinction, limitations, and reproduction links checked against the frozen paper and verification record | **A1 PASS after repair.** The README claim box now carries the paper's 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap instead of a broader portfolio claim. The Pinar distinction now matches §5, the title matches the release metadata, and the Netlib rerun link points to `VERIFICATION.md` §5 rather than the document-build section. No paper claim changed. |
 
+| 18 | 2026-08-18 | `efdc4f6` | primary agent, final candidate freeze | Candidate-state metadata across README, paper, CFF, admission record, and corrections; deterministic PDF; manifest; public-tree privacy scan; Zenodo GitHub-integration route; outgoing identity | **CANDIDATE PASS.** Two clean PDF builds are byte-identical at `6d0af918…` (8 pages, no warnings or overfull lines), the rendered first page is clean, the 216-file manifest verifies, the public tree has no secret-pattern or absolute-path hits, and the candidate audit reports 7 pass, 0 fail. Its sole warning is expected: `v0.1.0` does not exist because the audit precedes exact authorization for the immutable tag. The one outgoing commit uses the GitHub noreply identity. |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

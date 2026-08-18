@@ -25,8 +25,8 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 | Gate | Status | Evidence and disposition |
 |---|---|---|
 | P1 — prior work and credit | **PASS** | All 14 cited works were checked against primary material: ten full texts and four primary publisher/author records and abstracts where the full text was not freely obtainable. The audit compares the closest mechanisms, not just titles: the 1996 continuation papers already contain piecewise-linear paths, predictor–corrector/Newton machinery, and factor reuse; Pinar (1997) is the closest work because his `(CD)`/`(PB)` formulations map exactly to `P_D(tb)` under the paper's stated dualization and `t = 1/τ`; and general parametric-QP work already supplies ratio events, dependent-set exchanges, and factor updates. The release therefore claims no new path, homotopy, or generic active-set machinery and distinguishes its implementation/computation contribution. The corpus is bounded, four full-text access failures and the absence of independent specialist review remain explicit, and no global novelty claim is inferred. Full dispositions and exact checked-copy hashes are in `audit/reports/p1-primary-source-audit-20260817.md`. |
-| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–17. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. The README headline now carries the same 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap as the paper. Title, author, candidate status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
-| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib t-walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
+| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–18. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. The README headline now carries the same 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap as the paper. Title, author, candidate status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
+| R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib t-walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. The repository is public, its security settings are hardened, and it is enabled in Zenodo for the GitHub-integration route. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
 ## Claim boundary
 
@@ -114,7 +114,7 @@ Permission for one action never implies permission for the next.
 
 | Action | Owner | Status |
 |---|---|---|
-| Local edits, builds, tests | agent | authorized; candidate checks in progress |
+| Local edits, builds, tests | agent | complete for candidate |
 | Create and publish GitHub repository | Jeff Kline | complete; repository public |
 | Review-branch push | N/A | not used |
 | Default-branch candidate push | Jeff Kline | pending exact freeze authorization |
@@ -150,14 +150,15 @@ provider zipball.
 4. ~~Decide whether the Markdown copy of the note ships.~~ Done: removed.
    It duplicated every claim in the paper and had drifted from it twice. The
    TeX source is now the single claim surface for the note.
-5. The bundled release audit is run at `--state candidate --require-clean`
-   against the committed candidate before any tag is created.
+5. ~~Run the bundled release audit at `--state candidate --require-clean`
+   against the committed candidate before any tag is created.~~ Done: 7 pass,
+   0 fail, with the expected pre-tag warning.
 
 ## State transitions
 
 | State | Condition | Status |
 |---|---|---|
-| DRAFT → CANDIDATE | P1, A1, and pre-freeze R1 pass; prose and artifacts agree. | **reached in this snapshot; clean audit required before tag** |
+| DRAFT → CANDIDATE | P1, A1, and pre-freeze R1 pass; prose and artifacts agree. | **reached; candidate audit 7 pass, 0 fail** |
 | CANDIDATE → TAGGED | Freeze one clean commit; create one immutable tag. | not reached |
 | TAGGED → ARCHIVED | Archive the tagged tree; verify the download byte-for-byte. | not reached |
 | ARCHIVED → ADMITTED | Activate DOI, reconcile public surfaces, issue the verdict. | not reached |
