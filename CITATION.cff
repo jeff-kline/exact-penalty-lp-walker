@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata in this file."
 title: "Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down"
 type: software
-version: 0.1.0-draft
+version: 0.1.0
 authors:
   - family-names: Kline
     given-names: Jeffery

@@ -24,6 +24,13 @@ edit.
 
 ## Version history
 
+### 0.1.0 — CANDIDATE (18 August 2026)
+
+Claims and artifacts are frozen for the proposed `v0.1.0` tag. This candidate
+uses the Zenodo GitHub-integration route and therefore predates its DOI. The
+immutable tag, GitHub Release, archive verification, and living-metadata update
+remain separate later steps.
+
 ### Unreleased — DRAFT
 
 Initial preparation of the public release. No version has been tagged or

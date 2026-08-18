@@ -1,8 +1,8 @@
 # Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down
 
-**Release state: DRAFT.** Claims and artifacts in this repository may still
-change. There is no stable tag, no permanent archive, and no DOI yet, so there
-is nothing here that should be cited as a fixed version.
+**Release state: CANDIDATE for v0.1.0.** Claims and artifacts are frozen. This
+candidate snapshot predates its immutable tag, permanent archive, and DOI;
+consult the living repository for the verified citation after publication.
 
 A linear program can be solved exactly by minimizing a quadratic penalty
 function, provided the penalty parameter is large enough but finite. That is
@@ -236,9 +236,9 @@ withdrawals in [`CORRECTIONS.md`](CORRECTIONS.md).
 
 ## Citation
 
-This release is in DRAFT state and has no DOI. Do not cite it as a fixed
-version yet. When a version is archived, the citation metadata will be in
-`CITATION.cff` and recorded here.
+This is the frozen candidate for v0.1.0. It predates the DOI and should not be
+cited as a fixed version until the Zenodo archive has been verified. Citation
+metadata is in `CITATION.cff` and will be reconciled here after publication.
 
 ## References
 

@@ -311,8 +311,8 @@ Observed: 8 pages, exits 0, no overfull lines, all citations resolved, writes `p
 Determinism was checked by removing `tmp/texbuild/` entirely and rebuilding:
 
 ```text
-6f861b143c76b5bedce010a274ee7d348c667c72508dc019ffb98142b04b9306  build 1
-6f861b143c76b5bedce010a274ee7d348c667c72508dc019ffb98142b04b9306  build 2
+6d0af918a726b453bcf42b6560ab93c0a96c72378f148f1bf5b39aab11ae43ac  build 1
+6d0af918a726b453bcf42b6560ab93c0a96c72378f148f1bf5b39aab11ae43ac  build 2
 ```
 
 **Byte-identical.** This required a fix: two clean builds previously differed
