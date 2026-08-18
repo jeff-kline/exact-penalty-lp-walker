@@ -1,6 +1,6 @@
 # Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down
 
-**Release state: ARCHIVED at v0.1.0.** The immutable release is preserved under
+**Release state: ADMITTED at v0.1.0.** The immutable release is preserved under
 [version DOI 10.5281/zenodo.21998053](https://doi.org/10.5281/zenodo.21998053).
 Zenodo's public archive was verified byte-for-byte against the GitHub tag
 zipball pinned before the Release. The immutable tag retains its honest

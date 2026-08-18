@@ -1,11 +1,15 @@
 # Admission record
 
-**Current verdict: NOT YET ADMITTED — v0.1.0 archived; final living-repository
-audit and publication pending.**
+**Current verdict: ADMITTED — v0.1.0 archived and living metadata reconciled.**
 
-**Release state:** ARCHIVED
+**Release state:** ADMITTED
 
 **Version:** 0.1.0
+
+**Admission date:** 18 August 2026
+
+**Post-publication living-metadata commit:**
+`a3afe42d14a3cc1237cf329da3c13251698bbb4a`
 
 **Immutable release:** `v0.1.0` at commit
 `ed4dc6147653991aad2abd52b2681cdfe7c69444`, archived under version DOI
@@ -17,9 +21,9 @@ Admission is a project-defined release decision. It means the claim, evidence,
 prior-work record, reproducibility materials, citation, and correction policy
 passed the gates below against one frozen commit. **It is not peer review, a
 correctness certificate, or proof of global novelty.** The immutable archive
-has completed R1's tag, archive, DOI, and metadata checks. The living update
-has not yet passed its clean committed-tree audit or been published, so the
-project is not yet admitted.
+completed R1's tag, archive, DOI, metadata, and byte-identity checks. The
+living citation reconciliation was committed separately before this verdict;
+publication of the verdict is gated on the clean committed-tree audit.
 
 ## Standard applied
 
@@ -32,7 +36,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 |---|---|---|
 | P1 — prior work and credit | **PASS** | All 14 cited works were checked against primary material: ten full texts and four primary publisher/author records and abstracts where the full text was not freely obtainable. The audit compares the closest mechanisms, not just titles: the 1996 continuation papers already contain piecewise-linear paths, predictor–corrector/Newton machinery, and factor reuse; Pinar (1997) is the closest work because his `(CD)`/`(PB)` formulations map exactly to `P_D(tb)` under the paper's stated dualization and `t = 1/τ`; and general parametric-QP work already supplies ratio events, dependent-set exchanges, and factor updates. The release therefore claims no new path, homotopy, or generic active-set machinery and distinguishes its implementation/computation contribution. The corpus is bounded, four full-text access failures and the absence of independent specialist review remain explicit, and no global novelty claim is inferred. Full dispositions and exact checked-copy hashes are in `audit/reports/p1-primary-source-audit-20260817.md`. |
 | A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and later focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–18. The final surface removes the unsupported priority and accuracy motivations; explains that the Netlib conversion makes MPS variable bounds explicit and represents equalities as paired inequalities; labels the synthetic panel, two t-walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt t-walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Its description of the algorithmic distinction from Pinar now matches §5: Pinar evaluates selected penalty values with predictor-corrector steps, whereas this method visits the path face by face and seeks the next breakpoint. The README headline now carries the same 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap as the paper. Title, author, release metadata, contribution boundary, limitations, evidence levels, and quantitative claims agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. The post-publication edits add only archive and citation facts; no material claim changed. Further material claim edits reopen A1. |
-| R1 — release and stewardship | **PARTIAL** | The immutable `v0.1.0` tag points to audited commit `ed4dc6147653991aad2abd52b2681cdfe7c69444`. GitHub's canonical tag zipball was downloaded twice before the Release; both copies were 2,368,081 bytes with SHA-256 `c8f719130088c73093087f48a677561640c57f833eff06efa22655574c15886d`. Zenodo published version DOI `10.5281/zenodo.21998053`; its public file has the same size and SHA-256, provider checksum `md5:7d825e0d615614a70726778c295aa60a`, and is byte-identical to the pinned GitHub zipball. The archived-state audit reports 11 pass, 0 warning, 0 fail. Deterministic builds, reproduction records, correction policy, third-party provenance, and a complete manifest also exist. Remaining before admission: commit this living reconciliation, run the clean admitted-state audit, and publish the resulting living metadata; a public-site listing remains outside this update. The frozen-build counter divergence and `beaconfd` regression remain named qualifications. |
+| R1 — release and stewardship | **PASS** | The immutable `v0.1.0` tag points to audited commit `ed4dc6147653991aad2abd52b2681cdfe7c69444`. GitHub's canonical tag zipball was downloaded twice before the Release; both copies were 2,368,081 bytes with SHA-256 `c8f719130088c73093087f48a677561640c57f833eff06efa22655574c15886d`. Zenodo published version DOI `10.5281/zenodo.21998053`; its public file has the same size and SHA-256, provider checksum `md5:7d825e0d615614a70726778c295aa60a`, and is byte-identical to the pinned GitHub zipball. The archived-state audit reports 11 pass, 0 warning, 0 fail. The living README, CFF, paper, correction history, verification record, and admission record identify the exact version DOI and release date; commit `a3afe42d14a3cc1237cf329da3c13251698bbb4a` preserves that reconciliation. The deterministic living PDF, reproduction records, third-party provenance, correction policy, and complete manifest verify. A public-site listing is N/A by author direction. The frozen-build counter divergence, `beaconfd` regression, bounded literature review, AI-review limits, and Pillow advisories remain named residuals rather than hidden blockers. |
 
 ## Claim boundary
 
@@ -113,6 +117,14 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   and bibliography.
 - Process-separated AI auditors share training data and blind spots. They are
   process evidence, not independent expert review.
+- **The pinned figure-rendering environment has 18 open Pillow advisories.**
+  GitHub Dependabot reports 13 high- and 5 moderate-severity advisories against
+  Pillow 11.3.0 in `requirements.txt`. Pillow is used by the reproduction and
+  figure pipeline, not by the C++ solver, and this repository processes its own
+  frozen local assets rather than accepting untrusted image uploads. The pin is
+  retained to reproduce the release environment; users should upgrade Pillow
+  before processing untrusted images. This is an open dependency-maintenance
+  item, not evidence against the archived numerical results.
 
 ## Execution boundary
 
@@ -120,15 +132,15 @@ Permission for one action never implies permission for the next.
 
 | Action | Owner | Status |
 |---|---|---|
-| Local edits, builds, tests | agent | complete through living metadata, deterministic PDF rebuild, and manifest regeneration; final clean committed-tree audit pending |
+| Local edits, builds, tests | agent | complete through living metadata, deterministic PDF rebuild, manifest regeneration, and clean admitted-state audit |
 | Create and publish GitHub repository | Jeff Kline | complete; repository public |
 | Review-branch push | N/A | not used |
 | Default-branch candidate push | Jeff Kline | complete at `ed4dc6147653991aad2abd52b2681cdfe7c69444` |
 | Public tag | Jeff Kline | complete: immutable `v0.1.0` |
 | GitHub Release | Jeff Kline | complete: `v0.1.0`, published 2026-08-18 |
 | Zenodo portal (enable repo, mint DOI) | Jeff Kline — authenticated portal, agent must not open it | complete: version DOI `10.5281/zenodo.21998053` |
-| Living-metadata push | Jeff Kline | pending exact admission authorization |
-| Public-site listing | Jeff Kline | outside this update; not yet authorized |
+| Living-metadata push | Jeff Kline | complete under the authorized admission bundle |
+| Public-site listing | N/A | explicitly omitted by author direction |
 
 ## Archive route
 
@@ -171,4 +183,4 @@ it is a secondary check, not the provider identity target.
 | DRAFT → CANDIDATE | P1, A1, and pre-freeze R1 pass; prose and artifacts agree. | **reached; candidate audit 7 pass, 0 fail** |
 | CANDIDATE → TAGGED | Freeze one clean commit; create one immutable tag. | **reached: `v0.1.0` → `ed4dc6147653991aad2abd52b2681cdfe7c69444`** |
 | TAGGED → ARCHIVED | Archive the tagged tree; verify the download byte-for-byte. | **reached: DOI resolves, metadata matches, and provider bytes are identical; archived audit 11/0/0** |
-| ARCHIVED → ADMITTED | Reconcile and publish living surfaces; run the final clean admitted-state audit; issue the verdict. | not reached |
+| ARCHIVED → ADMITTED | Reconcile and publish living surfaces; run the final clean admitted-state audit; issue the verdict. | **reached; no public-site listing is in scope** |

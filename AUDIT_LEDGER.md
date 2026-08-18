@@ -43,6 +43,8 @@ of them agreed on the same wrong answer.
 
 | 20 | 2026-08-18 | working tree | primary agent, post-publication reconciliation | Active version DOI and release date across README, CFF, paper, admission record, corrections, and verification record; deterministic PDF; complete tracked-file manifest | No mathematical, algorithmic, or measured claim changed. Two clean living-PDF builds are byte-identical at 8 pages and SHA-256 `431e368185d3017f618f7fcc8ae7192baca51c743de444d4053d8cc1463bc59e`; all eight rendered pages were visually inspected with no layout defect. The immutable tag and its candidate-era PDF remain unchanged. The living tree remains **NOT YET ADMITTED** pending a clean committed-tree admitted-state audit and publication authorization. |
 
+| 21 | 2026-08-18 | `a3afe42` | primary agent, final admission integration | Post-publication living-metadata commit; admission verdict; R1 closure; public-site scope; GitHub dependency-alert disposition; final manifest and committed-tree audit gate | **ADMITTED.** Commit `a3afe42d14a3cc1237cf329da3c13251698bbb4a` preserves the active DOI reconciliation separately from this verdict. The author explicitly omitted a public-site listing. The final publication is gated on a clean admitted-state audit against the byte-identical Zenodo archive. Eighteen Dependabot alerts were inspected: all concern Pillow 11.3.0 in the reproduction/figure environment, not the C++ solver; the admission record keeps them as a named untrusted-image/dependency-maintenance residual. This remains a project release decision, not peer review or a correctness certificate. |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

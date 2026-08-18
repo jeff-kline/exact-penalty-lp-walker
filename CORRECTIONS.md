@@ -24,6 +24,21 @@ edit.
 
 ## Version history
 
+### 0.1.0 — ADMITTED (18 August 2026)
+
+The project admits the archived `v0.1.0` release under the public research
+standard named in `ADMISSION.md`. The post-publication citation reconciliation
+is preserved at commit `a3afe42d14a3cc1237cf329da3c13251698bbb4a`; it adds
+the active DOI and release date without changing a mathematical, algorithmic,
+or measured claim. The final verdict follows a clean committed-tree audit of
+the living files against the exact Zenodo archive. A public-site listing was
+explicitly omitted from this admission bundle.
+
+Admission is a project release decision, not peer review, a correctness
+certificate, or proof of global novelty. The named numerical, coverage,
+literature-review, AI-review, and dependency-security residuals remain visible
+in `ADMISSION.md`.
+
 ### 0.1.0 — ARCHIVED (18 August 2026)
 
 The immutable `v0.1.0` tag points to commit
