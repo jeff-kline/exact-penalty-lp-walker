@@ -35,6 +35,8 @@ of them agreed on the same wrong answer.
 
 | 16 | 2026-08-18 | `30fe475` | author-directed correction + primary-agent check | MPS constraint-count interpretation across the paper, README, CFF, admission record, and converter | **A1 PASS after correction.** Standard MPS default variable bounds are genuine LP restrictions. The repository converter makes finite bounds explicit as inequality rows and represents equalities as paired inequalities. Earlier prose wrongly treated the 1.5–2.9 band as merely manufactured by an encoding. Active claim surfaces now state that the ratio describes the explicit inequality system solved here, not MPS `ROWS` records alone. |
 
+| 17 | 2026-08-18 | `b260912` | primary agent, narrow README consistency pass | README title, headline claim, prior-work distinction, limitations, and reproduction links checked against the frozen paper and verification record | **A1 PASS after repair.** The README claim box now carries the paper's 11-of-12 scope, 2.82x median, hindsight qualification, and approximate 17x HiGHS gap instead of a broader portfolio claim. The Pinar distinction now matches §5, the title matches the release metadata, and the Netlib rerun link points to `VERIFICATION.md` §5 rather than the document-build section. No paper claim changed. |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their

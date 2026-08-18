@@ -1,4 +1,4 @@
-# Revisiting exact-penalty linear programming
+# Revisiting exact-penalty linear programming: a projection-path walker for the regime where Newton slows down
 
 **Release state: DRAFT.** Claims and artifacts in this repository may still
 change. There is no stable tag, no permanent archive, and no DOI yet, so there
@@ -22,13 +22,12 @@ This repository contains a second method for that regime, called the
 **t-walker**, together with the code, fixtures, and frozen measurements needed
 to check what it does.
 
-> **What is claimed.** On the low-ratio problems measured here, following the
-> dual projection path from face to face is faster than re-solving the penalty
-> problem at a sequence of penalty values. Taking the fastest certified result
-> of three methods — the default-seed t-walker, the triangular-seeded t-walker,
-> and staged Newton — beats staged Newton alone on both panels measured here.
-> The envelope still trails a mature production solver by more than an order
-> of magnitude.
+> **What is claimed.** On generated low-ratio instances, the t-walker beats
+> Newton in eleven of twelve certified cells. Taking the fastest certified
+> result of the two t-walker seeds and staged Newton is a median 2.82 times
+> faster than Newton at ratios from 1.1 to 2. Choosing the fastest of those
+> three methods per problem uses hindsight, not a dispatcher, and remains about
+> 17 times slower than HiGHS in geometric mean.
 
 A *face* of the dual feasible set is the subset where a given set of the
 constraints `y ≥ 0` holds with equality; the path moves from one to the next.
@@ -88,10 +87,12 @@ quadratic-penalty path with predictor steps, modified-Newton correction,
 retained factor updates, and iterative refinement. After dualization and the
 change of parameter `t = 1/ε`, Pinar's perturbed optimizer *is* `P_D(tb)` —
 the same path used here. That equivalence is an exact derivation carried out
-in this work, not a quotation from the cited paper. General parametric-QP active-set methods supply the
-larger setting for piecewise-affine optimizer maps, ratio events, dependent
-constraint exchanges, and factor updates. **No new path or homotopy principle
-is claimed.**
+in this work, not a quotation from the cited paper. The distinction is
+algorithmic: Pinar evaluates selected penalty values with predictor and
+corrector steps, while the t-walker follows `y(t)` face by face and seeks the
+next breakpoint. General parametric-QP active-set methods supply the larger
+setting for piecewise-affine optimizer maps, ratio events, dependent constraint
+exchanges, and factor updates. **No new path or homotopy principle is claimed.**
 
 The narrower contributions are:
 
@@ -195,7 +196,7 @@ Re-running the t-walker panel and recomputing the frontier lands within about
 1% of the published 9.60 s. The t-walker's path is deterministic on a fixed
 build, but the current build does not reproduce the frozen record's internal
 counters on every model, and `beaconfd` has regressed. See
-[`VERIFICATION.md`](VERIFICATION.md) §6 for the measurements.
+[`VERIFICATION.md`](VERIFICATION.md) §5 for the measurements.
 
 Regenerating the accuracy table from scratch, rather than rendering the frozen
 one, also runs the solvers and requires the built `verify_walker`:

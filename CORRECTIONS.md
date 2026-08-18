@@ -541,6 +541,17 @@ Corrections made during preparation, before any public version existed:
   A focused check of the converter and active claim surfaces leaves A1 at
   **PASS**.
 
+- **2026-08-18 — the README headline now matches the paper's frozen claim.**
+  The README previously said, without the measured count, that following the
+  path was faster on the low-ratio problems and that the three-method envelope
+  beat Newton on both panels. The paper is more precise: the t-walker beats
+  Newton in 11 of 12 certified generated cells, the three-method result has a
+  2.82x median speedup over ratios 1.1 to 2, and choosing it per problem uses
+  hindsight. The README claim box now uses those same quantities and carries
+  the approximate 17x geometric-mean gap to HiGHS. Its prior-work paragraph
+  now also states the paper's bounded algorithmic distinction from Pinar, and
+  a stale Netlib-rerun link is corrected from `VERIFICATION.md` §6 to §5.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that
