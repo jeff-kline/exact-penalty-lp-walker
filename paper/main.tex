@@ -65,12 +65,12 @@ faces, and accepts only primal-dual pairs passing a KKT certificate on the
 original unscaled data, whose errors we report.
 
 On generated low-ratio instances the walker beats Newton in eleven of twelve
-certified cells. The fastest certified of the two seeds and Newton is a median
-2.82 times faster than Newton at ratios from 1.1 to 2, and cuts Netlib-27 time
-from 11.60 to 9.60 seconds, against 0.370 for HiGHS. For the walker and Newton,
-simplex crossover cuts median Netlib error by about three orders. Choosing the
-fastest of three per problem is hindsight, not a dispatcher, and still trails
-HiGHS 16.6 times in geometric mean.
+certified cells. The fastest of the two seeds and Newton is a median 2.82 times
+faster than Newton at ratios from 1.1 to 2. On Netlib-27, the frozen total falls
+from about 11.6 to 9.6 seconds, versus 0.37 for HiGHS. For the walker and Newton,
+simplex crossover cuts median error by about three orders. Choosing the fastest
+of three per problem is hindsight, not a dispatcher, and remains about 17 times
+slower than HiGHS in geometric mean.
 \end{abstract}
 
 \medskip

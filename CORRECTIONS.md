@@ -502,6 +502,21 @@ Corrections made during preparation, before any public version existed:
   before relying on it, where it previously referred to "two walkers" having
   described one.
 
+- **2026-08-17 — final A1 precision disposition and claim freeze.** The
+  abstract quoted the frozen Netlib totals as `11.60`, `9.60`, and `0.370`
+  seconds even though the verification record instructs readers to treat the
+  combined Netlib timings as approximate and a rebuilt walker lands 1.2%
+  away. The abstract now says “about 11.6,” “9.6,” and “0.37,” and rounds the
+  geometric-mean HiGHS gap from 16.6 to about 17. The exact frozen values stay
+  in `VERIFICATION.md`.
+
+  Two other questions from the final narrow pass require no claim change.
+  “About three orders” fairly summarizes the measured 3.23- and 2.63-order
+  median error reductions. The earlier statement about practical linear
+  programs no longer appears on any reader-facing claim surface. With these
+  dispositions, A1 closes on the frozen text; any later material claim edit
+  reopens it.
+
 ## Reporting an error
 
 Open an issue on the repository, or contact Jeff Kline directly. Errors that

@@ -24,7 +24,7 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
 | Gate | Status | Evidence and disposition |
 |---|---|---|
 | P1 — prior work and credit | **PASS** | All 14 cited works were checked against primary material: ten full texts and four primary publisher/author records and abstracts where the full text was not freely obtainable. The audit compares the closest mechanisms, not just titles: the 1996 continuation papers already contain piecewise-linear paths, predictor–corrector/Newton machinery, and factor reuse; Pinar (1997) is the closest work because his `(CD)`/`(PB)` formulations map exactly to `P_D(tb)` under the paper's stated dualization and `t = 1/τ`; and general parametric-QP work already supplies ratio events, dependent-set exchanges, and factor updates. The release therefore claims no new path, homotopy, or generic active-set machinery and distinguishes its implementation/computation contribution. The corpus is bounded, four full-text access failures and the absence of independent specialist review remain explicit, and no global novelty claim is inferred. Full dispositions and exact checked-copy hashes are in `audit/reports/p1-primary-source-audit-20260817.md`. |
-| A1 — claim and artifact consistency | **OPEN** | Four process-separated audit lanes ran against commit `40a4f58`. They found, and this tree corrects, the following material items: the §5 Pinar counts, a false description of the walker's terminal test, an undefined value function, a misnamed accuracy score, a headline that counted two methods where the frontier uses three, a status box asserting this repository does not exist, seven leaked absolute paths, and an overclaimed correction entry. All are recorded in `CORRECTIONS.md`. Every one was a prose or provenance defect; none changed a measurement. Because they were claim edits, A1 restarts from the corrected text and a confirming pass is required. |
+| A1 — claim and artifact consistency | **PASS** | The initial whole-release audits and three later abstract-focused passes found and resolved the claim, credit, scope, and provenance defects recorded in `CORRECTIONS.md` and `AUDIT_LEDGER.md` entries 1–14. The final surface removes the unsupported priority and accuracy motivations; identifies the converted inequality encoding behind the Netlib ratio band; labels the synthetic panel, two walker seeds, hindsight frontier, and HiGHS reference; and reports frozen Netlib timings approximately because the rebuilt walker total differs by 1.2%. The remaining “about three orders” statement is supported by measured reductions of 3.23 and 2.63 orders. Title, author, draft status, contribution boundary, limitations, evidence levels, and quantitative claims now agree across the paper, README, CFF, admission record, and frozen records. No claim of peer review, global novelty, competitive-solver performance, or automatic dispatch remains. Further material claim edits reopen A1. |
 | R1 — release and stewardship | **PARTIAL** | Deterministic document build verified byte-for-byte across clean rebuilds, and independently from separate `git archive` checkouts. Five documented reproduction paths execute, including the Netlib walker panel, whose producer was reconstructed and now reproduces the published frontier total to 1.2%. Correction policy, citation metadata, third-party provenance, and `MANIFEST.sha256` over every tracked file exist and verify. Blocking: no tag, no archive, no DOI. Remaining qualification, not a blocker: the current build's internal counters differ from the frozen record on 13 of 24 models, and `beaconfd` has regressed 11x. |
 
 ## Claim boundary
@@ -134,17 +134,18 @@ provider zipball.
 
 ## Remaining work before CANDIDATE
 
-1. ~~Run the bounded audit lanes and record dispositions.~~ Done: four lanes
-   ran on commit `40a4f58`. Dispositions are recorded in `CORRECTIONS.md`.
-   Because several were claim edits, A1 restarts from the corrected text and a
-   confirming pass is still required.
+1. ~~Run the bounded audit lanes, record dispositions, and close A1 on the
+   corrected surface.~~ Done. Four whole-release lanes and three later narrow
+   abstract passes are recorded in `AUDIT_LEDGER.md`; entry 14 records the
+   final dispositions. A1 is **PASS**. Further material claim edits reopen it.
 2. ~~Resolve or formally accept the Netlib reproduction gap.~~ Resolved: the
    missing producer was reconstructed and the frontier reproduces to 1.2%.
    A separate question remains open for the author, and is a research matter
    rather than a release blocker: `beaconfd`'s seed now takes 300 iterations
    where the frozen record shows 11.
-3. Replace the `CITATION.cff` `message` with publication-safe, timeless
-   wording — Zenodo imports it verbatim into the permanent record.
+3. ~~Replace the `CITATION.cff` `message` with publication-safe, timeless
+   wording.~~ Done: it now asks users to cite the supplied metadata without
+   making a time-sensitive draft claim.
 4. ~~Decide whether the Markdown copy of the note ships.~~ Done: removed.
    It duplicated every claim in the paper and had drifted from it twice. The
    TeX source is now the single claim surface for the note.

@@ -29,6 +29,8 @@ of them agreed on the same wrong answer.
 
 | 13 | 2026-08-17 | `8775dec` | cold agent, frontier tier | Second narrow A1 pass over the abstract and §1, aimed at the sentences rewritten the same day, plus an orphan check on the withdrawn accuracy claim | Withdrawal is clean: no orphan of the stopping-tolerance claim survives, and §4 reads consistently with §1. Every number reproduces. **Nine findings, A1 stays open.** The sharpest: "all of Netlib-27" is true only of the converted inequality encoding — in canonical MPS form those models have far fewer rows than columns — and the release's own `synth_nm.py` had documented that all along. Also caught that the reference solver added one commit earlier was quoted on a different estimator than the totals beside it |
 
+| 14 | 2026-08-17 | `aaf36d1` | primary agent, final A1 disposition | Frozen-surface review of entry 13's remaining timing-precision, accuracy-rounding, and applicability questions; cross-check against the frozen records, `ADMISSION.md`, and the rebuilt walker result | **A1 PASS.** Netlib totals and the geometric-mean HiGHS comparison are now explicitly approximate; the frozen values remain exact in the verification record. “About three orders” is retained because the measured reductions are 3.23 and 2.63 orders. No “practical linear programs” claim remains. All earlier material findings are resolved or carried as named limitations. The claim surface is frozen; any later material claim edit reopens A1 |
+
 ## Standing limits on this ledger
 
 - Entries 1–5 were launched by the same root agent that then applied their
