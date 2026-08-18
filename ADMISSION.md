@@ -68,13 +68,13 @@ Work"](https://jeff-kline.github.io/posts/research-program/index.html).
   existing instruction to read Netlib times at order-of-magnitude precision is
   the right one. What is now also true is that a reader can rebuild the walker
   and land within about 1% of the published total.
-- **The synthetic figure now regenerates, after repairing three scripts, but
+- **The synthetic figure now regenerates, after repairing two scripts, but
   not pixel-for-pixel.** `summarize_twalker_synth_nm.py` rejected the record
   behind the published figure because it demanded every arm on every cell, and
   the triangular seed fails closed on 3 of 27. It also never emitted two fields
   the renderer's post-initialization panel needs.
   `render_solver_timing_charts.py` then crashed while placing a DNF marker for
-  a cell that carried no timing at all. All three are fixed, and the shipped
+  a cell that carried no timing at all. Both are fixed, and the shipped
   chain now reproduces the published numbers exactly: 24 cells, envelope picks
   11/6/7, median 2.8194, minimum 1.6950, maximum 11.7603.
 

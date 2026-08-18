@@ -170,14 +170,21 @@ Corrections made during preparation, before any public version existed:
   restores the old behaviour. It also now emits the `solve_seconds` spread and
   per-repeat `run_samples` that the renderer's post-initialization panel needs
   and that no summary previously carried.
-  `render_solver_timing_charts.py` additionally skipped over a refused arm
-  rather than differencing two absent timings.
+  `render_solver_timing_charts.py` mishandled the same refused cells twice: it
+  differenced two absent timings when building the post-initialization row, and
+  then passed an absent timing to the code that places a DNF marker, which
+  crashed. A refusal is a property of the method, not a failed solve, so those
+  cells are now dropped from the plot rather than marked.
 
-  With both repaired, the shipped chain reproduces every synthetic *number* in
-  the note from the published record: 24 cells, envelope picks 11/6/7, median
-  2.8194, minimum 1.6950, maximum 11.7603. One gap remains: the
-  post-initialization panel writes its data JSON but still fails while plotting
-  a refused arm, so that one figure is not yet regenerable end to end.
+  With both repaired, the shipped chain runs end to end and reproduces every
+  synthetic *number* in the note from the published record: 24 cells, envelope
+  picks 11/6/7, median 2.8194, minimum 1.6950, maximum 11.7603. What does not
+  reproduce is the image. 3.17% of the pixels of
+  `synthetic_aspect_timings_public.png` differ from a fresh render; four of the
+  six panels agree to within antialiasing and two were drawn with different
+  y-axis limits. The plotted series coincide. The frozen PNG cannot have come
+  from the renderer as migrated, since that version crashed on this record, and
+  the state that did produce it is not recoverable here.
 
 - **2026-08-17 — a failing component test is disclosed rather than hidden.**
   `verify_face_solver` exits 1: on `share1b` the direct face solve returns
